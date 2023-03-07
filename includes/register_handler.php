@@ -49,6 +49,9 @@ if(isset($_POST['submit'])){
     $mrn = strip_tags(mysqli_real_escape_string($conn,$_POST['mrn']));
     $_SESSION['reg_mrn'] = $mrn;
 
+    $speciality = strip_tags(mysqli_real_escape_string($conn,$_POST['speciality']));
+    $_SESSION['reg_mrn'] = $mrn;
+
     //Date
     $signup_date = date("Y-m-d"); //Current date
 

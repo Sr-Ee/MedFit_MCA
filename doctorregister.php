@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-<title>COLNET REGISTRATION</title>
+<title>DOCTOR REGISTRATION</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/register_style.css"> <!-- register style sheet -->
@@ -54,12 +54,24 @@
                 ?>
         </div>
         <div class="form-group">
+            <select name="speciality" id="speciality" class="form-control" required>
+                <option value="" selected disabled hidden>Select your speciality</option>
+                <option value="Heart">Heart</option>
+                <option value="Bone">Bone</option>
+                <option value="Kidney">Kidney</option>
+                <option value="lungs">lungs</option>  
+            </select>
+        </div>
+        
+        <div class="form-group">
             <select name="gender" id="gender" class="form-control" required>
                 <option value="" selected disabled hidden>Select your gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
+  
             </select>
         </div>
+
         <div class="form-group">
         	<input type="text" class="form-control" name="phone" placeholder="Enter your phone number" pattern="\d*" maxlength="10" required="required" value="<?php  if(isset($_SESSION['reg_phone']))  
                echo $_SESSION['reg_phone']; ?>">
@@ -74,8 +86,14 @@
                     if(in_array("Phone Number should consist of only 10 digits <br>",$error_array)) echo "<div style='text-align:center;color:red;'>*Phone Number should consist of only 10 digits*<br></div>";
                 ?>
         </div> 
+        <div class="form-group">
+        	<input type="number" class="form-control" name="mrn" placeholder="Enter your mrn" pattern="\d*" maxlength="5" required="required" value="<?php  if(isset($_SESSION['reg_mrn']))  
+               echo $_SESSION['reg_mrn']; ?>">
+                <?php
+                    if(in_array("Phone Number should consist of only 10 digits <br>",$error_array)) echo "<div style='text-align:center;color:red;'>*Phone Number should consist of only 10 digits*<br></div>";
+                ?>
+        </div> 
        
-
         <div class="form-group">
             <label>Address</label>
             <textarea name="address" rows="5" cols="20"></textarea>
