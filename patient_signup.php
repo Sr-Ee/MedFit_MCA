@@ -1,4 +1,3 @@
-<?php include 'includes/register_handler.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
 <title>COLNET REGISTRATION</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/register_style.css"> <!-- register style sheet -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> 
 </head>
 <body>
 
-
 <div class="signup-form">
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);  ?>" method="post" style='width:28em;  '>
+    <form action="register.php" method="post" style='width:28em;  '>
 		<h2>MEDFIT SIGNUP</h2>
 		<p>Please fill in this form to create an account!</p>
 		<hr>
@@ -45,7 +39,7 @@
             </select>
         </div>    
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Enter Email provided by college" required="required" value="<?php if(isset($_SESSION['reg_email']))  
+        	<input type="email" class="form-control" name="email" placeholder="Enter your email" required="required" value="<?php if(isset($_SESSION['reg_email']))  
             echo $_SESSION['reg_email'];  ?>">
                 <?php   
                     //in_array() is case-sensitive
@@ -69,7 +63,7 @@
         </div>
         <div class="form-group">
         	<input type="number" class="form-control" name="age" placeholder="Enter your age" pattern="\d*" maxlength="5" required="required" value="<?php  if(isset($_SESSION['reg_phone']))  
-               echo $_SESSION['reg_phone']; ?>">
+               echo $_SESSION['reg_age']; ?>">
                 <?php
                     if(in_array("Phone Number should consist of only 10 digits <br>",$error_array)) echo "<div style='text-align:center;color:red;'>*Phone Number should consist of only 10 digits*<br></div>";
                 ?>
