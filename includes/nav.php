@@ -13,10 +13,10 @@
           <a class="nav-link" href="/MedFit_MCA/login.php">Search Hospitals</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="doc_search.php">Search Doctors</a>
+          <a class="nav-link" href="/MedFit_MCA/doc_search.php">Search Doctors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Profile</a>
+          <a class="nav-link" href="/MedFit_MCA/profile.php">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">FitBit(Beta)</a>
