@@ -153,7 +153,7 @@ h1{
     <div class="container">
         <div class="split left">
             <h1>PATIENTS</h1>
-            <a href="register.php" class="btn">REGISTER NOW</a>
+            <a href="patient_register.php" class="btn">REGISTER NOW</a>
         </div>
 
         <div class="split right">

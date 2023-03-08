@@ -1,89 +1,172 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Patient | Signup</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/register_style.css"> <!-- register style sheet -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  </head>
-  <body>
-    <!-- navbar -->
-    <?php require 'includes/nav.php' ?>
-    <div class="alert alert-success" role="alert">
-        Success! Your account has been created and now you can login.
-    </div>
-    <div class="signup-form">
-    <form action="/MedFit_MCA/patient_register.php" method="post" style='width:28em;'>
-		<h2>MEDFIT SIGNUP</h2>
-		<p>Please fill in this form to create an account!</p>
-		<hr>
-        <div class="form-group">
-			<div class="row">
-				<div class="col"><input type="text" class="form-control alldivspos" name="first_name" placeholder="First Name" required="required" value="<?php  if(isset($_SESSION['reg_fname']))  
-                echo $_SESSION['reg_fname'];  ?>"></div>
-			</div>        	
-        </div>
-        <div class="form-group">
-			<div class="row">
-                <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required" value="<?php if(isset($_SESSION['reg_lname']))  
-                echo $_SESSION['reg_lname']; ?>"></div>
-			</div>       	
-        </div>
-        <div class="form-group">
-            <select name="role" id="role" class="form-control" required>
-                <option value="" selected disabled hidden>Select your role</option>
-                <option value="patient">Patient</option>
-                <option value="doctor">Doctor</option>
-            </select>
-        </div>    
-        <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Enter your email" required="required" value="<?php if(isset($_SESSION['reg_email']))  
-            echo $_SESSION['reg_email'];  ?>">
-        </div>
-        <div class="form-group">
-            <select name="gender" id="gender" class="form-control" required>
-                <option value="" selected disabled hidden>Select your gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </div>
-        <div class="form-group">
-        	<input type="text" class="form-control" name="phone" placeholder="Enter your phone number" pattern="\d*" maxlength="10" required="required" value="<?php  if(isset($_SESSION['reg_phone']))  
-               echo $_SESSION['reg_phone']; ?>">
-        </div>
-        <div class="form-group">
-        	<input type="number" class="form-control" name="age" placeholder="Enter your age" pattern="\d*" maxlength="5" required="required" value="<?php  if(isset($_SESSION['reg_phone']))  
-               echo $_SESSION['reg_age']; ?>">
-        </div> 
+<?php
+//ob_start();
+session_start();
+$msg = "";
+include('db.php');
+if(isset($_POST['submit']))
+{
+    
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $password = $_POST['password'];
+    $c_password = $_POST['confirmpassword'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    
+    //check for duplicate email-id
+    $check = mysqli_num_rows(mysqli_query($con,"SELECT * FROM PATIENT WHERE EMAIL='$email'"));
+    if($check>0){
+        $msg = "<p style='color:red;'>Email-id already exists</p>";
+    }
+    else{
+
+        $verification_id=rand(111111111,999999999);
+        $query = "INSERT INTO `patient` (`first_name`, `last_name`, `email`, `gender`, `phone`, `age`, `password`, `dt`, `profile_pic`, `verification_status`,`verification_id`) VALUES ('$fname', '$lname', '$email', '$gender', '$phone', '$age', '$password', current_timestamp(), 'java.png', '0',$verification_id);";
+        mysqli_query($con,$query);
+
        
+    
+        $msg = "<p style='color:green;'>We have just sent a verification link to <strong>{$email}</strong><br>Please checkyour inbox and click on the link
+                to get started. If you can't find this email, just request a new one here</p>";
 
-        <div class="form-group">
-            <label>Address</label>
-            <textarea name="address" rows="5" cols="20"></textarea>
-        </div>
+        $mailHtml = "Please Confirm your account registration by clicking the button or link below: <a href='http://localhost/MedFit_MCA/check.php?id={$verification_id}'>
+            http://localhost/MedFit_MCA/check.php?id={$verification_id}</a>";
         
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-        </div>     
-        <!-- 		    
-        <div class="form-group">
-			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-		</div> -->
-        
-		<div class="form-group">
-            <div class="text-center">
-                <!-- <a href="register1.php" class="btn">NEXT</a> -->
-                <input type="submit" name="submit" value="SIGN UP" class="btn btn-primary btn-lg">
-        </div>
-        </div>
-        <br>
-    </form>
+        smtp_mailer($email,'Account Verification',$mailHtml);
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  </body>
-</html>
+    }
+
+}
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+function smtp_mailer($to,$subject,$msg){
+      try{
+        require 'C:/xampp/htdocs/MedFit_MCA/php_mailer/vendor/autoload.php';
+        $mail = new PHPMailer(true);
+        // $mail->SMTPDebug = 1;                      // Enable verbose debug output
+        $mail->isSMTP();                                            // Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+        $mail->Username   = 'sunnyshmca04@outlook.com';                     // SMTP username
+        $mail->Password   = '';                               // SMTP password
+        $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+        $mail->Port       = 587;         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+    
+        //Recipients
+        $mail->setFrom('sunnyshmca04@outlook.com');
+        $mail->addAddress($to);     // Add a recipient
+    
+        //$body = '<p><strong> Hello </strong> This is my first Email</p>';
+    
+        // Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = $subject;
+    
+        $mail->Body    = $msg;
+        //$mail->AltBody = strip_tags($body);
+    
+        $mail->send();
+        echo 'Message has been sent';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+    
+    }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/register_style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from living healthy life</p>
+            <a href="/login"><input type="submit" name="" value="Login" /><br /></a>
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="./patient_register.php" role="tab"
+                        aria-controls="home" aria-selected="true">Register</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Apply as a Patient</h3>
+                    <form action="patient_register.php" method="POST">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group my-2">
+                                    <input type="text" class="form-control" placeholder="First Name *" value=""
+                                        name="firstname" id="firstname" ng-required="true" />
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="text" class="form-control" placeholder="Last Name *" value=""
+                                        name="lastname" id="lastname" />
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="password" class="form-control" placeholder="Password *" value=""
+                                        name="password" id="password" />
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="password" class="form-control" placeholder="Confirm Password *"
+                                        value="" name="confirmpassword" id="confirmpassword" />
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group my-2">
+                                    <input type="number" class="form-control" placeholder="Your Age *" value=""
+                                        name="age" id="age" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="maxl">
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" id="gender" value="male" checked>
+                                            <span> Male </span>
+                                        </label>
+                                        <label class="radio inline">
+                                            <input type="radio" name="gender" id="gender" value="female">
+                                            <span>Female </span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="email" class="form-control" placeholder="Your Email *" value=""
+                                        name="email" id="email" />
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="text" name="phone" class="form-control" placeholder="Your Phone *"
+                                        value="" id="phone" />
+                                </div>
+                                <input type="submit" id="submit" name="submit" value="Register Now"
+                                    class="btn btn-primary">
+
+                            </div>
+                            <?php
+                            echo $msg;
+                           ?>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
