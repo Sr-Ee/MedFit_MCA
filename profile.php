@@ -1,3 +1,7 @@
+<?php
+session_start();
+$patientid = $_SESSION['patient_id'];
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +42,32 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 </style>
 <body>
 <?php require 'includes/nav.php' ?>
+<?php
+
+if(isset($_GET['patient_id'])){
+
+  $con = mysqli_connect("localhost","root","","medfit");
+  $patientid = $_GET['patient_id'];
+  $query = "SELECT * FROM `patient` WHERE `patient_id` = '$patientid'";
+  $result = mysqli_query($con,$query);
+  
+  if(mysqli_num_rows($result)>=1){
+
+      while($row = mysqli_fetch_assoc($result)){
+          $fname = $row['first_name'];
+          $lname = $row['last_name'];
+          $email = $row['email'];
+          $gender = $row['gender'];
+          $phone = $row['phone'];
+          $address = $row['address'];
+          $age = $row['age'];
+          
+      }
+
+  }
+}
+
+?>
 <section class="" >
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -48,7 +78,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                   alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>Sanjay Singhania</h5>
+                <h5><?php echo $fname.' '.$lname;  ?></h5>
                 <p>Fitness Freak</p>
                 <i class="far fa-edit mb-5"></i>
               </div>
@@ -59,11 +89,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Email</h6>
-                      <p class="text-muted">info@example.com</p>
+                      <p class="text-muted"><?php echo $email;  ?></p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Phone</h6>
-                      <p class="text-muted">123 456 789</p>
+                      <p class="text-muted"><?php echo $phone;  ?></p>
                     </div>
                   </div>
                   <h6>Projects</h6>
@@ -71,11 +101,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Gender</h6>
-                      <p class="text-muted">Male</p>
+                      <p class="text-muted"><?php echo $gender;  ?></p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Age</h6>
-                      <p class="text-muted">24</p>
+                      <p class="text-muted"><?php echo $age;  ?></p>
                     </div>
                   </div>
                   <div class="d-flex justify-content-start">

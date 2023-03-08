@@ -45,7 +45,7 @@ $patientid = $_SESSION['patient_id'];
 <?php  
 
 if(isset($_GET['doctor_id'])){
-    
+
     $con = mysqli_connect("localhost","root","","medfit");
     $doctorid = $_GET['doctor_id'];
     $query = "SELECT * FROM `doctors` WHERE `doctor_id` = '$doctorid'";
@@ -61,6 +61,8 @@ if(isset($_GET['doctor_id'])){
             $clinic_add = $row['clinic_address'];
             $city = $row['city'];
             $email = $row['email'];
+            $mrn = $row['mrn'];
+            $qualify = $row['qualification'];
 
         }
 
@@ -92,8 +94,8 @@ if(isset($_GET['doctor_id'])){
                                         <p class="text-muted"><?php echo $email;  ?></p>
                                     </div>
                                     <div class="col-6 mb-3">
-                                        <h6>Phone</h6>
-                                        <p class="text-muted">123 456 789</p>
+                                        <h6>MRN</h6>
+                                        <p class="text-muted"><?php echo $mrn; ?></p>
                                     </div>
                                 </div>
                                 <h6>Details</h6>
@@ -105,7 +107,7 @@ if(isset($_GET['doctor_id'])){
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Qualification</h6>
-                                        <p class="text-muted">BDS</p>
+                                        <p class="text-muted"><?php echo $qualify;  ?></p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start">
