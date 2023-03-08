@@ -42,8 +42,62 @@
 
 <?php
 $hospitalname = $_POST["hname"];
-echo $hospitalname  
+
+
+$sql = "SELECT * FROM `hospital` where `city` = '$hospitalname'";
+$result = mysqli_query($conn,$sql);
+$num = mysqli_num_rows($result);
+ 
+if($num > 0)
+{
+  while($row = mysqli_fetch_assoc($result))
+  {
+
 ?>
+
+<div class="card" style="width: 18rem;" id="h">
+  <img src="https://unsplash.com/s/photos/hospital/300x300" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $row['hospital_name']; ?></h5>
+    <p class="card-text">It is located in <?php echo $row['address']; ?></p>
+    <a href="hospitaldetail.php" class="btn btn-primary">Details</a>
+  </div>
+</div><br>
+
+<?php
+
+
+  }
+}
+ 
+?>
+
+
+
+
+
+<?php 
+if($num <= 0)
+{
+?>
+<script>
+  card = document.getElementById("h")
+  card.style.visibility = "hidden";
+</script>
+<?php 
+}
+else{
+  session_start();
+  $_SESSION['hdetail'] = $row;
+?>
+<script>
+  card = document.getElementById("h")
+  card.style.visibility ="";
+</script>
+<?php 
+}
+?>
+
 
 </body>
 </html>
