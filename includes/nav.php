@@ -21,7 +21,7 @@ while($row=mysqli_fetch_array($select_query)){
           <a class="nav-link active" aria-current="page" href="/MedFit_MCA/welcome.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Search Hospitals</a>
+          <a class="nav-link" href="/MedFit_MCA/hospital_search.php">Search Hospitals</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/doc_search.php">Search Doctors</a>

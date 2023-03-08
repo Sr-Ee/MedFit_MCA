@@ -51,7 +51,7 @@ if(!isset($_SESSION['is_login'])){
     <div class="card-body">
       <h5 class="card-title">Search Hospitals</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Search</a>
+      <a href="hospital_search.php" class="btn btn-primary">Search</a>
     </div>
   </div>
   <!-- 1 -->
