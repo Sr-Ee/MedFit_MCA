@@ -22,7 +22,7 @@ if(isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])
 	//$password = md5($password);
 
   $sql = "SELECT * FROM `patient` WHERE `email`='$email' AND `password`='$password'";
-  $login_query = mysqli_query($conn,$sql);
+  $login_query = mysqli_query($con,$sql);
 
   while($row=mysqli_fetch_assoc($login_query)){
 

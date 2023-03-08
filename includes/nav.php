@@ -10,10 +10,10 @@
           <a class="nav-link active" aria-current="page" href="/MedFit_MCA/welcome.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/MedFit_MCA/login.php">Login</a>
+          <a class="nav-link" href="/MedFit_MCA/login.php">Search Hospitals</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/MedFit_MCA/patient_register.php">Signup</a>
+          <a class="nav-link" href="/MedFit_MCA/patient_register.php">Search Doctors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/logout.php">Logout</a>

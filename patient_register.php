@@ -50,13 +50,13 @@ function smtp_mailer($to,$subject,$msg){
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'sunnyshmca04@outlook.com';                     // SMTP username
-        $mail->Password   = 'Sunny29@1971';                               // SMTP password
+        $mail->Username   = 'sunny@coderscapital.tech';                     // SMTP username
+        $mail->Password   = 'Sunny@123';                               // SMTP password
         $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
     
         //Recipients
-        $mail->setFrom('sunnyshmca04@outlook.com');
+        $mail->setFrom('sunny@coderscapital.tech');
         $mail->addAddress($to);     // Add a recipient
     
         //$body = '<p><strong> Hello </strong> This is my first Email</p>';
