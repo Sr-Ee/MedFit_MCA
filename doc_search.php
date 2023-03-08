@@ -1,3 +1,7 @@
+<?php
+session_start();
+$patientid = $_SESSION['patient_id'];
+?>
 <!doctype html>
 <html lang="en">
 
@@ -62,6 +66,12 @@
     .header input:focus {
         outline: none;
     }
+.session-details{
+  font-size: 20px;
+    color: white;
+    position: relative;
+    right: 36px;
+}
 </style>
 
 <body>

@@ -42,13 +42,7 @@ $num_rows = mysqli_num_rows($login_query);
 
 if($num_rows == 1)
 {
-  if($verify_status == 0)
-  {
-    $msg = "<p style='color:red;'>You have not confirmed your account yet. Please check your inbox and verify your email id.</p>";
-  }
-  else
-  {
-      $msg = "<p style='color:red;'>Your email is verified successfully</p>";
+      //$msg = "<p style='color:red;'>Your email is verified successfully</p>";
 			session_start();
 			$_SESSION['is_login'] = true; //user defined
 			$_SESSION['name'] = $fname;
@@ -56,10 +50,9 @@ if($num_rows == 1)
 			$_SESSION['email'] = $email;
 			$_SESSION['patient_id'] = $patientid;
 			header("location: welcome.php");
-  }
-
 }
-else{
+else
+{
   $msg = "<p style='color:red;'>Email or Password is incorrect!</p>";
 }
 
@@ -74,7 +67,7 @@ else{
 		<p>Enter credentials to login</p>
         <hr>
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Enter your College Email" required="required" value="<?php  if(isset($_SESSION['log_email']))  
+        	<input type="email" class="form-control" name="email" placeholder="Enter your Registered Email" required="required" value="<?php  if(isset($_SESSION['log_email']))  
                 echo $_SESSION['log_email'];  ?>">
         </div>
         <div class="form-group">

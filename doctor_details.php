@@ -1,3 +1,7 @@
+<?php
+session_start();
+$patientid = $_SESSION['patient_id'];
+?>
 <!doctype html>
 <html lang="en">
 
@@ -23,6 +27,11 @@
         border: 2px solid grey;
         border-radius: 20px;
         height: 18rem;
+        transition: transform .2s;
+    }
+    .card:hover{
+        transform: scale(1.1); 
+        cursor: pointer;
     }
     .profile-card{
         margin-top: -24px;
@@ -33,6 +42,32 @@
     }
 </style>
 <?php require 'includes/nav.php' ?>
+<?php  
+
+if(isset($_GET['doctor_id'])){
+    
+    $con = mysqli_connect("localhost","root","","medfit");
+    $doctorid = $_GET['doctor_id'];
+    $query = "SELECT * FROM `doctors` WHERE `doctor_id` = '$doctorid'";
+    $result = mysqli_query($con,$query);
+    
+    if(mysqli_num_rows($result)>=1){
+
+        while($row = mysqli_fetch_assoc($result)){
+            $fname = $row['first_name'];
+            $lname = $row['last_name'];
+            $speciality = $row['speciality'];
+            $clinic_name = $row['clinic_name'];
+            $clinic_add = $row['clinic_address'];
+            $city = $row['city'];
+            $email = $row['email'];
+
+        }
+
+    }
+}
+
+?>
 <section class="">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -49,12 +84,12 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
-                                <h6>Dr. Sunny Sharma - Dentist, Dental Surgeon </h6>
+                                <h6>Dr. <?php echo $fname.' '.$lname.' - '.$speciality?>  </h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Email</h6>
-                                        <p class="text-muted">info@example.com</p>
+                                        <p class="text-muted"><?php echo $email;  ?></p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Phone</h6>
@@ -66,7 +101,7 @@
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Address</h6>
-                                        <p class="text-muted">Thane, Maharashtra</p>
+                                        <p class="text-muted"><?php echo $clinic_add;  ?></p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Qualification</h6>

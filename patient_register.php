@@ -22,59 +22,16 @@ if(isset($_POST['submit']))
     }
     else{
 
-        $verification_id=rand(111111111,999999999);
-        $query = "INSERT INTO `patient` (`first_name`, `last_name`, `email`, `gender`, `phone`, `age`, `password`, `dt`, `profile_pic`, `verification_status`,`verification_id`) VALUES ('$fname', '$lname', '$email', '$gender', '$phone', '$age', '$password', current_timestamp(), 'java.png', '0',$verification_id);";
+        $query = "INSERT INTO `patient` (`first_name`, `last_name`, `email`, `gender`, `phone`, `age`, `password`, `dt`, `profile_pic`) VALUES ('$fname', '$lname', '$email', '$gender', '$phone', '$age', '$password', current_timestamp(), 'java.png');";
         mysqli_query($con,$query);
 
-       
-    
-        $msg = "<p style='color:green;'>We have just sent a verification link to <strong>{$email}</strong><br>Please checkyour inbox and click on the link
-                to get started. If you can't find this email, just request a new one here</p>";
+        $msg = "<p style='color:green;'>Registered Successfully!!You can Login Now</p>";
 
-        $mailHtml = "Please Confirm your account registration by clicking the button or link below: <a href='http://localhost/MedFit_MCA/check.php?id={$verification_id}'>
-            http://localhost/MedFit_MCA/check.php?id={$verification_id}</a>";
-        
-        smtp_mailer($email,'Account Verification',$mailHtml);
 
     }
 
 }
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-function smtp_mailer($to,$subject,$msg){
-      try{
-        require 'C:/xampp/htdocs/MedFit_MCA/php_mailer/vendor/autoload.php';
-        $mail = new PHPMailer(true);
-        // $mail->SMTPDebug = 1;                      // Enable verbose debug output
-        $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'sunny@coderscapital.tech';                     // SMTP username
-        $mail->Password   = 'Sunny@123';                               // SMTP password
-        $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-        $mail->Port       = 587;         // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-    
-        //Recipients
-        $mail->setFrom('sunny@coderscapital.tech');
-        $mail->addAddress($to);     // Add a recipient
-    
-        //$body = '<p><strong> Hello </strong> This is my first Email</p>';
-    
-        // Content
-        $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = $subject;
-    
-        $mail->Body    = $msg;
-        //$mail->AltBody = strip_tags($body);
-    
-        $mail->send();
-        echo 'Message has been sent';
-    } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
-    
-    }
+
 
 ?>
 <!DOCTYPE html>
@@ -96,7 +53,7 @@ function smtp_mailer($to,$subject,$msg){
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
             <h3>Welcome</h3>
             <p>You are 30 seconds away from living healthy life</p>
-            <a href="/login"><input type="submit" name="" value="Login" /><br /></a>
+            <a href="login.php"><input type="submit" name="" value="Login" /><br /></a>
         </div>
         <div class="col-md-9 register-right">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
