@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="/MedFit_MCA">MedFit</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,7 +13,16 @@
           <a class="nav-link" href="/MedFit_MCA/login.php">Search Hospitals</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/MedFit_MCA/patient_register.php">Search Doctors</a>
+          <a class="nav-link" href="doc_search.php">Search Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">FitBit(Beta)</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Book Appointments</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/logout.php">Logout</a>
