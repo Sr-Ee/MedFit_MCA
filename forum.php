@@ -8,8 +8,8 @@
 </head>
 <body>
     <?php
-    session_start();
-    $h = $_SESSION['hdetail'];
+      
+      
 
 
     ?>
