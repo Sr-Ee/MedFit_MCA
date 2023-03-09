@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
     }
     else{
 
-        $query = "INSERT INTO `doctors` (`first_name`, `last_name`, `email`, `gender`, `speciality`,`phone`, `clinic_address`,`mrn`,`age`, `password`, `dt`, `profile_pic`) VALUES ('$fname', '$lname', '$email', '$gender','$speciality','$phone','$address','$mrn','$age', '$password', current_timestamp(), 'java.png');";
+        $query = "INSERT INTO `doctors` (`first_name`, `last_name`, `email`, `gender`, `speciality`,`phone`, `clinic_address`,`mrn`,`age`, `password`, `profile_pic`) VALUES ('$fname', '$lname', '$email', '$gender','$speciality','$phone','$address','$mrn','$age', '$password', 'java.png');";
         mysqli_query($con,$query);
 
         $msg = "<p style='color:green;'>Registered Successfully!!You can Login Now</p>";
