@@ -26,7 +26,7 @@ $patientid = $_SESSION['patient_id'];
     .card {
         border: 2px solid grey;
         border-radius: 20px;
-        height: 18rem;
+        height: 23rem;
         transition: transform .2s;
     }
     .card:hover{

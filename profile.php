@@ -43,10 +43,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 <body>
 <?php require 'includes/nav.php' ?>
 <?php
-
+$con = mysqli_connect("localhost","root","","medfit");
 if(isset($_GET['patient_id'])){
 
-  $con = mysqli_connect("localhost","root","","medfit");
+  
   $patientid = $_GET['patient_id'];
   $query = "SELECT * FROM `patient` WHERE `patient_id` = '$patientid'";
   $result = mysqli_query($con,$query);
