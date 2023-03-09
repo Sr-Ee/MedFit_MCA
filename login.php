@@ -63,7 +63,7 @@ else
 
   <div class="signup-form">
     <form action="login.php" method="post">
-		<h2>MEDFIT LOGIN</h2>
+		<h2>MEDFIT LOGIN | PATIENT</h2>
 		<p>Enter credentials to login</p>
         <hr>
         <div class="form-group">

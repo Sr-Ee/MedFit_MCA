@@ -52,7 +52,7 @@ if($num_rows == 1)
 			$_SESSION['lname'] = $lname;
 			$_SESSION['email'] = $email;
 			$_SESSION['doctor_id'] = $doctorid;
-			header("location: welcome.php");
+			header("location: /MedFit_MCA/doctor/index.php");
 }
 else
 {
@@ -66,7 +66,7 @@ else
 
   <div class="signup-form">
     <form action="doctorlogin.php" method="post">
-		<h2>MEDFIT LOGIN</h2>
+		<h2>MEDFIT LOGIN | DOCTORS</h2>
 		<p>Enter credentials to login</p>
         <hr>
         <div class="form-group">

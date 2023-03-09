@@ -30,7 +30,6 @@ if(isset($_POST['submit']))
 
         $msg = "<p style='color:green;'>Registered Successfully!!You can Login Now</p>";
 
-
     }
 
 }
