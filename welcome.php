@@ -93,7 +93,7 @@ if(!isset($_SESSION['is_login'])){
     <div class="card-body">
       <h5 class="card-title">Fitness Profile</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="profile.php?patient_id=<?php echo $patientid ?>" class="btn btn-primary">Profile</a>
+      <a href="profile.php" class="btn btn-primary">Profile</a>
     </div>
   </div>
 </div>
