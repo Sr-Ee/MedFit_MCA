@@ -52,7 +52,7 @@ if($num_rows == 1)
 			$_SESSION['lname'] = $lname;
 			$_SESSION['email'] = $email;
 			$_SESSION['doctor_id'] = $doctorid;
-			header("location: welcome.php");
+			header("location: doctor_welcome.php");
 }
 else
 {
