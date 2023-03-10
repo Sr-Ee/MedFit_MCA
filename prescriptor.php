@@ -1,3 +1,6 @@
+<?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
+<?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/sidebar.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +54,7 @@
                 <a href="generate_pdf.php" class="btn btn-danger" target="_blank">Generate PDF</a>
               </div>
             </form>
+            <a href="/MedFit_MCA/doctor/index.php"> Back</a>
           </div>
         </div>
       </div>

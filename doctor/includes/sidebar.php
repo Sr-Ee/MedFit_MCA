@@ -17,13 +17,13 @@
                     <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Cancel Appointments</a>
                 </li>
                 <li>
-                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
+                    <a href="/MedFit_MCA/prescriptor.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
                 </li>
                 <li>
                     <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>TeleConference</a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-user"></i> Profile</a>
+                    <a href="/MedFit_MCA/doctor_profile.php"><i class="fa fa-user"></i> Profile</a>
                 </li>
                 <li>
                     <a href="/MedFit_MCA/doctor/logout.php"><i class="fa fa-fw fa-wrench"></i>Logout</a>
