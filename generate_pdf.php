@@ -10,6 +10,13 @@
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // $sql1 = 'SELECT name FROM prescriptions WHERE doctor_id = :doctor_id';
+    // $stmt = $conn->prepare($sql1);
+    // $stmt->bindParam(':doctor_id', $doctor_id);
+    // $stmt->execute();
+    // $doctor_id = $stmt->fetchColumn();
+
+
     $html='<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -31,6 +38,8 @@
         </style>
     </head>
     <body>
+
+  
         <h3>Prescription</h3>
         <table>
             <thead>
@@ -66,3 +75,5 @@
         $dompdf -> render();
         $dompdf -> stream('prescription.pdf', ['Attachment' => 0]);
 ?>
+
+<h2>'.$doctor_id[$doctor_id].'</h2>
