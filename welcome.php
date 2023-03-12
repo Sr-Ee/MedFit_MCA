@@ -17,6 +17,25 @@ if(!isset($_SESSION['is_login'])){
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <style>
+  body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .container{
   display: flex;
   justify-content: center;
@@ -27,6 +46,7 @@ if(!isset($_SESSION['is_login'])){
   margin-bottom: 25px;
   margin-right: 37px;
   transition: transform .2s;
+  
 }
 .card:hover{
   transform: scale(1.1); 
@@ -69,7 +89,7 @@ if(!isset($_SESSION['is_login'])){
     <div class="card-body">
       <h5 class="card-title">Book Appointment</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Book</a>
+      <a href="doc_search.php" class="btn btn-primary">Book</a>
     </div>
   </div>
   <div class="card" style="width: 18rem;">

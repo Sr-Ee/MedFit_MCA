@@ -16,6 +16,27 @@ $patientid = $_SESSION['patient_id'];
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <style>
+    body {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
     .container {
         max-width: 61rem;
         margin-top: 4rem;
@@ -66,16 +87,17 @@ $patientid = $_SESSION['patient_id'];
     .header input:focus {
         outline: none;
     }
-.session-details{
-  font-size: 20px;
-    color: white;
-    position: relative;
-    right: 36px;
-}
+
+    .session-details {
+        font-size: 20px;
+        color: white;
+        position: relative;
+        right: 36px;
+    }
 </style>
 
 <body>
-<?php 
+    <?php 
 if(isset($_POST['submit']))
 {
     $con = mysqli_connect("localhost","root","","medfit");
@@ -106,7 +128,7 @@ if(isset($_POST['submit']))
         </div>
     </div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function () {
 

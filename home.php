@@ -87,7 +87,7 @@ h1{
 
 .split.left{
     left: 0;
-    background-image: url('../img/patients.jpg');
+    /* background-image: url('../img/patients.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -103,7 +103,7 @@ h1{
 
 .split.right{
    right: 0;
-   background-image: url('../img/doctors.jpg');
+   /* background-image: url('../img/doctors.jpg'); */
    background-repeat: no-repeat;
    background-size: cover; 
 } 
@@ -152,12 +152,12 @@ h1{
 <body>
     <div class="container">
         <div class="split left">
-            <h1>PATIENTS</h1>
+            <h1>Job Seekers</h1>
             <a href="patient_register.php" class="btn">REGISTER NOW</a>
         </div>
 
         <div class="split right">
-            <h1>DOCTORS</h1>
+            <h1>Employer</h1>
             <a href="doctor_register.php" class="btn">REGISTER NOW</a>
         </div>
     </div>

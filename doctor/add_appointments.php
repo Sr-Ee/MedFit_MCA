@@ -9,7 +9,38 @@ while($row=mysqli_fetch_array($select_query)){
   $fname = $row['first_name'];
   $lname = $row['last_name'];
 }
+$msg="";
+if(isset($_POST['submit']))
+{
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $location = $_POST['location'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $pre_date = $_POST['pre_date'];
+    $pretime = $_POST['pretime'];
+    $comp = $_POST['comp'];
+    $when = $_POST['when'];
+    $app_status = $_POST['app_status'];
 
+    if($_POST['when'] == "now"){
+        $query = "INSERT INTO `added_appointments` (`doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`, `when_status`,`app_status`) VALUES ('$doctorid','$fname', '$lname', '$email', '$mobile', '$location', '$age', '$gender', 'current_timestamp()', '$pretime', '$comp', '$when','$app_status');";
+        mysqli_query($con,$query);
+
+        $msg = "<p style='color:green;'>Appointment Added Successfully!!</p>";
+    }
+    else{
+        $query = "INSERT INTO `added_appointments` (`doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`, `when_status`,`app_status`) VALUES ('$doctorid','$fname', '$lname', '$email', '$mobile', '$location', '$age', '$gender', '$pre_date', '$pretime', '$comp', '$when','$app_status');";
+        mysqli_query($con,$query);
+
+        $msg = "<p style='color:green;'>Appointment Added Successfully!!</p>";
+    }
+
+    
+
+}
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
 
@@ -185,7 +216,7 @@ while($row=mysqli_fetch_array($select_query)){
 
             <!-- form starts from here -->
             <div class="container form-box">
-                <form class="app">
+                <form class="app" action="add_appointments.php" method="post">
                     <!-- Form start -->
                     <div class="row">
                         <div class="col-md-6">
@@ -279,20 +310,16 @@ while($row=mysqli_fetch_array($select_query)){
                         <!-- Text input-->
                         <div class="col-md-6" id="date-block">
                             <div class="form-group">
-                                <label class="control-label" for="date">Preferred Date</label>
-                                <input id="date" name="date" type="text" placeholder="Preferred Date - DD/MM/YYYY"
+                                <label class="control-label" for="pre_date">Preferred Date</label>
+                                <input id="pre_date" name="pre_date" type="date" placeholder="Preferred Date - DD/MM/YYYY"
                                     class="form-control input-md">
                             </div>
                         </div>
                         <!-- Select Basic -->
                         <div class="col-md-6" id="time-block">
-                            <div class="form-group">
-                                <label class="control-label" for="time">Preferred Time</label>
-                                <select id="time" name="time" class="form-control">
-                                    <option value="8:00 to 9:00">8:00 to 9:00</option>
-                                    <option value="9:00 to 10:00">9:00 to 10:00</option>
-                                    <option value="10:00 to 1:00">10:00 to 1:00</option>
-                                </select>
+                        <div class="form-group">
+                                <label class="control-label" for="pretime">Preferred Date</label>
+                                <input type="time" id="pretime" name="pretime" step="1">
                             </div>
                         </div>
                         <!-- Select Basic -->
@@ -304,14 +331,25 @@ while($row=mysqli_fetch_array($select_query)){
                                     class="form-control input-md">
                             </div>
                         </div>
+                        <div class="col-md-6" id="app_status">
+                            <div class="form-group">
+                                <label class="control-label" for="app_status">Preferred Time</label>
+                                <select id="app_status" name="app_status" class="form-control">
+                                    <option value="Scheduled Appointment">Scheduled Appointment</option>
+                                    <option value="Active Appointment">Active Appointment</option>
+                                    <option value="Cancelled Appointment">Cancelled Appointment</option>
+                                </select>
+                            </div>
+                        </div>
                         <!-- Button -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Add
+                                <button id="submit" name="submit" class="btn btn-primary">Add
                                     Appointment</button>
                             </div>
                         </div>
                     </div>
+                    <?php echo $msg;  ?>
                 </form>
             </div><!-- form ends here -->
         </div>

@@ -199,18 +199,34 @@ while($row=mysqli_fetch_array($select_query)){
                 </thead>
                 <!-- Placeholders -->
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sunny S.H</td>
-                        <td>s@gmail.com</td>
-                        <td>8108431108</td>
-                        <td>Mumbai</td>
-                        <td>23</td>
-                        <td>Male</td>
-                        <td></td>
-                    </tr>
+                    <?php
+                        $con = mysqli_connect("localhost","root","","medfit");
+                        $query = "SELECT * FROM `added_patients` WHERE `doctor_id`='$doctorid'";
+                        $select_patient = mysqli_query($con,$query);
+                        $id = 0;
+                        while($row = mysqli_fetch_array($select_patient)){
 
-
+                            $id++;
+                            $fname = $row['fname'];
+                            $lname = $row['lname'];
+                            $email = $row['email'];
+                            $mobile = $row['mobile'];
+                            $location = $row['location'];
+                            $age = $row['age'];
+                            $gender = $row['gender'];
+                            echo "<tr>";
+                            ?>
+                            <?php
+                                 echo "<td>$id</td>";
+                                 echo "<td>$fname $lname</td>";
+                                 echo "<td>$email</td>";
+                                 echo "<td>$mobile</td>";
+                                 echo "<td>$location</td>";
+                                 echo "<td>$age</td>";
+                                 echo "<td>$gender</td>";
+                            echo "</tr>";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>

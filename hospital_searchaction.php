@@ -4,7 +4,7 @@ if(isset($_POST['query'])){
 
     $inputText = $_POST['query'];
 
-    $query = "SELECT * FROM `hospital` WHERE `hospital_name` LIKE '%$inputText%'";
+    $query = "SELECT * FROM `hospital` WHERE `hospital_name` LIKE '%$inputText%' OR `city` LIKE '%$inputText%'";
     $result = mysqli_query($con,$query);
 
     if(mysqli_num_rows($result) > 0){

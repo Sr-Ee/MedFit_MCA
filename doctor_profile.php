@@ -408,6 +408,7 @@ while($row=mysqli_fetch_assoc($login_query)){
         }
 
         .row {
+            
             display: flex;
             margin-right: -15px;
             margin-left: -15px;

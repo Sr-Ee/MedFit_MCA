@@ -9,6 +9,25 @@ while($row=mysqli_fetch_array($select_query)){
   $fname = $row['first_name'];
   $lname = $row['last_name'];
 }
+$msg="";
+if(isset($_POST['submit']))
+{
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $location = $_POST['location'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+
+    $query = "INSERT INTO `added_patients` (`doctor_id`,`fname`,`lname`,`email`, `mobile`, `location`, `age`, `gender`) VALUES ('$doctorid','$fname', '$lname', '$email', '$mobile', '$location', '$age', '$gender');";
+    mysqli_query($con,$query);
+
+    $msg = "<p style='color:green;'>Patient Added Successfully!!</p>";
+   
+    
+
+}
 
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
@@ -185,7 +204,7 @@ while($row=mysqli_fetch_array($select_query)){
             
             <!-- form starts from here -->
             <div class="container form-box">
-                <form class="app">
+                <form class="app" method="post" action="add_patients.php">
                     <!-- Form start -->
                     <div class="row">
                         <!-- Text input-->
@@ -253,10 +272,11 @@ while($row=mysqli_fetch_array($select_query)){
                         <!-- Button -->
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Add Patients</button>
+                                <button id="submit" name="submit" class="btn btn-primary">Add Patients</button>
                             </div>
                         </div>
                     </div>
+                    <?php  echo $msg; ?>
                 </form>
             </div><!-- form ends here -->
         </div>

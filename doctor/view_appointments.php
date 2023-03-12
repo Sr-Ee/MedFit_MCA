@@ -10,6 +10,7 @@ while($row=mysqli_fetch_array($select_query)){
   $lname = $row['last_name'];
 }
 
+
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
 
@@ -183,6 +184,7 @@ while($row=mysqli_fetch_array($select_query)){
                 </div>
             </div>
             <!-- /.row -->
+            <form action="" method="post">
             <table class="table table-bordered table-hover">
                 <!-- Table Heading -->
                 <thead>
@@ -197,28 +199,83 @@ while($row=mysqli_fetch_array($select_query)){
                         <th>Prefered Date</th>
                         <th>Prefered Time</th>
                         <th>Complaints</th>
-                        <th>Status</th>
+                        <!-- <th>Status</th> -->
+                        <th>Join Link</th>
+                        <th>EDIT</th>
+                        <th>DELETE</th>
                     </tr>
                 </thead>
                 <!-- Placeholders -->
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sunny S.H</td>
-                        <td>s@gmail.com</td>
-                        <td>8108431108</td>
-                        <td>Mumbai</td>
-                        <td>23</td>
-                        <td>Male</td>
-                        <td>09/03/2023</td>
-                        <td>6:30pm</td>
-                        <td>Fever, Nausea, HeadPain</td>
-                        <td></td>
-                    </tr>
+                    <?php
+                        $con = mysqli_connect("localhost","root","","medfit");
+                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id`='$doctorid'";
+                        $select_appointment = mysqli_query($con,$query);
+                        $id = 0;
+                        while($row = mysqli_fetch_array($select_appointment)){
+                            $id++;
+                            $add_app_id = $row['add_app_id'];
+                            $fname = $row['fname'];
+                            $lname = $row['lname'];
+                            $email = $row['email'];
+                            $mobile = $row['mobile'];
+                            $location = $row['location'];
+                            $age = $row['age'];
+                            $gender = $row['gender'];
+                            $predate = $row['preferred_date'];
+                            $pretime = $row['preferred_time'];
+                            $comp = $row['complaints'];
+                            $when = $row['when_status'];
 
+                            // Zoom Video Calling
+                            require_once 'config.php';
+                            require_once 'api.php';
+                            $arr['topic'] = 'Meeting by ' . $fname;
+                            $arr['start_date'] = date('$predate $pretime');
+                            $arr['duration'] = 30;
+                            $arr['password'] = 'sunny';
+                            $arr['type'] = '2';
+                            $result=createMeeting($arr);
 
+                            echo "<tr>";
+                            ?>
+                            <?php
+                                echo "<td>$id</td>";
+                                echo "<td>$fname $lname</td>";
+                                echo "<td>$email</td>";
+                                echo "<td>$mobile</td>";
+                                echo "<td>$location</td>";
+                                echo "<td>$age</td>";
+                                echo "<td>$gender</td>";
+                                echo "<td>$predate</td>";
+                                echo "<td>$pretime</td>";
+                                echo "<td>$comp</td>";
+                                echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
+                                echo "<td>edit</td>";
+                                echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_appointments.php?delete={$add_app_id}'>DELETE</a></td>";
+                            echo "</tr>";
+
+                        }
+
+                    ?>
+
+                    <?php
+
+                        if(isset($_GET['delete'])) {
+                                        
+                            $the_app_id = $_GET['delete'];
+                        
+                            $query = "DELETE FROM `added_appointments` WHERE `add_app_id` =' $the_app_id'";
+                            $delete_query = mysqli_query($con,$query);
+                        
+                            //confirm($delete_query);
+                            //header("Location: view_appointments.php");
+                        }  
+
+                    ?>
                 </tbody>
             </table>
+            </form>
         </div>
         <!-- /.container-fluid -->
 
