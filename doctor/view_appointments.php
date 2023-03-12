@@ -250,8 +250,8 @@ while($row=mysqli_fetch_array($select_query)){
                                 echo "<td>$predate</td>";
                                 echo "<td>$pretime</td>";
                                 echo "<td>$comp</td>";
-                                echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
-                                echo "<td>edit</td>";
+                                echo "<td><a href='".$result->join_url."' target='_blank'>Zoom Link</a></td>";
+                                echo "<td><a href='edit_appointments.php?add_app_id={$add_app_id}'>EDIT</a></td>";
                                 echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_appointments.php?delete={$add_app_id}'>DELETE</a></td>";
                             echo "</tr>";
 
