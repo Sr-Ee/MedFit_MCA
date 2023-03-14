@@ -37,9 +37,6 @@ if(isset($_POST['submit']))
 
         $msg = "<p style='color:green;'>Appointment Added Successfully!!</p>";
     }
-
-    
-
 }
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
@@ -317,8 +314,8 @@ if(isset($_POST['submit']))
                         </div>
                         <!-- Select Basic -->
                         <div class="col-md-6" id="time-block">
-                        <div class="form-group">
-                                <label class="control-label" for="pretime">Preferred Date</label>
+                            <div class="form-group">
+                                <label class="control-label" for="pretime">Preferred Time</label>
                                 <input type="time" id="pretime" name="pretime" step="1">
                             </div>
                         </div>
@@ -333,7 +330,7 @@ if(isset($_POST['submit']))
                         </div>
                         <div class="col-md-6" id="app_status">
                             <div class="form-group">
-                                <label class="control-label" for="app_status">Preferred Time</label>
+                                <label class="control-label" for="app_status">Schedule</label>
                                 <select id="app_status" name="app_status" class="form-control">
                                     <option value="Scheduled Appointment">Scheduled Appointment</option>
                                     <option value="Active Appointment">Active Appointment</option>

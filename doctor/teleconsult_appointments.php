@@ -209,12 +209,12 @@ while($row=mysqli_fetch_array($select_query)){
                 <tbody>
                     <?php
                         $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id`='$doctorid'";
+                        $query = "SELECT * FROM `econsult_appointments` WHERE `doctor_id`='$doctorid'";
                         $select_appointment = mysqli_query($con,$query);
                         $id = 0;
                         while($row = mysqli_fetch_array($select_appointment)){
                             $id++;
-                            $add_app_id = $row['add_app_id'];
+                            $add_app_id = $row['in_app_id'];
                             $fname = $row['fname'];
                             $lname = $row['lname'];
                             $email = $row['email'];
