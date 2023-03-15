@@ -54,7 +54,7 @@
                 <a href="generate_pdf.php" class="btn btn-danger" target="_blank">Generate PDF</a>
               </div>
             </form>
-            <a href="/MedFit_MCA/doctor/index.php"> Back</a>
+            <a href="/MedFit_MCA/doctor/index.php"> Back</a>  
           </div>
         </div>
       </div>

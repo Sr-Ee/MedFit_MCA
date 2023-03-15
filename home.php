@@ -152,12 +152,12 @@ h1{
 <body>
     <div class="container">
         <div class="split left">
-            <h1>Job Seekers</h1>
+            <h1>Patients</h1>
             <a href="patient_register.php" class="btn">REGISTER NOW</a>
         </div>
 
         <div class="split right">
-            <h1>Employer</h1>
+            <h1>Doctors</h1>
             <a href="doctor_register.php" class="btn">REGISTER NOW</a>
         </div>
     </div>
