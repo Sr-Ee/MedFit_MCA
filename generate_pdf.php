@@ -4,7 +4,11 @@
 
     $conn = new PDO('mysql:host=localhost; dbname=medfit', 'root', '');
 
-    $sql = 'SELECT * FROM prescriptions';
+    $var1 = 5;
+    $var2 = 0;
+
+    $sql = "SELECT * FROM `prescriptions` WHERE done='N'";
+    
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -68,6 +72,13 @@
         
         </body>
         </html>';
+
+        $update = "UPDATE `prescriptions` SET done='Y' WHERE done = 'N'";
+        $stmt1 = $conn->prepare($update);
+        $stmt1 ->execute();
+
+        
+
 
         $dompdf = new Dompdf();
         $dompdf -> loadHtml ($html);

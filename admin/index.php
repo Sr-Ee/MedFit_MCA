@@ -1,5 +1,6 @@
 <?php
 session_start();
+ 
 $con = mysqli_connect("localhost","root","","medfit");
 $adminid = $_SESSION['admin_id'];
 $name_query = "SELECT * FROM `admins` WHERE `admin_id`='$adminid'";
@@ -86,30 +87,30 @@ while($row=mysqli_fetch_array($select_query)){
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-file-text fa-5x"></i>
+                                        <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid'";
+                                            $query = "SELECT * FROM `patient`";
                                             $select_all_app = mysqli_query($con,$query);
-                                            while($row = mysqli_fetch_assoc($select_all_app)){
-                                                $add_app_id = $row['add_app_id'];
-                                            }
+                                            // while($row = mysqli_fetch_assoc($select_all_app)){
+                                            //     $add_app_id = $row['add_app_id'];
+                                            // }
                                             $app_counts = mysqli_num_rows($select_all_app);
 
                                     ?>
                                         <div class='huge'><?php echo $app_counts; ?></div>
-                                        <div>View All Patientss</div>
+                                        <div>View All Patients</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="posts.php">
+                            <a href="">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -119,21 +120,21 @@ while($row=mysqli_fetch_array($select_query)){
                         </div>
                     </div> <!-- col-lg-3 -->
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-comments fa-5x"></i>
+                                        <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Scheduled Appointment'";
+                                        $query = "SELECT * FROM `doctors`";
                                         $select_sche_app = mysqli_query($con,$query);
-                                        while($row = mysqli_fetch_assoc($select_sche_app)){
-                                            $add_app_id = $row['add_app_id'];
-                                        }
+                                        // while($row = mysqli_fetch_assoc($select_sche_app)){
+                                        //     $add_app_id = $row['add_app_id'];
+                                        // }
                                         $sche_counts = mysqli_num_rows($select_sche_app);
 
                                     ?>
@@ -151,7 +152,7 @@ while($row=mysqli_fetch_array($select_query)){
                             </a>
                         </div> <!-- col-lg-3 -->
                     </div>
-                        <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="panel panel-yellow">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -161,16 +162,16 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Active Appointment'";
+                                            $query = "SELECT * FROM `admins`";
                                             $select_active_app = mysqli_query($con,$query);
-                                            while($row = mysqli_fetch_assoc($select_active_app)){
-                                                $add_app_id = $row['add_app_id'];
-                                            }
+                                            // while($row = mysqli_fetch_assoc($select_active_app)){
+                                            //     $add_app_id = $row['add_app_id'];
+                                            // }
                                             $active_counts = mysqli_num_rows($select_active_app);
 
                                         ?>
                                             <div class='huge'><?php echo $active_counts; ?></div>
-                                            <div>View All </div>
+                                            <div>View All Admins</div>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +184,7 @@ while($row=mysqli_fetch_array($select_query)){
                                 </a>
                             </div>
                         </div> <!-- col-lg-3 -->
-                        <div class="col-lg-3 col-md-6">
+                        <!-- <div class="col-lg-3 col-md-6">
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -193,15 +194,15 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
-                                            $select_cancel_app = mysqli_query($con,$query);
-                                            while($row = mysqli_fetch_assoc($select_cancel_app)){
-                                                $add_app_id = $row['add_app_id'];
-                                            }
-                                            $cancelled_counts = mysqli_num_rows($select_cancel_app);
+                                            // $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
+                                            // $select_cancel_app = mysqli_query($con,$query);
+                                            // while($row = mysqli_fetch_assoc($select_cancel_app)){
+                                            //     $add_app_id = $row['add_app_id'];
+                                            // }
+                                            // $cancelled_counts = mysqli_num_rows($select_cancel_app);
 
                                         ?>
-                                            <div class='huge'><?php echo $cancelled_counts; ?></div>
+                                            <div class='huge'><?php ?></div>
                                             <div>Completed Appointments</div>
                                         </div>
                                     </div>
@@ -212,9 +213,9 @@ while($row=mysqli_fetch_array($select_query)){
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                         <div class="clearfix"></div>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
+                                </a> 
+                            </div> -->
+                        <!-- </div> -->
                     </div>
                     <!-- /.row -->
 
@@ -232,11 +233,11 @@ while($row=mysqli_fetch_array($select_query)){
 
                         <?php
 
-                            $element_text = ['Total Appointments','Scheduled Appointments','Active Appointments','Completed Appointments'];
-                            $element_count = [$app_counts,$sche_counts,$active_counts,$cancelled_counts];
+                            $element_text = ['Patients','Doctors','Admins'];
+                            $element_count = [$app_counts,$sche_counts,$active_counts];
 
 
-                            for($i = 0; $i < 4; $i++){
+                            for($i = 0; $i < 3; $i++){
 
                                 echo "['{$element_text[$i]}'" . " ," . "{$element_count[$i]}],";
                             }

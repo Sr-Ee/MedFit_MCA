@@ -5,32 +5,18 @@
                     <a href="index.php"><i class="fa fa-fw fa-dashboard"></i>MedFit Analytics</a>
                 </li>
                 <li>
-                    <a href="view_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View Inclinic Appointments</a>
-                </li>
-                <li>
-                    <a href="teleconsult_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View E-consult Appointments</a>
-                </li>
-                <li>
                     <a href="view_patients.php"><i class="fa fa-fw fa-dashboard"></i>View Patients</a>
                 </li>
                 <li>
-                    <a href="add_appointments.php"><i class="fa fa-fw fa-table"></i>Add Appointments</a>
+                    <a href="view_doctors.php"><i class="fa fa-fw fa-dashboard"></i>View Doctors</a>
                 </li>
                 <li>
-                    <a href="add_patients.php"><i class="fa fa-fw fa-table"></i>Add Patients</a>
+                    <a href="view_admins.php"><i class="fa fa-fw fa-dashboard"></i>View Admins</a>
                 </li>
                 <li>
-                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Cancel Appointments</a>
+                    <a href="add_admins.php"><i class="fa fa-fw fa-table"></i>Add Admins</a>
                 </li>
-                <li>
-                    <a href="/MedFit_MCA/prescriptor.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
-                </li>
-                <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>TeleConference</a>
-                </li>
-                <li>
-                    <a href="/MedFit_MCA/doctor_profile.php"><i class="fa fa-user"></i> Profile</a>
-                </li>
+                
                 <li>
                     <a href="/MedFit_MCA/doctor/logout.php"><i class="fa fa-fw fa-wrench"></i>Logout</a>
                 </li>

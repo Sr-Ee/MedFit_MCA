@@ -189,13 +189,16 @@ while($row=mysqli_fetch_array($select_query)){
                 <!-- Table Heading -->
                 <thead>
                     <tr>
-                        <th>Patient ID</th>
+                        <th>Doctor ID</th>
                         <th>Full Name</th>
                         <th>Email</th>
                         <th>Mobile Number</th>
-                        <th>Location</th>
+                        <th>Clinic Address</th>
                         <th>Age</th>
                         <th>Gender</th>
+                        <th>Speciality</th>
+                        <th>Clinic Name</th>
+                        <th>MRN No</th>
                         
                     </tr>
                 </thead>
@@ -203,7 +206,7 @@ while($row=mysqli_fetch_array($select_query)){
                 <tbody>
                     <?php
                         $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `patient`";
+                        $query = "SELECT * FROM `doctors`";
                         $select_patient = mysqli_query($con,$query);
                         $id = 0;
                         while($row = mysqli_fetch_array($select_patient)){
@@ -213,9 +216,12 @@ while($row=mysqli_fetch_array($select_query)){
                             $lname = $row['last_name'];
                             $email = $row['email'];
                             $mobile = $row['phone'];
-                            $location = $row['address'];
+                            $location = $row['clinic_address'];
                             $age = $row['age'];
                             $gender = $row['gender'];
+                            $clinicname = $row['clinic_name'];
+                            $mrn = $row['mrn'];
+                            $speciality = $row['speciality'];
                             echo "<tr>";
                             ?>
                             <?php
@@ -226,6 +232,9 @@ while($row=mysqli_fetch_array($select_query)){
                                  echo "<td>$location</td>";
                                  echo "<td>$age</td>";
                                  echo "<td>$gender</td>";
+                                 echo "<td>$speciality</td>";
+                                 echo "<td>$clinicname</td>";
+                                 echo "<td>$mrn</td>";
                             echo "</tr>";
                         }
                     ?>

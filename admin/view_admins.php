@@ -189,12 +189,10 @@ while($row=mysqli_fetch_array($select_query)){
                 <!-- Table Heading -->
                 <thead>
                     <tr>
-                        <th>Patient ID</th>
+                        <th>Admin ID</th>
                         <th>Full Name</th>
                         <th>Email</th>
-                        <th>Mobile Number</th>
                         <th>Location</th>
-                        <th>Age</th>
                         <th>Gender</th>
                         
                     </tr>
@@ -203,28 +201,24 @@ while($row=mysqli_fetch_array($select_query)){
                 <tbody>
                     <?php
                         $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `patient`";
-                        $select_patient = mysqli_query($con,$query);
+                        $query = "SELECT * FROM `admins`";
+                        $select_admin = mysqli_query($con,$query);
                         $id = 0;
-                        while($row = mysqli_fetch_array($select_patient)){
+                        while($row = mysqli_fetch_array($select_admin)){
 
                             $id++;
-                            $fname = $row['first_name'];
-                            $lname = $row['last_name'];
-                            $email = $row['email'];
-                            $mobile = $row['phone'];
-                            $location = $row['address'];
-                            $age = $row['age'];
-                            $gender = $row['gender'];
+                            $fname = $row['admin_fname'];
+                            $lname = $row['admin_lname'];
+                            $email = $row['admin_email'];
+                            $location = $row['admin_address'];
+                            $gender = $row['admin_gender'];
                             echo "<tr>";
                             ?>
                             <?php
                                  echo "<td>$id</td>";
                                  echo "<td>$fname $lname</td>";
                                  echo "<td>$email</td>";
-                                 echo "<td>$mobile</td>";
                                  echo "<td>$location</td>";
-                                 echo "<td>$age</td>";
                                  echo "<td>$gender</td>";
                             echo "</tr>";
                         }

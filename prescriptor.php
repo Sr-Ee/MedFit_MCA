@@ -1,6 +1,8 @@
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/sidebar.php'); ?>
-
+<?php $count = 0;
+ 
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +53,9 @@
               </div>
               <div>
                 <input type="submit" value="Done" class="btn btn-primary w-25" id="done_btn">
+
                 <a href="generate_pdf.php" class="btn btn-danger" target="_blank">Generate PDF</a>
+                
               </div>
             </form>
             <a href="/MedFit_MCA/doctor/index.php"> Back</a>  
@@ -65,6 +69,10 @@
   <script>
     $(document).ready(function(){
       $(".add_item_btn").click(function(e){
+        <?php $count = $count + 1; 
+            
+           
+        ?>
         e.preventDefault();
         $("#show_medicines").prepend(`<div class="row append_item">
                   <div class="col-md-3 mb-3">
@@ -93,6 +101,9 @@
                 </div>`);
             });
             $(document).on('click', '.remove_item_btn', function(e){
+              
+              <?php $count = $count - 1; ?>
+
               e.preventDefault();
               let row_item = $(this).parent().parent(); 
               $(row_item).remove();
@@ -100,6 +111,7 @@
           
             //ajax request to insert all form data 
             $("#add_medicine").submit(function(e){
+           
               e.preventDefault();
               $("#done_btn").val('Added');
               $.ajax({
