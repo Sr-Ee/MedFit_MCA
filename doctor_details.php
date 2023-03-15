@@ -75,14 +75,14 @@ if(isset($_POST['submit']))
     $p_consult_type = $_POST['consult_type'];
 
     if($_POST['consult_type'] == "econsult"){
-        $query = "INSERT INTO `econsult_appointments` (`patient_id`, `doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`, `consult_type`) VALUES ('$patientid', '$doctorid', '$p_fullname', '$p_fullname', '$p_email', '$p_mobile', '$p_location', '$p_age', '$p_gender','$p_pre_date', '$p_pretime', '$p_comp', '$p_consult_type');";
+        $query = "INSERT INTO `added_appointments` (`patient_id`, `doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`, `consult_type`) VALUES ('$patientid', '$doctorid', '$p_fname', '$p_lname', '$p_email', '$p_mobile', '$p_location', '$p_age', '$p_gender','$p_pre_date', '$p_pretime', '$p_comp', '$p_consult_type');";
         mysqli_query($con,$query);
 
         $msg = "<div class='alert alert-success' role='alert'>E-Consultation Appointment Added Successfully 
       </div>";
     }
     else{
-        $query = "INSERT INTO `added_appointments` (`patient_id`,`doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`) VALUES ('$patientid','$doctorid','$p_fullname', '$p_fullname', '$p_email', '$p_mobile', '$p_location', '$p_age', '$p_gender', '$p_pre_date', '$p_pretime', '$p_comp');";
+        $query = "INSERT INTO `added_appointments` (`patient_id`,`doctor_id`, `fname`, `lname`, `email`, `mobile`, `location`, `age`, `gender`, `preferred_date`, `preferred_time`, `complaints`) VALUES ('$patientid','$doctorid','$p_fname', '$p_lname', '$p_email', '$p_mobile', '$p_location', '$p_age', '$p_gender', '$p_pre_date', '$p_pretime', '$p_comp');";
         mysqli_query($con,$query);
 
         $msg = "<div class='alert alert-success' role='alert'>Inclinic Appointment Added Successfully 

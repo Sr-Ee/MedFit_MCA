@@ -8,7 +8,7 @@
                     <a href="view_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View Inclinic Appointments</a>
                 </li>
                 <li>
-                    <a href="teleconsult_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View E-consult Appointments</a>
+                    <a href="/MedFit_MCA/doctor/EmailSendScript/index.php"><i class="fa fa-fw fa-dashboard"></i>Email E-Consultation Link</a>
                 </li>
                 <li>
                     <a href="view_patients.php"><i class="fa fa-fw fa-dashboard"></i>View Patients</a>

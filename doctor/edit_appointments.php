@@ -228,7 +228,7 @@ if(isset($_POST['update_app'])){
 
             <!-- form starts from here -->
             <div class="container form-box">
-                <form class="app" action="edit_appointments.php" method="post">
+                <form class="app" action="edit_appointments.php?add_app_id=<?php echo $add_app_id;  ?>" method="post">
                     <!-- Form start -->
                     <div class="row">
                         <!-- Text input-->
