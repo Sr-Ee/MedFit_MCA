@@ -1,18 +1,18 @@
 <?php
 session_start();
 $con = mysqli_connect("localhost","root","","medfit");
-$doctorid = $_SESSION['doctor_id'];
-$name_query = "SELECT * FROM `doctors` WHERE `doctor_id`='$doctorid'";
+$adminid = $_SESSION['admin_id'];
+$name_query = "SELECT * FROM `admins` WHERE `admin_id`='$adminid'";
 $select_query = mysqli_query($con,$name_query);
 
 while($row=mysqli_fetch_array($select_query)){
-  $fname = $row['first_name'];
-  $lname = $row['last_name'];
+  $fname = $row['admin_fname'];
+  $lname = $row['admin_lname'];
 
 }
 
 ?>
-<?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
+<?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/doc_header.php'); ?>
 
     <div id="wrapper">
         <!-- Navigation -->
@@ -78,7 +78,7 @@ while($row=mysqli_fetch_array($select_query)){
             </ul>
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/sidebar.php'); ?>
+            <?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/sidebar.php'); ?>
             <!-- /.navbar-collapse -->
         </nav>
 
@@ -270,4 +270,4 @@ while($row=mysqli_fetch_array($select_query)){
         </div>
         <!-- /#wrapper -->
 
-<?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_footer.php'); ?>
+<?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/doc_footer.php'); ?>
