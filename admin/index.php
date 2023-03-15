@@ -105,7 +105,7 @@ while($row=mysqli_fetch_array($select_query)){
 
                                     ?>
                                         <div class='huge'><?php echo $app_counts; ?></div>
-                                        <div>All Appointments</div>
+                                        <div>View All Patientss</div>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +138,7 @@ while($row=mysqli_fetch_array($select_query)){
 
                                     ?>
                                         <div class='huge'><?php echo $sche_counts; ?></div>
-                                        <div>Scheduled Appointments</div>
+                                        <div>View All Doctors</div>
                                     </div>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ while($row=mysqli_fetch_array($select_query)){
 
                                         ?>
                                             <div class='huge'><?php echo $active_counts; ?></div>
-                                            <div>Active Appointments</div>
+                                            <div>View All </div>
                                         </div>
                                     </div>
                                 </div>
