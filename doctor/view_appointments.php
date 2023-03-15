@@ -200,7 +200,7 @@ while($row=mysqli_fetch_array($select_query)){
                         <th>Prefered Time</th>
                         <th>Complaints</th>
                         <!-- <th>Status</th> -->
-                        <!-- <th>Join Link</th> -->
+                        <th>Consultation Type</th>
                         <th>EDIT</th>
                         <th>DELETE</th>
                     </tr>
@@ -226,6 +226,7 @@ while($row=mysqli_fetch_array($select_query)){
                             $pretime = $row['preferred_time'];
                             $comp = $row['complaints'];
                             $when = $row['when_status'];
+                            $consult_type = $row['consult_type'];
 
                             // Zoom Video Calling
                             require_once 'config.php';
@@ -242,7 +243,8 @@ while($row=mysqli_fetch_array($select_query)){
                             <?php
                                 echo "<td>$id</td>";
                                 echo "<td>$fname $lname</td>";
-                                echo "<td>$email</td>";
+                                echo "<td>$email 
+                                <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
                                 echo "<td>$mobile</td>";
                                 echo "<td>$location</td>";
                                 echo "<td>$age</td>";
@@ -250,6 +252,12 @@ while($row=mysqli_fetch_array($select_query)){
                                 echo "<td>$predate</td>";
                                 echo "<td>$pretime</td>";
                                 echo "<td>$comp</td>";
+                                if($consult_type == "econsult"){
+                                    echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
+                                }
+                                else{
+                                    echo "<td><a href='#'>Inclinic</a></td>";
+                                }
                                 echo "<td><a href='edit_appointments.php?add_app_id={$add_app_id}'>EDIT</a></td>";
                                 echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_appointments.php?delete={$add_app_id}'>DELETE</a></td>";
                             echo "</tr>";
@@ -280,7 +288,50 @@ while($row=mysqli_fetch_array($select_query)){
 
     </div>
     <!-- /#page-wrapper -->
+<?php  
 
+include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'ssl'; 
+	$mail->Host = "smtp.hostinger.com";
+	$mail->Port = "465"; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "sunny@coderscapital.tech";
+	$mail->Password = 'Sunny29@1971';
+	$mail->SetFrom("sunny@coderscapital.tech");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		//echo $mail->ErrorInfo;
+	}else{
+		//echo 'Sent';
+	}
+}
+
+$msg="";
+if(isset($_POST['submitbtn'])){
+    $msg="Link Sent Sucessfully";
+    $mailHtml = "Your Zoom Link: <a href='".$result->join_url."' target='_blank'>".$result->join_url."</a>";
+    smtp_mailer($email,'Zoom Link Sent',$mailHtml);
+}else{
+    $msg="Link Sending Failed";
+}
+
+
+
+
+
+?>
 </div>
 <!-- /#wrapper -->
 <script>
