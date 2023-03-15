@@ -71,6 +71,7 @@ if(!isset($_SESSION['is_login'])){
 </style>
 
 <body>
+
   <?php require 'includes/nav.php' ?>
   <div class="container">
     <div class="card" style="width: 18rem;">
@@ -96,10 +97,10 @@ if(!isset($_SESSION['is_login'])){
     <div class="card" style="width: 18rem;">
       <img src="./img/app.webp" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Book Appointment</h5>
+        <h5 class="card-title">Your Appointments</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <a href="doc_search.php" class="btn btn-primary">Book</a>
+        <a href="patient_appointments.php" class="btn btn-primary">Access Appointments</a>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
@@ -114,10 +115,10 @@ if(!isset($_SESSION['is_login'])){
     <div class="card" style="width: 18rem;">
       <img src="./img/vault.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Health Vault</h5>
+        <h5 class="card-title">Health Library</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <a href="#" class="btn btn-primary">Access Health Vault</a>
+        <a href="#" class="btn btn-primary">Access Health Library</a>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
@@ -147,6 +148,8 @@ if(!isset($_SESSION['is_login'])){
     })();
   </script>
   <!--End of Tawk.to Script-->
+  <script src="particles.js"></script>
+
 </body>
 
 </html>
