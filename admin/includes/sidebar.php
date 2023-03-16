@@ -18,7 +18,7 @@
                 </li>
                 
                 <li>
-                    <a href="/MedFit_MCA/doctor/logout.php"><i class="fa fa-fw fa-wrench"></i>Logout</a>
+                    <a href="/MedFit_MCA/admin/logout.php"><i class="fa fa-fw fa-wrench"></i>Logout</a>
                 </li>
                 <!-- <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>Utilities<i class="fa fa-fw fa-caret-down"></i></a>

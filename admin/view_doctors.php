@@ -199,6 +199,9 @@ while($row=mysqli_fetch_array($select_query)){
                         <th>Speciality</th>
                         <th>Clinic Name</th>
                         <th>MRN No</th>
+                        <th>Verify Status</th>
+                        <th>Approve</th>
+                        <th>Unapprove</th>
                         
                     </tr>
                 </thead>
@@ -207,11 +210,12 @@ while($row=mysqli_fetch_array($select_query)){
                     <?php
                         $con = mysqli_connect("localhost","root","","medfit");
                         $query = "SELECT * FROM `doctors`";
-                        $select_patient = mysqli_query($con,$query);
+                        $select_doctor = mysqli_query($con,$query);
                         $id = 0;
-                        while($row = mysqli_fetch_array($select_patient)){
+                        while($row = mysqli_fetch_array($select_doctor)){
 
                             $id++;
+                            $doctor_id = $row['doctor_id'];
                             $fname = $row['first_name'];
                             $lname = $row['last_name'];
                             $email = $row['email'];
@@ -222,12 +226,14 @@ while($row=mysqli_fetch_array($select_query)){
                             $clinicname = $row['clinic_name'];
                             $mrn = $row['mrn'];
                             $speciality = $row['speciality'];
+                            $verify_status = $row['verify_status'];
                             echo "<tr>";
                             ?>
                             <?php
                                  echo "<td>$id</td>";
                                  echo "<td>$fname $lname</td>";
-                                 echo "<td>$email</td>";
+                                 echo "<td>$email<br>
+                                 <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
                                  echo "<td>$mobile</td>";
                                  echo "<td>$location</td>";
                                  echo "<td>$age</td>";
@@ -235,8 +241,33 @@ while($row=mysqli_fetch_array($select_query)){
                                  echo "<td>$speciality</td>";
                                  echo "<td>$clinicname</td>";
                                  echo "<td>$mrn</td>";
+                                 echo "<td>$verify_status</td>";
+                                 echo "<td><a href='view_doctors.php?verify=$doctor_id'>verify</a></td>";
+                                 echo "<td><a href='view_doctors.php?unverify=$doctor_id'>unverify</a></td>";
                             echo "</tr>";
                         }
+                    ?>
+
+                    <?php  
+                        $msg="";
+                        if(isset($_GET['verify'])) {
+
+                            $the_verify_id = $_GET['verify'];
+                            $query = "UPDATE `doctors` SET `verify_status`='verified' WHERE `doctor_id`='$the_verify_id'";
+                            $approve_doctor_query = mysqli_query($con,$query);
+                            $msg = "Dr. $fname. .$lname verified successfully";
+                            //header("Location: view_doctors.php");
+
+                        }
+                        if(isset($_GET['unverify'])) {
+
+                            $the_verify_id = $_GET['unverify'];
+                            $query = "UPDATE `doctors` SET `verify_status`='unverified' WHERE `doctor_id`='$the_verify_id'";
+                            $unapprove_doctor_query = mysqli_query($con,$query);
+                            //header("Location: view_doctors.php");
+                            $msg = "Dr. $fname. .$lname unverified successfully";
+
+                        }       
                     ?>
                 </tbody>
             </table>
@@ -245,7 +276,45 @@ while($row=mysqli_fetch_array($select_query)){
 
     </div>
     <!-- /#page-wrapper -->
+<?php  
+include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'ssl'; 
+	$mail->Host = "smtp.hostinger.com";
+	$mail->Port = "465"; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "medfit@coderscapital.tech";
+	$mail->Password = 'Sunny29@1971';
+	$mail->SetFrom("medfit@coderscapital.tech");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		//echo $mail->ErrorInfo;
+	}else{
+		//echo 'Sent';
+	}
+}
 
+$msg="";
+if(isset($_POST['submitbtn'])){
+    $msg="Link Sent Sucessfully";
+    $mailHtml = "Your MedFit Account has been verified Successfully, You can login now!!";
+    smtp_mailer($email,'MedFit Account Verified!!',$mailHtml);
+}else{
+    $msg="Link Sending Failed";
+}
+
+?>
 </div>
 <!-- /#wrapper -->
 <script>

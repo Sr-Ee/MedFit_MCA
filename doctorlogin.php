@@ -34,16 +34,17 @@ if(isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])
 		$phone = $row['phone'];
 		$age = $row['age'];
 		$pass = $row['password'];
-        $mrn = $row['mrn'];
-        $speciality = $row['speciality'];
-        $address = $row['clinic_address'];
+    $mrn = $row['mrn'];
+    $speciality = $row['speciality'];
+    $address = $row['clinic_address'];
+    $verify_status = $row['verify_status'];
 		// $verify_status = $row['verification_status'];
 
 	}
 
 $num_rows = mysqli_num_rows($login_query);
 
-if($num_rows == 1)
+if($num_rows == 1 && $verify_status == "verified")
 {
       //$msg = "<p style='color:red;'>Your email is verified successfully</p>";
 			session_start();
@@ -53,6 +54,10 @@ if($num_rows == 1)
 			$_SESSION['email'] = $email;
 			$_SESSION['doctor_id'] = $doctorid;
 			header("location: /MedFit_MCA/doctor/index.php");
+}
+else if($verify_status == "unverified"){
+  
+    $msg = "<p style='color:red;'>Please wait for the moderators to verify your account!!</p>";
 }
 else
 {

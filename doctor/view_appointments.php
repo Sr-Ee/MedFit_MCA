@@ -289,7 +289,6 @@ while($row=mysqli_fetch_array($select_query)){
     </div>
     <!-- /#page-wrapper -->
 <?php  
-
 include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
@@ -300,9 +299,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = "465"; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "sunny@coderscapital.tech";
+	$mail->Username = "medfit@coderscapital.tech";
 	$mail->Password = 'Sunny29@1971';
-	$mail->SetFrom("sunny@coderscapital.tech");
+	$mail->SetFrom("medfit@coderscapital.tech");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
@@ -326,10 +325,6 @@ if(isset($_POST['submitbtn'])){
 }else{
     $msg="Link Sending Failed";
 }
-
-
-
-
 
 ?>
 </div>

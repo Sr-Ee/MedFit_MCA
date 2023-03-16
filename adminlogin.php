@@ -32,10 +32,9 @@ if(isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])
 		$email = $row['admin_email'];
 		$gender = $row['admin_gender'];
 		$pass = $row['admin_password'];
-        $address = $row['admin_address'];
+    $address = $row['admin_address'];
 		// $verify_status = $row['verification_status'];
-
-	}
+}
 
 $num_rows = mysqli_num_rows($login_query);
 
@@ -43,7 +42,7 @@ if($num_rows == 1)
 {
       //$msg = "<p style='color:red;'>Your email is verified successfully</p>";
 			session_start();
-			$_SESSION['adminis_login'] = true; //user defined
+			$_SESSION['admin_login'] = true; //user defined
 			$_SESSION['name'] = $fname;
 			$_SESSION['lname'] = $lname;
 			$_SESSION['email'] = $email;

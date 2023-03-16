@@ -4,6 +4,6 @@ session_start();
 session_unset();
 
 session_destroy();
-header("Location: /MedFit_MCA/doctorlogin.php");
+header("Location: /MedFit_MCA/adminlogin.php");
 
 ?>
