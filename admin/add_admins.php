@@ -100,6 +100,7 @@ if(isset($_POST['submit']))
     </nav>
 
     <div id="page-wrapper">
+    <h2>Add Admins</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">

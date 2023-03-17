@@ -9,12 +9,43 @@ while($row=mysqli_fetch_array($select_query)){
   $fname = $row['admin_fname'];
   $lname = $row['admin_lname'];
 }
+$msg="";
 
+if(isset($_POST['submit']))
+{
+    $hname = $_POST['hname'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $opentime = $_POST['opentime'];
+    $beds = $_POST['beds'];
+    $numdoc = $_POST['numdoc'];
+    $numnurse = $_POST['numnurse'];
+    $phone = $_POST['phone'];
+    $speciality = $_POST['speciality'];
+    $image = basename($_FILES['image']['name']);
+    $image_temp = $_FILES['image']['tmp_name']; //temporary location in the server.
+    $destination = "../img/" . $image;
+    move_uploaded_file($image_temp,$destination);
+    if(empty($profile_pic)){
+          
+        $query = "SELECT * FROM `hospital`";
+        $select_image = mysqli_query($con,$query);
+        while($row=mysqli_fetch_array($select_image)){
+          $profile_pic = $row['profile_pic'];
+        } 
+    }else {
+      $profile_pic = $image;
+    }
+  
+    $query = "INSERT INTO `hospital` (`hospital_name`, `address`, `city`, `open_time`, `beds`, `speciality`, `no_doctors`, `no_nurses`, `hospital_contact`, `profile_pic`) VALUES ('$hname', '$address', '$city', '$opentime', '$beds', '$speciality', '$numdoc', '$numnurse', '$phone', '$profile_pic');";
+    mysqli_query($con,$query);
+    $msg = "<p style='color:green;'>Hospital Added Successfully!!</p>";
+    
+}
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/doc_header.php'); ?>
 
 <div id="wrapper">
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -50,7 +81,7 @@ while($row=mysqli_fetch_array($select_query)){
                             </div>
                         </a>
                     </li>
-
+                    
                     <li class="message-footer">
                         <a href="#">Read All New Messages</a>
                     </li>
@@ -58,8 +89,8 @@ while($row=mysqli_fetch_array($select_query)){
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $fname.' '.$lname; ?> <b
-                        class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $fname.' '.$lname; ?> 
+                <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -84,7 +115,7 @@ while($row=mysqli_fetch_array($select_query)){
     </nav>
 
     <div id="page-wrapper">
-    <h2>View Doctors</h2>
+    <h2>Add Hospital</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">
@@ -186,154 +217,93 @@ while($row=mysqli_fetch_array($select_query)){
                             </div>
                         </div>
             <!-- /.row -->
-            <table class="table table-bordered table-hover">
-                <!-- Table Heading -->
-                <thead>
-                    <tr>
-                        <th>Doctor ID</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Mobile Number</th>
-                        <th>Clinic Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Speciality</th>
-                        <th>Clinic Name</th>
-                        <th>MRN No</th>
-                        <th>Verify Status</th>
-                        <th>Approve</th>
-                        <th>Unapprove</th>
+
+            <!-- form starts from here -->
+            <div class="container form-box">
+                <form class="app" action="add_hospitals.php" method="post" enctype="multipart/form-data">
+                    <!-- Form start -->
+                    <div class="row">
+                        <!-- Text input-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="hname">Hospital Name</label>
+                                <input id="hname" name="hname" type="text" placeholder="Enter Hospital Name"
+                                    class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="address">Address</label>
+                                <input id="address" name="address" type="text" placeholder="Hospital Location"
+                                    class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="address">City</label>
+                                <input id="city" name="city" type="text" placeholder="City"
+                                    class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="opentime">Open Time</label>
+                                <input type="time" id="opentime" name="opentime" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="beds">Number of Beds</label>
+                                <input type="number" id="beds" name="beds" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="speciality">Speciality</label>
+                                <input type="text" id="speciality" name="speciality" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="numdoc">Number of Doctors</label>
+                                <input type="number" id="numdoc" name="numdoc" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="numnurse">Number of Nurses</label>
+                                <input type="number" id="numnurse" name="numnurse" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <div class="form-group">
+                                <label class="control-label" for="phone">Hospital Contact</label>
+                                <input type="number" id="phone" name="phone" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="time-block">
+                            <label for="image" class="form-label">Add Profile Picture</label>
+                            <img width="100" src="./img/<?php echo $profile_pic; ?>" alt="">
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
                         
-                    </tr>
-                </thead>
-                <!-- Placeholders -->
-                <tbody>
-                    <?php
-                        $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `doctors`";
-                        $select_doctor = mysqli_query($con,$query);
-                        $id = 0;
-                        while($row = mysqli_fetch_array($select_doctor)){
-
-                            $id++;
-                            $doctor_id = $row['doctor_id'];
-                            $fname = $row['first_name'];
-                            $lname = $row['last_name'];
-                            $email = $row['email'];
-                            $mobile = $row['phone'];
-                            $location = $row['clinic_address'];
-                            $age = $row['age'];
-                            $gender = $row['gender'];
-                            $clinicname = $row['clinic_name'];
-                            $mrn = $row['mrn'];
-                            $speciality = $row['speciality'];
-                            $verify_status = $row['verify_status'];
-                            echo "<tr>";
-                            ?>
-                            <?php
-                                 echo "<td>$id</td>";
-                                 echo "<td>$fname $lname</td>";
-                                 echo "<td>$email<br>
-                                 <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
-                                 echo "<td>$mobile</td>";
-                                 echo "<td>$location</td>";
-                                 echo "<td>$age</td>";
-                                 echo "<td>$gender</td>";
-                                 echo "<td>$speciality</td>";
-                                 echo "<td>$clinicname</td>";
-                                 echo "<td>$mrn</td>";
-                                 echo "<td>$verify_status</td>";
-                                 echo "<td><a href='view_doctors.php?verify=$doctor_id'>verify</a></td>";
-                                 echo "<td><a href='view_doctors.php?unverify=$doctor_id'>unverify</a></td>";
-                            echo "</tr>";
-                        }
-                    ?>
-
-                    <?php  
-                        $msg="";
-                        if(isset($_GET['verify'])) {
-
-                            $the_verify_id = $_GET['verify'];
-                            $query = "UPDATE `doctors` SET `verify_status`='verified' WHERE `doctor_id`='$the_verify_id'";
-                            $approve_doctor_query = mysqli_query($con,$query);
-                            $msg = "Dr. $fname. .$lname verified successfully";
-                            //header("Location: view_doctors.php");
-
-                        }
-                        if(isset($_GET['unverify'])) {
-
-                            $the_verify_id = $_GET['unverify'];
-                            $query = "UPDATE `doctors` SET `verify_status`='unverified' WHERE `doctor_id`='$the_verify_id'";
-                            $unapprove_doctor_query = mysqli_query($con,$query);
-                            //header("Location: view_doctors.php");
-                            $msg = "Dr. $fname. .$lname unverified successfully";
-
-                        }       
-                    ?>
-                </tbody>
-            </table>
+                        <!-- Button -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button id="submit" name="submit" class="btn btn-primary">Add Hospital</button>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo $msg;  ?>
+                </form>
+            </div><!-- form ends here -->
         </div>
         <!-- /.container-fluid -->
 
     </div>
     <!-- /#page-wrapper -->
-<?php  
-include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
-function smtp_mailer($to,$subject, $msg){
-	$mail = new PHPMailer(); 
-	$mail->IsSMTP(); 
-	$mail->SMTPAuth = true; 
-	$mail->SMTPSecure = 'ssl'; 
-	$mail->Host = "smtp.hostinger.com";
-	$mail->Port = "465"; 
-	$mail->IsHTML(true);
-	$mail->CharSet = 'UTF-8';
-	$mail->Username = "medfit@coderscapital.tech";
-	$mail->Password = 'Sunny29@1971';
-	$mail->SetFrom("medfit@coderscapital.tech");
-	$mail->Subject = $subject;
-	$mail->Body =$msg;
-	$mail->AddAddress($to);
-	$mail->SMTPOptions=array('ssl'=>array(
-		'verify_peer'=>false,
-		'verify_peer_name'=>false,
-		'allow_self_signed'=>false
-	));
-	if(!$mail->Send()){
-		//echo $mail->ErrorInfo;
-	}else{
-		//echo 'Sent';
-	}
-}
 
-$msg="";
-if(isset($_POST['submitbtn'])){
-    $msg="Link Sent Sucessfully";
-    $mailHtml = "Your MedFit Account has been verified Successfully, You can login now!!";
-    smtp_mailer($email,'MedFit Account Verified!!',$mailHtml);
-}else{
-    $msg="Link Sending Failed";
-}
-
-?>
 </div>
-<!-- /#wrapper -->
-<script>
-    // JavaScript code
-    function handleRadioClick() {
-        const nowRadio = document.querySelector('input[value="now"]');
-        if (nowRadio.checked) {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'none';
-            field2.style.display = 'none';
-        } else {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'inline-block';
-            field2.style.display = 'inline-block';
-        }
-    }
+<!-- /#wrapper
 
-</script>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/doc_footer.php'); ?>

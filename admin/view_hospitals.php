@@ -84,7 +84,7 @@ while($row=mysqli_fetch_array($select_query)){
     </nav>
 
     <div id="page-wrapper">
-    <h2>View Doctors</h2>
+    <h2>View Hospitals</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">
@@ -190,19 +190,18 @@ while($row=mysqli_fetch_array($select_query)){
                 <!-- Table Heading -->
                 <thead>
                     <tr>
-                        <th>Doctor ID</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Mobile Number</th>
-                        <th>Clinic Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
+                        <th>Hospital ID</th>
+                        <th>Hospital Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Open Time</th>
+                        <th>Beds</th>
                         <th>Speciality</th>
-                        <th>Clinic Name</th>
-                        <th>MRN No</th>
-                        <th>Verify Status</th>
-                        <th>Approve</th>
-                        <th>Unapprove</th>
+                        <th>No. of Doctors</th>
+                        <th>No. of Nurses</th>
+                        <th>Contact</th>
+                        <th>Image</th>
+                        
                         
                     </tr>
                 </thead>
@@ -210,41 +209,38 @@ while($row=mysqli_fetch_array($select_query)){
                 <tbody>
                     <?php
                         $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `doctors`";
-                        $select_doctor = mysqli_query($con,$query);
+                        $query = "SELECT * FROM `hospital`";
+                        $select_hospital = mysqli_query($con,$query);
                         $id = 0;
-                        while($row = mysqli_fetch_array($select_doctor)){
+                        while($row = mysqli_fetch_array($select_hospital)){
 
                             $id++;
-                            $doctor_id = $row['doctor_id'];
-                            $fname = $row['first_name'];
-                            $lname = $row['last_name'];
-                            $email = $row['email'];
-                            $mobile = $row['phone'];
-                            $location = $row['clinic_address'];
-                            $age = $row['age'];
-                            $gender = $row['gender'];
-                            $clinicname = $row['clinic_name'];
-                            $mrn = $row['mrn'];
-                            $speciality = $row['speciality'];
-                            $verify_status = $row['verify_status'];
+                            $doctor_id = $row['hospital_id'];
+                            $hname = $row['hospital_name'];
+                            $address = $row['address'];
+                            $city = $row['city'];
+                            $opentime = $row['open_time'];                           
+                            $beds = $row['beds'];                           
+                            $speciality = $row['speciality'];                           
+                            $no_doctors = $row['no_doctors'];                           
+                            $no_nurses = $row['no_nurses'];                           
+                            $hospital_contact = $row['hospital_contact'];                           
+                            $profile_pic = $row['profile_pic'];                           
+                            
                             echo "<tr>";
                             ?>
                             <?php
                                  echo "<td>$id</td>";
-                                 echo "<td>$fname $lname</td>";
-                                 echo "<td>$email<br>
-                                 <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
-                                 echo "<td>$mobile</td>";
-                                 echo "<td>$location</td>";
-                                 echo "<td>$age</td>";
-                                 echo "<td>$gender</td>";
+                                 echo "<td>$hname</td>";
+                                 echo "<td>$address</td>";
+                                 echo "<td>$city</td>";
+                                 echo "<td>$opentime</td>";
+                                 echo "<td>$beds</td>";
                                  echo "<td>$speciality</td>";
-                                 echo "<td>$clinicname</td>";
-                                 echo "<td>$mrn</td>";
-                                 echo "<td>$verify_status</td>";
-                                 echo "<td><a href='view_doctors.php?verify=$doctor_id'>verify</a></td>";
-                                 echo "<td><a href='view_doctors.php?unverify=$doctor_id'>unverify</a></td>";
+                                 echo "<td>$no_doctors</td>";
+                                 echo "<td>$no_nurses</td>";
+                                 echo "<td>$hospital_contact</td>";
+                                 echo "<td>$profile_pic</td>";
                             echo "</tr>";
                         }
                     ?>
@@ -277,63 +273,6 @@ while($row=mysqli_fetch_array($select_query)){
 
     </div>
     <!-- /#page-wrapper -->
-<?php  
-include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
-function smtp_mailer($to,$subject, $msg){
-	$mail = new PHPMailer(); 
-	$mail->IsSMTP(); 
-	$mail->SMTPAuth = true; 
-	$mail->SMTPSecure = 'ssl'; 
-	$mail->Host = "smtp.hostinger.com";
-	$mail->Port = "465"; 
-	$mail->IsHTML(true);
-	$mail->CharSet = 'UTF-8';
-	$mail->Username = "medfit@coderscapital.tech";
-	$mail->Password = 'Sunny29@1971';
-	$mail->SetFrom("medfit@coderscapital.tech");
-	$mail->Subject = $subject;
-	$mail->Body =$msg;
-	$mail->AddAddress($to);
-	$mail->SMTPOptions=array('ssl'=>array(
-		'verify_peer'=>false,
-		'verify_peer_name'=>false,
-		'allow_self_signed'=>false
-	));
-	if(!$mail->Send()){
-		//echo $mail->ErrorInfo;
-	}else{
-		//echo 'Sent';
-	}
-}
-
-$msg="";
-if(isset($_POST['submitbtn'])){
-    $msg="Link Sent Sucessfully";
-    $mailHtml = "Your MedFit Account has been verified Successfully, You can login now!!";
-    smtp_mailer($email,'MedFit Account Verified!!',$mailHtml);
-}else{
-    $msg="Link Sending Failed";
-}
-
-?>
 </div>
 <!-- /#wrapper -->
-<script>
-    // JavaScript code
-    function handleRadioClick() {
-        const nowRadio = document.querySelector('input[value="now"]');
-        if (nowRadio.checked) {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'none';
-            field2.style.display = 'none';
-        } else {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'inline-block';
-            field2.style.display = 'inline-block';
-        }
-    }
-
-</script>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/doc_footer.php'); ?>

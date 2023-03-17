@@ -82,8 +82,9 @@ while($row=mysqli_fetch_array($select_query)){
         <?php  include('C:/xampp/htdocs/MedFit_MCA/admin/includes/sidebar.php'); ?>
         <!-- /.navbar-collapse -->
     </nav>
-
+    
     <div id="page-wrapper">
+    <h2>View Patients</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">

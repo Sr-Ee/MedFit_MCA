@@ -106,19 +106,19 @@ if(!isset($_SESSION['is_login'])){
     <div class="card" style="width: 18rem;">
       <img src="./img/fitness.avif" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">FitBit</h5>
+        <h5 class="card-title">Nutrition Analysis</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <a href="#" class="btn btn-primary">Access Your FitBit Data</a>
+        <a href="foodapi/index.php" class="btn btn-primary">Analyze</a>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="./img/vault.jpg" class="card-img-top" alt="...">
+      <img src="./img/medbot.avif" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Health Library</h5>
+        <h5 class="card-title">MedBot</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
-        <a href="#" class="btn btn-primary">Access Health Library</a>
+        <a href="medbot.php" class="btn btn-primary">Access MedBot</a>
       </div>
     </div>
     <div class="card" style="width: 18rem;">

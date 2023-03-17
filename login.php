@@ -8,6 +8,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
+  <style>
+     body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .signup-form form {
+    border-radius: 21px;  
+  }
+
+  </style>
 <?php
 ob_start();
 session_start();
@@ -55,8 +82,6 @@ else
 {
   $msg = "<p style='color:red;'>Email or Password is incorrect!</p>";
 }
-
-
 }
 
 ?>
@@ -73,8 +98,6 @@ else
         <div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Password" required="required">
         </div>
-      
-        
 		<div class="form-group">
             <div class="text-center">
                 <!-- <a href="register1.php" class="btn">NEXT</a> -->
@@ -82,8 +105,9 @@ else
         </div>
         </div>
 		<?php  echo  $msg; ?>
+    <div class="hint-text"><a style="color:green;font-weight:bold;" href="forgot_password.php">Forgetten your Password ?</a></div>
     </form>
-	<div class="hint-text">Don't have an account? <a href="register.php">Register here</a></div>
+	<div class="hint-text">Don't have an account? <a style="color:green;font-weight:bold;" href="patient_register.php">Register here</a></div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

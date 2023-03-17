@@ -30,7 +30,7 @@ while($row=mysqli_fetch_array($select_query)){
           <a class="nav-link" href="/MedFit_MCA/profile.php">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/MedFit_MCA/profile.php">Health Library</a>
+          <a class="nav-link" href="/MedFit_MCA/view_all_hospitals.php">Hospitals</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="medbot.php">MedBot(Beta)</a>

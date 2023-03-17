@@ -84,6 +84,7 @@ while($row=mysqli_fetch_array($select_query)){
     </nav>
 
     <div id="page-wrapper">
+    <h2>View Admins</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">

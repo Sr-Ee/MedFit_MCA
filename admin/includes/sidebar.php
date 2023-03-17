@@ -11,10 +11,16 @@
                     <a href="view_doctors.php"><i class="fa fa-fw fa-dashboard"></i>View Doctors</a>
                 </li>
                 <li>
+                    <a href="view_hospitals.php"><i class="fa fa-fw fa-dashboard"></i>View Hospitals</a>
+                </li>
+                <li>
                     <a href="view_admins.php"><i class="fa fa-fw fa-dashboard"></i>View Admins</a>
                 </li>
                 <li>
                     <a href="add_admins.php"><i class="fa fa-fw fa-table"></i>Add Admins</a>
+                </li>
+                <li>
+                    <a href="add_hospitals.php"><i class="fa fa-fw fa-table"></i>Add Hospitals</a>
                 </li>
                 
                 <li>
