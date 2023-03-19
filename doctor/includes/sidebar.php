@@ -5,7 +5,7 @@
                     <a href="index.php"><i class="fa fa-fw fa-dashboard"></i>MedFit Analytics</a>
                 </li>
                 <li>
-                    <a href="view_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View Inclinic Appointments</a>
+                    <a href="view_appointments.php"><i class="fa fa-fw fa-dashboard"></i>View All Appointments</a>
                 </li>
                 <li>
                     <a href="view_patients.php"><i class="fa fa-fw fa-dashboard"></i>View Patients</a>

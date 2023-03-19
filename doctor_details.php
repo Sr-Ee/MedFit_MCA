@@ -44,8 +44,8 @@ if(isset($_GET['doctor_id'])){
     if(mysqli_num_rows($result)>=1){
 
         while($row = mysqli_fetch_assoc($result)){
-            $fname = $row['first_name'];
-            $lname = $row['last_name'];
+            $d_fname = $row['first_name'];
+            $d_lname = $row['last_name'];
             $speciality = $row['speciality'];
             $clinic_name = $row['clinic_name'];
             $clinic_add = $row['clinic_address'];
@@ -141,7 +141,7 @@ if(isset($_POST['submit']))
                         <div class="col-md-8">
                             <div class="card-body p-4">
                                 <h6>Dr.
-                                    <?php echo $fname.' '.$lname.' - '.$speciality?>
+                                    <?php echo $d_fname.' '.$d_lname.' - '.$speciality?>
                                 </h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
