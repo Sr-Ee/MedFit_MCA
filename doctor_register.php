@@ -16,6 +16,7 @@ if(isset($_POST['submit']))
     $phone = $_POST['phone'];
     $mrn = $_POST['mrn'];
     $address = $_POST['address'];
+    $clinicname = $_POST['c_name'];
     $speciality = $_POST['speciality'];
     
     //check for duplicate email-id
@@ -25,7 +26,7 @@ if(isset($_POST['submit']))
     }
     else{
 
-        $query = "INSERT INTO `doctors` (`first_name`, `last_name`, `email`, `gender`, `speciality`,`phone`, `clinic_address`,`mrn`,`age`, `password`, `profile_pic`) VALUES ('$fname', '$lname', '$email', '$gender','$speciality','$phone','$address','$mrn','$age', '$password', 'java.png');";
+        $query = "INSERT INTO `doctors` (`first_name`, `last_name`, `email`, `gender`, `speciality`,`phone`, `clinic_address`,`clinic_name`,`mrn`,`age`, `password`, `profile_pic`) VALUES ('$fname', '$lname', '$email', '$gender','$speciality','$phone','$address','$clinicname','$mrn','$age', '$password', 'java.png');";
         mysqli_query($con,$query);
 
         $msg = "<p style='color:green;'>Registered Successfully!!You can Login Now</p>";
@@ -89,6 +90,10 @@ if(isset($_POST['submit']))
                                 <div class="form-group my-2">
                                     <input type="text" class="form-control" placeholder="Clinic address *"
                                         value="" name="address" id="address" />
+                                </div>
+                                <div class="form-group my-2">
+                                    <input type="text" class="form-control" placeholder="Clinic Name *"
+                                        value="" name="c_name" id="c_name" />
                                 </div>
                                 <div class="form-group my-2">
                                     <input type="text" class="form-control" placeholder="Speciality *"

@@ -35,15 +35,15 @@
                   </div>
 
                   <div class="col-md-1 mb-1 ">
-                    Morning<input type="checkbox" name="morning[]" placeholder="m_dose">
+                    Morning<input type="checkbox" name="morning[]" placeholder="m_dose" value="Y">
                   </div>
 
                   <div class="col-md-1 mb-1 ">
-                    Aftrnoon<input type="checkbox" name="aftrnoon[]" placeholder="a_dose">
+                    Aftrnoon<input type="checkbox" name="aftrnoon[]" placeholder="a_dose" value="Y">
                   </div>
 
                   <div class="col-md-1 mb-1" >
-                    Evening<input type="checkbox" name="evening[]" placeholder="e_dose">
+                    Evening<input type="checkbox" name="evening[]" placeholder="e_dose" value="Y">
                   </div>
 
                   <div class="col-md-1 md-1 d-grid p-1">

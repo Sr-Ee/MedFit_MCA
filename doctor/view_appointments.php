@@ -85,104 +85,139 @@ while($row=mysqli_fetch_array($select_query)){
     </nav>
 
     <div id="page-wrapper">
-        <h2>View Upcoming Appointments</h2>
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <div class="row" style="margin-top: 15px;">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-file-text fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-
-                                    <div class='huge'></div>
-                                    <div>All Appointments</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="posts.php">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div> <!-- col-lg-3 -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class='huge'>
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row" style="margin-top: 61px;">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-file-text fa-5x"></i>
                                     </div>
-                                    <div>Scheduled Appointments</div>
+                                    <div class="col-xs-9 text-right">
+                                    <?php
+                                   
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid'";
+                                            $select_all_app = mysqli_query($con,$query);
+                                            while($row = mysqli_fetch_assoc($select_all_app)){
+                                                $add_app_id = $row['add_app_id'];
+                                            }
+                                            $app_counts = mysqli_num_rows($select_all_app);
+
+                                    ?>
+                                        <div class='huge'><?php echo $app_counts; ?></div>
+                                        <div>All Appointments</div>
+                                    </div>
                                 </div>
                             </div>
+                            <a href="posts.php">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
                         </div>
-                        <a href="comments.php?user_id=<?php echo $userid; ?>">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
                     </div> <!-- col-lg-3 -->
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class='huge'>
-                                    </div>
-                                    <div>Active Appointments</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="profile_new.php?user_id=<?php echo $userid;  ?>">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div> <!-- col-lg-3 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-list fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
 
-                                    <div class='huge'></div>
-                                    <div>Completed Appointments</div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                    <?php
+                                   
+                                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Scheduled Appointment'";
+                                        $select_sche_app = mysqli_query($con,$query);
+                                        while($row = mysqli_fetch_assoc($select_sche_app)){
+                                            $add_app_id = $row['add_app_id'];
+                                        }
+                                        $sche_counts = mysqli_num_rows($select_sche_app);
+
+                                    ?>
+                                        <div class='huge'><?php echo $sche_counts; ?></div>
+                                        <div>Scheduled Appointments</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="profile_new.php?user_id=<?php echo $userid;  ?>">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
+                            <a href="comments.php?user_id=<?php echo $userid; ?>">
+                                <div class="panel-footer">
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div> <!-- col-lg-3 -->
                     </div>
-                </div>
-            </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-user fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                        <?php
+                                   
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Active Appointment'";
+                                            $select_active_app = mysqli_query($con,$query);
+                                            while($row = mysqli_fetch_assoc($select_active_app)){
+                                                $add_app_id = $row['add_app_id'];
+                                            }
+                                            $active_counts = mysqli_num_rows($select_active_app);
+
+                                        ?>
+                                            <div class='huge'><?php echo $active_counts; ?></div>
+                                            <div>Active Appointments</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="profile_new.php?user_id=<?php echo $userid;  ?>">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div> <!-- col-lg-3 -->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-list fa-5x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                        <?php
+                                   
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
+                                            $select_cancel_app = mysqli_query($con,$query);
+                                            while($row = mysqli_fetch_assoc($select_cancel_app)){
+                                                $add_app_id = $row['add_app_id'];
+                                            }
+                                            $cancelled_counts = mysqli_num_rows($select_cancel_app);
+
+                                        ?>
+                                            <div class='huge'><?php echo $cancelled_counts; ?></div>
+                                            <div>Completed Appointments</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="profile_new.php?user_id=<?php echo $userid;  ?>">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
             <!-- /.row -->
             <form action="" method="post">
             <table class="table table-bordered table-hover">

@@ -1,5 +1,6 @@
 <?php
-    require_once 'C:/xampp/htdocs/Prescriptor/dompdf_2-0-3/dompdf/vendor/autoload.php';
+    // require_once 'C:/xampp/htdocs/Prescriptor/dompdf_2-0-3/dompdf/vendor/autoload.php';
+    require_once 'C:/xampp/htdocs/MEDFIT_MCA/dompdf_2-0-3/dompdf/vendor/autoload.php';
     use Dompdf\Dompdf;
 
     $conn = new PDO('mysql:host=localhost; dbname=medfit', 'root', '');
