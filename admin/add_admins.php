@@ -7,6 +7,7 @@ $select_query = mysqli_query($con,$name_query);
 
 while($row=mysqli_fetch_array($select_query)){
   $fname = $row['admin_fname'];
+  
   $lname = $row['admin_lname'];
 }
 $msg="";
