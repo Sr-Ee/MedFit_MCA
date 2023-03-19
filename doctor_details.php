@@ -88,6 +88,7 @@ if(isset($_POST['submit']))
         $msg = "<div class='alert alert-success' role='alert'>Inclinic Appointment Added Successfully 
         </div>";
     }
+    
 }
 
 ?>
