@@ -9,31 +9,13 @@ while($row=mysqli_fetch_array($select_query)){
   $fname = $row['first_name'];
   $lname = $row['last_name'];
 }
-$msg="";
-if(isset($_POST['submit']))
-{
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $location = $_POST['location'];
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
 
-    $query = "INSERT INTO `added_patients` (`doctor_id`,`fname`,`lname`,`email`, `mobile`, `location`, `age`, `gender`) VALUES ('$doctorid','$fname', '$lname', '$email', '$mobile', '$location', '$age', '$gender');";
-    mysqli_query($con,$query);
-
-    $msg = "<p style='color:green;'>Patient Added Successfully!!</p>";
-   
-    
-
-}
 
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
 
 <div id="wrapper">
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,6 +51,7 @@ if(isset($_POST['submit']))
                             </div>
                         </a>
                     </li>
+
                     <li class="message-footer">
                         <a href="#">Read All New Messages</a>
                     </li>
@@ -76,11 +59,11 @@ if(isset($_POST['submit']))
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $fname.' '.$lname; ?> <b
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $fname.' '.$lname; ?> <b
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="C:/xampp/htdocs/MedFit_MCA/doctor_profile.php"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -102,6 +85,7 @@ if(isset($_POST['submit']))
     </nav>
 
     <div id="page-wrapper">
+    <h2>Cancelled Appointments</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">
@@ -236,90 +220,151 @@ if(isset($_POST['submit']))
                         </div>
                     </div>
             <!-- /.row -->
-            
-            <!-- form starts from here -->
-            <div class="container form-box">
-                <form class="app" method="post" action="add_patients.php">
-                    <!-- Form start -->
-                    <div class="row">
-                        <!-- Text input-->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="fname">First Name</label>
-                                <input id="fname" name="fname" type="text" placeholder="Enter First Name"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="lname">Last Name</label>
-                                <input id="lname" name="lname" type="text" placeholder="Enter Last Name"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
-                                <input id="email" name="email" type="text" placeholder="E-Mail"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="mobile">Mobile Number</label>
-                                <input id="mobile" maxlength="10" name="mobile" type="number"
-                                    placeholder="Mobile Number" class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="location">Location</label>
-                                <input id="location" name="location" type="text" placeholder="Location"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="age">Age</label>
-                                <input id="age" name="age" type="number" placeholder="Age in years"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="gender">Gender</label>
-                                <div class="maxl">
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" id="gender" value="male" checked>
-                                        <span> Male </span>
-                                    </label>
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" id="gender" value="female">
-                                        <span>Female </span>
-                                    </label>
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" id="gender" value="female">
-                                        <span>Other </span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Button -->
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <button id="submit" name="submit" class="btn btn-primary">Add Patients</button>
-                            </div>
-                        </div>
-                    </div>
-                    <?php  echo $msg; ?>
-                </form>
-            </div><!-- form ends here -->
+            <form action="" method="post">
+            <table class="table table-bordered table-hover">
+                <!-- Table Heading -->
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Location</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Prefered Date</th>
+                        <th>Prefered Time</th>
+                        <th>Complaints</th>
+                        <!-- <th>Status</th> -->
+                        <th>Consultation Type</th>
+                        <!-- <th>EDIT</th> -->
+                        <th>DELETE</th>
+                    </tr>
+                </thead>
+                <!-- Placeholders -->
+                <tbody>
+                    <?php
+                        $con = mysqli_connect("localhost","root","","medfit");
+                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id`='$doctorid'";
+                        $select_appointment = mysqli_query($con,$query);
+                        $id = 0;
+                        while($row = mysqli_fetch_array($select_appointment)){
+                            $id++;
+                            $add_app_id = $row['add_app_id'];
+                            $fname = $row['fname'];
+                            $lname = $row['lname'];
+                            $email = $row['email'];
+                            $mobile = $row['mobile'];
+                            $location = $row['location'];
+                            $age = $row['age'];
+                            $gender = $row['gender'];
+                            $predate = $row['preferred_date'];
+                            $pretime = $row['preferred_time'];
+                            $comp = $row['complaints'];
+                            $when = $row['when_status'];
+                            $consult_type = $row['consult_type'];
+                            $app_status = $row['app_status'];
+
+                            // Zoom Video Calling
+                            require_once 'config.php';
+                            require_once 'api.php';
+                            $arr['topic'] = 'Meeting by ' . $fname;
+                            $arr['start_date'] = date('$predate $pretime');
+                            $arr['duration'] = 30;
+                            $arr['password'] = 'sunny';
+                            $arr['type'] = '2';
+                            $result=createMeeting($arr);
+
+                            echo "<tr>";
+                            ?>
+                            <?php
+                            if($app_status == "Completed Appointment"){
+                                echo "<td>$id</td>";
+                                echo "<td>$fname $lname</td>";
+                                echo "<td>$email 
+                                <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
+                                echo "<td>$mobile</td>";
+                                echo "<td>$location</td>";
+                                echo "<td>$age</td>";
+                                echo "<td>$gender</td>";
+                                echo "<td>$predate</td>";
+                                echo "<td>$pretime</td>";
+                                echo "<td>$comp</td>";
+                                if($consult_type == "econsult"){
+                                    echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
+                                }
+                                else{
+                                    echo "<td><a href='#'>Inclinic</a></td>";
+                                }
+                                echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_appointments.php?delete={$add_app_id}'>DELETE</a></td>";
+                            echo "</tr>";
+                        }
+
+                        }
+
+                    ?>
+
+                    <?php
+
+                        if(isset($_GET['delete'])) {
+                                        
+                            $the_app_id = $_GET['delete'];
+                        
+                            $query = "DELETE FROM `added_appointments` WHERE `add_app_id` =' $the_app_id'";
+                            $delete_query = mysqli_query($con,$query);
+                        
+                            //confirm($delete_query);
+                            //header("Location: view_appointments.php");
+                        }  
+
+                    ?>
+                </tbody>
+            </table>
+            </form>
         </div>
         <!-- /.container-fluid -->
 
     </div>
     <!-- /#page-wrapper -->
+<?php  
+include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'ssl'; 
+	$mail->Host = "smtp.hostinger.com";
+	$mail->Port = "465"; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "medfit@coderscapital.tech";
+	$mail->Password = 'Sunny29@1971';
+	$mail->SetFrom("medfit@coderscapital.tech");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		//echo $mail->ErrorInfo;
+	}else{
+		//echo 'Sent';
+	}
+}
 
+$msg="";
+if(isset($_POST['submitbtn'])){
+    $msg="Link Sent Sucessfully";
+    $mailHtml = "Your Zoom Link: <a href='".$result->join_url."' target='_blank'>".$result->join_url."</a>";
+    smtp_mailer($email,'Zoom Link Sent',$mailHtml);
+}else{
+    $msg="Link Sending Failed";
+}
+
+?>
 </div>
 <!-- /#wrapper -->
 <script>

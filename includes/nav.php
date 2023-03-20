@@ -42,7 +42,7 @@ while($row=mysqli_fetch_array($select_query)){
           <a class="nav-link" href="/MedFit_MCA/logout.php">Logout</a>
         </li> 
       </ul>
-      <div class="session-details"><?php echo $fname .' '.$lname;  ?></div>
+      <div style="color:white;font-weight:bold;" class="session-details"><?php echo $fname .' '.$lname;  ?></div>
     </div>
   </div>
 </nav>

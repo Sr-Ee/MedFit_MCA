@@ -93,6 +93,7 @@ if(isset($_POST['submit']))
 
 ?>
 <style>
+    
     .app {
         border: 2px solid black;
         border-radius: 9px;
@@ -104,13 +105,22 @@ if(isset($_POST['submit']))
     .card {
         border: 2px solid grey;
         border-radius: 20px;
-        height: 18rem;
+        height: 19rem;
+        box-shadow: 1px 1px 28px 0px rgba(0,0,0,0.75);
         transition: transform .2s;
     }
 
     .card:hover {
         transform: scale(1.1);
         cursor: pointer;
+    }
+
+    .card-body h6{
+        text-transform: capitalize;
+    }
+    form{
+        box-shadow: 1px 1px 28px 0px rgba(0,0,0,0.75);
+
     }
 
     .profile-card {
@@ -132,16 +142,14 @@ if(isset($_POST['submit']))
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white"
                             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                            <h5>Sanjay Singhania</h5>
-                            <p>Fitness Freak</p>
+                            <img src="./img/doctor.webp"
+                                alt="Avatar" class="img-fluid my-5" style="height:12rem;" />
                             <i class="far fa-edit mb-5"></i>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
                                 <h6>Dr.
-                                    <?php echo $d_fname.' '.$d_lname.' - '.$speciality?>
+                                    <?php echo $d_fname.' '.$d_lname.' - '.$speciality.' - '.$clinic_name;?>
                                 </h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
@@ -268,7 +276,7 @@ if(isset($_POST['submit']))
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="pretime">Preferred Time</label>
-                    <input type="time" id="pretime" name="pretime" step="1" class="form-control input-md" required>
+                    <input type="time" id="pretime" name="pretime" class="form-control input-md" required>
                 </div>
             </div>
             <!-- Select Basic -->

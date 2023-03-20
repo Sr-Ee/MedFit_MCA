@@ -193,7 +193,7 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Completed Appointment'";
                                             $select_cancel_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_cancel_app)){
                                                 $add_app_id = $row['add_app_id'];
@@ -217,7 +217,25 @@ while($row=mysqli_fetch_array($select_query)){
                         </div>
                     </div>
                     <!-- /.row -->
+                    <?php  
+                    
+                    $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `consult_type`='econsult'";
+                    $select_econsult_app = mysqli_query($con,$query);
+                    while($row = mysqli_fetch_assoc($select_econsult_app)){
+                        $add_app_id = $row['add_app_id'];
+                    }
+                    $econsult_counts = mysqli_num_rows($select_econsult_app); 
 
+                    $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `consult_type`='inclinic'";
+                    $select_inclinic_app = mysqli_query($con,$query);
+                    while($row = mysqli_fetch_assoc($select_inclinic_app)){
+                        $add_app_id = $row['add_app_id'];
+                    }
+                    $inclinic_counts = mysqli_num_rows($select_inclinic_app);               
+                    
+                    
+                    
+                    ?>
                     <!-- CHARTS -->
                     <!-- Add script tag in header section of admin -->
                     <div class="row">
@@ -232,11 +250,11 @@ while($row=mysqli_fetch_array($select_query)){
 
                         <?php
 
-                            $element_text = ['Total Appointments','Scheduled Appointments','Active Appointments','Completed Appointments'];
-                            $element_count = [$app_counts,$sche_counts,$active_counts,$cancelled_counts];
+                            $element_text = ['Total Appointments','Scheduled Appointments','Active Appointments','Cancelled Appointments','E-Consult Appointments','In-Clinic Appointments'];
+                            $element_count = [$app_counts,$sche_counts,$active_counts,$cancelled_counts,$econsult_counts,$inclinic_counts];
 
 
-                            for($i = 0; $i < 4; $i++){
+                            for($i = 0; $i < 6; $i++){
 
                                 echo "['{$element_text[$i]}'" . " ," . "{$element_count[$i]}],";
                             }

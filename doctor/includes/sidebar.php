@@ -17,7 +17,10 @@
                     <a href="add_patients.php"><i class="fa fa-fw fa-table"></i>Add Patients</a>
                 </li>
                 <li>
-                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i>Cancel Appointments</a>
+                    <a href="cancel_appointments.php"><i class="fa fa-fw fa-edit"></i>Cancelled Appointments</a>
+                </li>
+                <li>
+                    <a href="completed_appointments.php"><i class="fa fa-fw fa-edit"></i>Completed Appointments</a>
                 </li>
                 <li>
                     <a href="/MedFit_MCA/prescriptor.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>

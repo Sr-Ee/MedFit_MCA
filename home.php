@@ -87,7 +87,7 @@ h1{
 
 .split.left{
     left: 0;
-    /* background-image: url('../img/patients.jpg'); */
+    background-image: url('../img/patients.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -103,7 +103,7 @@ h1{
 
 .split.right{
    right: 0;
-   /* background-image: url('../img/doctors.jpg'); */
+   background-image: url('../img/doctors.jpg');
    background-repeat: no-repeat;
    background-size: cover; 
 } 

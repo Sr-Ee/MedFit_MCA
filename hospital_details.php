@@ -16,6 +16,26 @@ $patientid = $_SESSION['patient_id'];
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <style>
+    body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
     .app{
         border: 2px solid black;
         border-radius: 9px;
@@ -27,6 +47,8 @@ $patientid = $_SESSION['patient_id'];
         border: 2px solid grey;
         border-radius: 20px;
         height: 23rem;
+        box-shadow: 1px 1px 28px 0px rgba(0,0,0,0.75);
+        margin-top: 6rem;
         transition: transform .2s;
     }
     .card:hover{
@@ -62,6 +84,7 @@ if(isset($_GET['hospital_id'])){
             $nonurses = $row['no_nurses'];
             $nodoctors = $row['no_doctors'];
             $beds = $row['beds'];
+            $hospital_contact = $row['hospital_contact'];
 
         }
 
@@ -75,12 +98,8 @@ if(isset($_GET['hospital_id'])){
             <div class="col col-lg-6 mb-4 mb-lg-0 profile-card">
                 <div class="card mb-3" style="border-radius: .5rem;">
                     <div class="row g-0">
-                        <div class="col-md-4 gradient-custom text-center text-white"
-                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                            <h5>Sanjay Singhania</h5>
-                            <p>Fitness Freak</p>
+                        <div class="col-md-4 gradient-custom text-center text-white">
+                            <img src="./img/hospital.avif"  alt="Avatar" class="img-fluid my-5" style="height:12rem;" />
                             <i class="far fa-edit mb-5"></i>
                         </div>
                         <div class="col-md-8">
@@ -90,7 +109,7 @@ if(isset($_GET['hospital_id'])){
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Address</h6>
-                                        <p class="text-muted"><?php echo $address;  ?></p>
+                                        <b><p class="text-muted"><?php echo $address;  ?></p></b>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Speciality</h6>
@@ -111,6 +130,10 @@ if(isset($_GET['hospital_id'])){
                                     <div class="col-6 mb-3">
                                         <h6>No of nurses</h6>
                                         <p class="text-muted"><?php echo $nonurses;  ?></p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Hospital Contact</h6>
+                                        <p class="text-muted"><?php echo $hospital_contact;  ?></p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start">

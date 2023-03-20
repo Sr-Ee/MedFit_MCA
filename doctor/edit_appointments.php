@@ -35,8 +35,8 @@ while($row = mysqli_fetch_array($select_app_by_id)){
 }
 
 if(isset($_POST['update_app'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $u_fname = $_POST['fname'];
+    $u_lname = $_POST['lname'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $location = $_POST['location'];
@@ -47,7 +47,7 @@ if(isset($_POST['update_app'])){
     $comp = $_POST['comp'];
     $app_status = $_POST['app_status'];
 
-    $update_query = "UPDATE `added_appointments` SET `fname`='$fname',`lname`='$lname',`email`='$email',`mobile`='$mobile',`location`='$location',`age`='$age',`gender`='$gender',`preferred_date`='$predate',`preferred_time`='$pretime',`complaints`='$comp',`app_status`='$app_status' WHERE 'add_app_id'='$the_app_id'";
+    $update_query = "UPDATE `added_appointments` SET `fname`='$u_fname',`lname`='$u_lname',`email`='$email',`mobile`='$mobile',`location`='$location',`age`='$age',`gender`='$gender',`preferred_date`='$predate',`preferred_time`='$pretime',`complaints`='$comp',`app_status`='$app_status' WHERE `add_app_id`='$the_app_id'";
     $update_post1 = mysqli_query($con,$update_query);
     $msg = "<p style='color:green;'>Appointment Edited Successfully!!</p>";
 
@@ -228,7 +228,7 @@ if(isset($_POST['update_app'])){
 
             <!-- form starts from here -->
             <div class="container form-box">
-                <form class="app" action="edit_appointments.php?add_app_id=<?php echo $add_app_id;  ?>" method="post">
+                <form class="app" action="edit_appointments.php?add_app_id=<?php echo $add_app_id;  ?>" method="post" enctype="multipart/form-data">
                     <!-- Form start -->
                     <div class="row">
                         <!-- Text input-->
@@ -324,6 +324,7 @@ if(isset($_POST['update_app'])){
                                     <option value="Scheduled Appointment">Scheduled Appointment</option>
                                     <option value="Active Appointment">Active Appointment</option>
                                     <option value="Cancelled Appointment">Cancelled Appointment</option>
+                                    <option value="Completed Appointment">Completed Appointment</option>
                                 </select>
                             </div>
                         </div>

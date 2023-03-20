@@ -17,31 +17,51 @@ if(!isset($_SESSION['is_login'])){
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <style>
+     body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
     :root {
         --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
     }
 
-    body {
-        background: #111 !important;
-    }
     .container{
         display: flex;
         justify-content: center;
     }
 
     .card {
-        background: #222;
+        background: #fff;
         border: 1px solid #dd2476;
-        color: rgba(250, 250, 250, 0.8);
+        color: #222;
         margin-bottom: 2rem;
         margin-right: 27px;
+        box-shadow: 1px 1px 28px 0px rgba(0,0,0,0.75);
         transition: transform .2s;
     }
     .card:hover {
     transform: scale(1.1);
     cursor: pointer;
   }
-
+  .card-subtitle{
+    text-transform: capitalize;
+  }
 
 </style>
 

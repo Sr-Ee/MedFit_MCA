@@ -111,6 +111,7 @@ if(isset($_POST['submit']))
     </nav>
 
     <div id="page-wrapper">
+        <h2>Add Appointments</h2>
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" style="margin-top: 61px;">
@@ -221,7 +222,7 @@ if(isset($_POST['submit']))
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Completed Appointment'";
                                             $select_cancel_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_cancel_app)){
                                                 $add_app_id = $row['add_app_id'];
@@ -251,13 +252,6 @@ if(isset($_POST['submit']))
                 <form class="app" action="add_appointments.php" method="post">
                     <!-- Form start -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="name">Doctor Name</label>
-                                <input id="name" name="name" type="text" placeholder="Name"
-                                    class="form-control input-md">
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="when">Time</label>
@@ -343,7 +337,7 @@ if(isset($_POST['submit']))
                         <div class="col-md-6" id="date-block">
                             <div class="form-group">
                                 <label class="control-label" for="pre_date">Preferred Date</label>
-                                <input id="pre_date" name="pre_date" type="date" placeholder="Preferred Date - DD/MM/YYYY"
+                                <input min="<?php echo date("Y-m-d");  ?>" id="pre_date" name="pre_date" type="date" placeholder="Preferred Date - DD/MM/YYYY"
                                     class="form-control input-md">
                             </div>
                         </div>
@@ -351,7 +345,7 @@ if(isset($_POST['submit']))
                         <div class="col-md-6" id="time-block">
                             <div class="form-group">
                                 <label class="control-label" for="pretime">Preferred Time</label>
-                                <input type="time" id="pretime" name="pretime" step="1">
+                                <input type="time" id="pretime" name="pretime">
                             </div>
                         </div>
                         <!-- Select Basic -->
@@ -370,6 +364,7 @@ if(isset($_POST['submit']))
                                     <option value="Scheduled Appointment">Scheduled Appointment</option>
                                     <option value="Active Appointment">Active Appointment</option>
                                     <option value="Cancelled Appointment">Cancelled Appointment</option>
+                                    <option value="Completed Appointment">Completed Appointment</option>
                                 </select>
                             </div>
                         </div>

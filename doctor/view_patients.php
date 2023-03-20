@@ -194,7 +194,7 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Cancelled Appointment'";
+                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Completed Appointment'";
                                             $select_cancel_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_cancel_app)){
                                                 $add_app_id = $row['add_app_id'];
@@ -229,7 +229,8 @@ while($row=mysqli_fetch_array($select_query)){
                         <th>Location</th>
                         <th>Age</th>
                         <th>Gender</th>
-                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <!-- Placeholders -->
@@ -242,6 +243,7 @@ while($row=mysqli_fetch_array($select_query)){
                         while($row = mysqli_fetch_array($select_patient)){
 
                             $id++;
+                            $add_pat_id = $row['add_pat_id'];
                             $fname = $row['fname'];
                             $lname = $row['lname'];
                             $email = $row['email'];
@@ -259,6 +261,8 @@ while($row=mysqli_fetch_array($select_query)){
                                  echo "<td>$location</td>";
                                  echo "<td>$age</td>";
                                  echo "<td>$gender</td>";
+                                 echo "<td><a href='edit_patients.php?add_pat_id={$add_pat_id}'>EDIT</a></td>";
+                                 echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_patients.php?delete={$add_pat_id}'>DELETE</a></td>";
                             echo "</tr>";
                         }
                     ?>
@@ -269,25 +273,20 @@ while($row=mysqli_fetch_array($select_query)){
 
     </div>
     <!-- /#page-wrapper -->
+    <?php
 
+if(isset($_GET['delete'])) {
+                
+    $the_pat_id = $_GET['delete'];
+
+    $query = "DELETE FROM `added_patients` WHERE `add_pat_id` =' $the_pat_id'";
+    $delete_query = mysqli_query($con,$query);
+
+    //confirm($delete_query);
+    //header("Location: view_appointments.php");
+}  
+
+?>
 </div>
 <!-- /#wrapper -->
-<script>
-    // JavaScript code
-    function handleRadioClick() {
-        const nowRadio = document.querySelector('input[value="now"]');
-        if (nowRadio.checked) {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'none';
-            field2.style.display = 'none';
-        } else {
-            const field1 = document.querySelector('#date-block');
-            const field2 = document.querySelector('#time-block');
-            field1.style.display = 'inline-block';
-            field2.style.display = 'inline-block';
-        }
-    }
-
-</script>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_footer.php'); ?>

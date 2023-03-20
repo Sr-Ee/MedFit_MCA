@@ -26,7 +26,7 @@ if(isset($_POST['str'])){
     
     $headers = array();
     $headers[] = 'Content-Type: application/json';
-    $headers[] = 'Authorization:Bearer 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';
+    $headers[] = 'Authorization:Bearer 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';
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     
     $result = curl_exec($ch);
@@ -77,6 +77,7 @@ if(isset($_POST['str'])){
     form{
         margin-top: 5rem;
         width: 44rem;
+       
     }
     h2{
         color: #fff;
@@ -97,6 +98,9 @@ if(isset($_POST['str'])){
         color: #fff;
         font-weight:bold;
         
+    }
+    textarea{
+        height: 210px;
     }
 
 </style>

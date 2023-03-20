@@ -46,9 +46,9 @@
                     Evening<input type="checkbox" name="evening[]" placeholder="e_dose" value="Y">
                   </div>
 
-                  <div class="col-md-1 md-1 d-grid p-1">
+                  <!-- <div class="col-md-1 md-1 d-grid p-1">
                     <button class="btn btn-success add_item_btn">+</button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div>

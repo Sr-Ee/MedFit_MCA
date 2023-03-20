@@ -37,6 +37,7 @@ $result = mysqli_query($con,$query);
           $height = $row['height'];
           $weight = $row['weight'];
           $profile_pic = $row['profile_pic'];
+          $blood_group = $row['blood_group'];
           
       }
 
@@ -85,7 +86,7 @@ if(isset($_POST['submit'])){
             <a href="#">
               <img src='./img/<?php echo $profile_pic;  ?>' alt="">
             </a>
-            <h1>
+            <h1 style="text-transform: capitalize;">
               <?php echo $fname.'  '.$lname;  ?>
             </h1>
             <p>
@@ -116,11 +117,15 @@ if(isset($_POST['submit'])){
                   <form action="profile.php" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                       <label for="height" class="form-label">Height</label>
-                      <input value="<?php echo $height; ?>" type="text" name="height" class="form-control" id="height" aria-describedby="emailHelp" placeholder="eg: 171 cms">                     
+                      <input value="<?php echo $height; ?>" type="text" name="height" class="form-control" id="height" aria-describedby="emailHelp" placeholder="eg: 2.31 m^2">                     
                     </div>
                     <div class="mb-3">
                       <label for="weight" class="form-label">Weight</label>
                       <input value="<?php echo $weight; ?>" type="text" name="weight" class="form-control" id="weight" aria-describedby="emailHelp" placeholder="eg: 60 kg">                    
+                    </div>
+                    <div class="mb-3">
+                      <label for="bmi" class="form-label">BMI</label>
+                      <input value="<?php echo $weight/($height**2); ?>" type="text" name="bmi" class="form-control" id="bmi" aria-describedby="emailHelp">                    
                     </div>
                     <div class="mb-3">
                       <label for="age" class="form-label">Age</label>
@@ -159,7 +164,7 @@ if(isset($_POST['submit'])){
             Health is Wealth
           </div>
           <div class="panel-body bio-graph-info">
-            <h1>Bio Graph</h1>
+            <h1>MedFit Profile</h1>
             <div class="row">
               <div class="bio-row">
                 <p><span>First Name: </span>
@@ -182,19 +187,24 @@ if(isset($_POST['submit'])){
                 </p>
               </div>
               <div class="bio-row">
-                <p><span>Height: </span> <?php echo $height;  ?> cms</p>
+                <p><span>Height: </span> <?php echo $height;  ?> m^2</p>
               </div>
               <div class="bio-row">
                 <p><span>Weight: </span><?php echo $weight;  ?> kg</p>
               </div>
               <div class="bio-row">
-                <p><span>BMI: </span>45</p>
+                <p><span>BMI: </span><?php echo $weight/($height**2); ?></p>
               </div>
               <div class="bio-row">
                 <p><span>Phone: </span>
                   <?php echo $phone;  ?>
                 </p>
-              </div>
+              </div>  
+              <div class="bio-row">
+                <p><span>Blood Group: </span>
+                  <?php echo $blood_group;  ?>
+                </p>
+              </div>  
             </div>
           </div>
         </div>

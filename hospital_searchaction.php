@@ -13,8 +13,8 @@ if(isset($_POST['query'])){
 
             echo "<a href='hospital_details.php?hospital_id={$row['hospital_id']}' 
             class='list-group-item list-group-item-action border-1' 
-            style='font-size:18px;font-weight:bold;width:59rem;margin-left:4px;margin-top:4px;border:3px solid grey;border-radius:22px;'>
-            ".$row['hospital_name'] .' '. $row['city'] ."</a>";
+            style='font-size:18px;font-weight:bold;width:59rem;margin-left:4px;margin-top:4px;border:3px solid grey;border-radius:22px;text-transform:capitalize;'>
+            ".$row['hospital_name'] .' - '. $row['city'] .' - '.$row['speciality']."</a>";
         }
     }
     else{
