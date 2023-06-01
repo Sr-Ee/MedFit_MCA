@@ -29,6 +29,12 @@
                     <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>TeleConference</a>
                 </li>
                 <li>
+                    <a href="add_posts.php"><i class="fa fa-fw fa-table"></i>Add Posts</a>
+                </li>
+                <li>
+                    <a href="/MedFit_MCA/blogs/view_all_posts.php"><i class="fa fa-fw fa-table"></i>View all Posts</a>
+                </li>
+                <li>
                     <a href="/MedFit_MCA/doctor_profile.php"><i class="fa fa-user"></i> Profile</a>
                 </li>
                 <li>

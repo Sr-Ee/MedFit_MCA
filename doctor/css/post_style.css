@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 7rem;
+    width: 48rem;
+}
+
+.card{
+    box-shadow: 2px 9px 19px -3px rgba(0,0,0,0.69);
+}
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+    :root {
+        --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+    }

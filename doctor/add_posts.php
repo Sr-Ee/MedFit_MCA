@@ -9,7 +9,25 @@ while($row=mysqli_fetch_array($select_query)){
   $fname = $row['first_name'];
   $lname = $row['last_name'];
 }
+$msg="";
+if(isset($_POST['submit']))
+{
+    $ptitle = $_POST['ptitle'];
+    $pauthor = $_POST['pauthor'];
+    $ptag = $_POST['ptags'];
+    $pdate = $_POST['pdate'];
+    // $pimage = "image";
+    $pdesc = $_POST['pdesc'];
+    $plink = $_POST['plink'];
+    
 
+    $query = "INSERT INTO `posts` (`post_title`, `post_author`, `post_tags`, `post_date`, `post_content`,`plinks`, `post_image`, `doctor_id`) VALUES ('$ptitle', '$pauthor', '$ptag', '$pdate', '$pdesc','$plink', '', '$doctorid');";
+    mysqli_query($con,$query);
+
+    $msg = "<p style='color:green;'>Post Added Successfully!!</p>";
+      
+
+}
 
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
@@ -51,7 +69,6 @@ while($row=mysqli_fetch_array($select_query)){
                             </div>
                         </a>
                     </li>
-
                     <li class="message-footer">
                         <a href="#">Read All New Messages</a>
                     </li>
@@ -64,8 +81,7 @@ while($row=mysqli_fetch_array($select_query)){
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="C:/xampp/htdocs/MedFit_MCA/doctor_profile.php"><i class="fa fa-fw fa-user"></i>
-                            Profile</a>
+                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -227,170 +243,81 @@ while($row=mysqli_fetch_array($select_query)){
                         </a>
                     </div>
                 </div>
-                <div class='modal fade' id='staticBackdrop' data-bs-backdrop='static' data-bs-keyboard='false'
-                    tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true'>
-                    <div class='modal-dialog'>
-                        <div class='modal-content'>
-                            <div class='modal-header'>
-                                <h1 class='modal-title fs-5' id='staticBackdropLabel'>Modal title</h1>
-                                <button type='button' class='btn-close' data-bs-dismiss='modal'
-                                    aria-label='Close'></button>
+            </div>
+            <!-- /.row -->
+
+            <!-- form starts from here -->
+            <div class="container form-box">
+                <form class="app" method="post" action="add_posts.php" enctype="multipart/form-data">
+                    <!-- Form start -->
+                    <div class="row">
+                        <!-- Text input-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="ptitle">Post Title</label>
+                                <input id="ptitle" name="ptitle" type="text" placeholder="Enter Title"
+                                    class="form-control input-md">
                             </div>
-                            <div class='modal-body'>
-                                ...
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="pauthor">Post Author</label>
+                                <input id="pauthor" name="pauthor" type="text" placeholder=""
+                                    class="form-control input-md">
                             </div>
-                            <div class='modal-footer'>
-                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                <button type='button' class='btn btn-primary'>Understood</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="ptags">Post Tags</label>
+                                <input id="ptags" name="ptags" type="text" placeholder="Post Tags"
+                                    class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="date-block">
+                            <div class="form-group">
+                                <label class="control-label" for="pdate">Post Date</label>
+                                <input min="<?php echo date(" Y-m-d"); ?>" id="pdate" name="pdate" type="date"
+                                placeholder="Preferred Date - DD/MM/YYYY"
+                                class="form-control input-md">
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-6">
+                            <label for="post_image">Post Image</label>
+                            <input type="file" class="form-control" id="pimage" name="pimage">
+                        </div> -->
+
+                        <div class="mb-4 col-md-6">
+                            <label style="" for="exampleFormControlTextarea1" class="form-label">Post Description</label>
+                            <textarea name="pdesc" id="pdesc" class="form-control" id="exampleFormControlTextarea1"
+                                rows="3" cols="6"></textarea>
+                        </div>
+                    
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="ptitle">Links</label>
+                                <input id="plink" name="plink" type="text" placeholder="Enter Links"
+                                    class="form-control input-md">
+                            </div>
+                        </div>
+
+                        
+                        <!-- Button -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button style="margin: 13px;" id="submit" name="submit" class="btn btn-primary">Publish Post</button>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- /.row -->
-            <form action="" method="post">
-                <table class="table table-bordered table-hover">
-                    <!-- Table Heading -->
-                    <thead>
-                        <tr>
-                            <th>Appointment ID</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Mobile Number</th>
-                            <th>Location</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Prefered Date</th>
-                            <th>Prefered Time</th>
-                            <th>Complaints</th>
-                            <!-- <th>Status</th> -->
-                            <th>Consultation Type</th>
-                            <th>EDIT</th>
-                            <th>DELETE</th>
-                        </tr>
-                    </thead>
-                    <!-- Placeholders -->
-                    <tbody>
-                        <?php
-                        $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id`='$doctorid'";
-                        $select_appointment = mysqli_query($con,$query);
-                        $id = 0;
-                        while($row = mysqli_fetch_array($select_appointment)){
-                            $id++;
-                            $add_app_id = $row['add_app_id'];
-                            $fname = $row['fname'];
-                            $lname = $row['lname'];
-                            $email = $row['email'];
-                            $mobile = $row['mobile'];
-                            $location = $row['location'];
-                            $age = $row['age'];
-                            $gender = $row['gender'];
-                            $predate = $row['preferred_date'];
-                            $pretime = $row['preferred_time'];
-                            $comp = $row['complaints'];
-                            $when = $row['when_status'];
-                            $consult_type = $row['consult_type'];
-
-                            // Zoom Video Calling
-                            require_once 'config.php';
-                            require_once 'api.php';
-                            $arr['topic'] = 'Meeting by ' . $fname;
-                            $arr['start_date'] = date('$predate $pretime');
-                            $arr['duration'] = 30;
-                            $arr['password'] = 'sunny';
-                            $arr['type'] = '2';
-                            $result=createMeeting($arr);
-
-                            echo "<tr>";
-                            ?>
-                        <?php
-                                echo "<td>$id</td>";
-                                echo "<td>$fname $lname</td>";
-                                echo "<td>$email 
-                                <button name='submitbtn' id='submitbtn' class='btn btn-success'>Send</button></td>";
-                                echo "<td>$mobile</td>";
-                                echo "<td>$location</td>";
-                                echo "<td>$age</td>";
-                                echo "<td>$gender</td>";
-                                echo "<td>$predate</td>";
-                                echo "<td>$pretime</td>";
-                                echo "<td>$comp</td>";
-                                if($consult_type == "econsult"){
-                                    echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
-                                }
-                                else{
-                                    echo "<td><a href='#'>Inclinic</a></td>";
-                                }
-                                echo "<td><a href='edit_appointments.php?add_app_id={$add_app_id}'>EDIT</a></td>";
-                                echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete');\" href='view_appointments.php?delete={$add_app_id}'>DELETE</a></td>";
-                            echo "</tr>";
-
-                        }
-
-                    ?>
-
-                        <?php
-
-                        if(isset($_GET['delete'])) {
-                                        
-                            $the_app_id = $_GET['delete'];
-                        
-                            $query = "DELETE FROM `added_appointments` WHERE `add_app_id` =' $the_app_id'";
-                            $delete_query = mysqli_query($con,$query);
-                        
-                            //confirm($delete_query);
-                            //header("Location: view_appointments.php");
-                        }  
-
-                    ?>
-                    </tbody>
-                </table>
-            </form>
+                    <?php  echo $msg; ?>
+                </form>
+            </div><!-- form ends here -->
         </div>
         <!-- /.container-fluid -->
 
     </div>
     <!-- /#page-wrapper -->
-    <?php  
-include('C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php');
-function smtp_mailer($to,$subject, $msg){
-	$mail = new PHPMailer(); 
-	$mail->IsSMTP(); 
-	$mail->SMTPAuth = true; 
-	$mail->SMTPSecure = 'ssl'; 
-	$mail->Host = "smtp.hostinger.com";
-	$mail->Port = "465"; 
-	$mail->IsHTML(true);
-	$mail->CharSet = 'UTF-8';
-	$mail->Username = "medfit04@coderscapital.tech";
-	$mail->Password = 'Sunny29@1971';
-	$mail->SetFrom("medfit04@coderscapital.tech");
-	$mail->Subject = $subject;
-	$mail->Body =$msg;
-	$mail->AddAddress($to);
-	$mail->SMTPOptions=array('ssl'=>array(
-		'verify_peer'=>false,
-		'verify_peer_name'=>false,
-		'allow_self_signed'=>false
-	));
-	if(!$mail->Send()){
-		//echo $mail->ErrorInfo;
-	}else{
-		//echo 'Sent';
-	}
-}
 
-$msg="";
-if(isset($_POST['submitbtn'])){
-    $msg="Link Sent Sucessfully";
-    $mailHtml = "Your Zoom Link: <a href='".$result->join_url."' target='_blank'>".$result->join_url."</a>";
-    smtp_mailer($email,'Zoom Link Sent',$mailHtml);
-}else{
-    $msg="Link Sending Failed";
-}
-
-?>
 </div>
 <!-- /#wrapper -->
 <script>
