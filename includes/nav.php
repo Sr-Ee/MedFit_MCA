@@ -9,7 +9,7 @@ while($row=mysqli_fetch_array($select_query)){
 }
 
 ?>
-<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/MedFit_MCA/welcome.php">MedFit</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +29,9 @@ while($row=mysqli_fetch_array($select_query)){
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/profile.php">Profile</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/view_all_post_patient.php">Blogs</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/view_all_hospitals.php">Hospitals</a>
         </li>
@@ -40,6 +40,15 @@ while($row=mysqli_fetch_array($select_query)){
         </li>
         <li class="nav-item">
           <a class="nav-link" href="">Book Appointments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../cms/index.php">MedBlogs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="http://127.0.0.1:5000/">MedHeart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="fitbit/fitbit.php">FitBit</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/logout.php">Logout</a>

@@ -91,6 +91,29 @@ if(isset($_POST['submit']))
     
 }
 
+$bookedSlots = array(); // Initialize an empty array
+$query = "SELECT `preferred_time` FROM `added_appointments` WHERE `doctor_id` = '$doctorid'";
+$result = mysqli_query($con, $query);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $bookedSlots[] = $row['preferred_time'];
+    }
+}
+
+// Get the current date and time
+$currentDateTime = new DateTime();
+
+// Get the current day
+$currentDay = $currentDateTime->format('Y-m-d');
+
+// Assume $availableSlots is an array containing all available slots
+$availableSlots = array(
+    "9:00 AM", "10:00 AM", "11:00 AM",
+    "12:00 PM", "1:00 PM", "2:00 PM",
+    "3:00 PM", "4:00 PM", "5:00 PM"
+);
+
 ?>
 <style>
     
@@ -124,7 +147,7 @@ if(isset($_POST['submit']))
     }
 
     .profile-card {
-        margin-top: -24px;
+        margin-top: 20px;
     }
 
     .btn {
@@ -275,8 +298,18 @@ if(isset($_POST['submit']))
             <!-- Select Basic -->
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label" for="pretime">Preferred Time</label>
-                    <input type="time" id="pretime" name="pretime" class="form-control input-md" required>
+                <label class="control-label" for="slot">Slot Time:</label>
+                <select name="pretime" class="form-control">
+                    <?php foreach ($availableSlots as $slot): ?>
+                        <?php 
+                            $slotDateTime = new DateTime($currentDay . ' ' . $slot);
+                            if (in_array($slot, $bookedSlots)) : ?>
+                            <option value="<?php echo $slot; ?>" disabled><?php echo $slot; ?> (Booked)</option>
+                        <?php else: ?>
+                            <option value="<?php echo $slot; ?>"><?php echo $slot; ?></option>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </select>
                 </div>
             </div>
             <!-- Select Basic -->

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  
+  <script>
+    const endpoint = "https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json";
+
+    async function getFitbitData() {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      return data;
+    }
+
+    async function displayData() {
+      const { "activities-heart-intraday": { dataset } } = await getFitbitData();
+
+      let html = "";
+      dataset.forEach(({ time, value }) => {
+        html += `Time: ${time} Heart Rate: ${value} <br>`;
+      });
+
+      document.getElementById("output").innerHTML = html;
+    }
+
+    displayData();
+
+  </script>
+</body>
+
+</html>

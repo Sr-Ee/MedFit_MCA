@@ -65,9 +65,3 @@ include('C:/xampp/htdocs/MedFit_MCA/blogs/includes/blog_footer.php');
 ?>
 </div>
 
-
-
-
-
-
-

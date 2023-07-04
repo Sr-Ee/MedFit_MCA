@@ -26,7 +26,7 @@ if(isset($_POST['str'])){
     
     $headers = array();
     $headers[] = 'Content-Type: application/json';
-    $headers[] = 'Authorization:Bearer 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';
+    $headers[] = 'Authorization:Bearer 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';
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     
     $result = curl_exec($ch);
@@ -35,7 +35,13 @@ if(isset($_POST['str'])){
     }
     curl_close($ch);
     $result=json_decode($result,true);
-    $msg = $result['choices'][0]['text'];
+    var_dump($result);
+    if (isset($result['choices'][0]['text'])) {
+        
+        $msg = $result['choices'][0]['text'];
+    } else {
+        $msg =  "Error: Invalid response from the OpenAI API.";
+    }
 }
 ?>
 <!doctype html>

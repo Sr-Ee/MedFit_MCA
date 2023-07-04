@@ -21,6 +21,9 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script
+    src="https://cdn.tiny.cloud/1/8bvpogeuuxjafbfnmrlayesa9iez8arno5q7r4ttp603j1fk/tinymce/6/tinymce.min.js" 
+    referrerpolicy="origin"></script>
 
 </head>
 <style>

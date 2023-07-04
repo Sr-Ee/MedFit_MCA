@@ -1,0 +1,6 @@
+activeMinutes.innerHTML = response.activeMinutes
+activeZoneMinutes.innerHTML = response.activeZoneMinutes
+caloriesOut.innerHTML = response.caloriesOut
+distance.innerHTML = response.distance
+floors.innerHTML = response.floors
+steps.innerHTML = response.steps

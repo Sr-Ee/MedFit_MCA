@@ -26,6 +26,9 @@
                     <a href="/MedFit_MCA/prescriptor.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
                 </li>
                 <li>
+                    <a href="../pres-proj/index.html"><i class="fa fa-fw fa-desktop"></i>Prescription Generator New</a>
+                </li>
+                <li>
                     <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>TeleConference</a>
                 </li>
                 <li>
