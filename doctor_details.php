@@ -124,7 +124,6 @@ function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slot
     }
 }
 
-
     $patientid = $_SESSION['patient_id'];
     $doctorId = $_GET['doctor_id'];
     
@@ -327,7 +326,7 @@ mysqli_close($con);
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="slot_date">Preferred Date</label>
-                        <input id="date" min="<?php echo date(" Y-m-d"); ?>" name="slot_date" type="date"
+                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" type="date"
                         placeholder="Preferred
                         Date - DD/MM/YYYY" class="form-control input-md" required>
                     </div>

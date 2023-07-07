@@ -273,24 +273,24 @@ while($row=mysqli_fetch_array($select_query)){
                     <tbody>
                         <?php
                         $con = mysqli_connect("localhost","root","","medfit");
-                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id`='$doctorid'";
+                        $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id`='$doctorid'";
                         $select_appointment = mysqli_query($con,$query);
                         $id = 0;
                         while($row = mysqli_fetch_array($select_appointment)){
                             $id++;
-                            $add_app_id = $row['add_app_id'];
-                            $fname = $row['fname'];
-                            $lname = $row['lname'];
+                            $add_app_id = $row['id'];
+                            $predate = $row['slot_date'];
+                            $pretime = $row['slot_time_part'];
+                            $fname = $row['first_name'];
+                            $lname = $row['last_name'];
                             $email = $row['email'];
                             $mobile = $row['mobile'];
                             $location = $row['location'];
                             $age = $row['age'];
+                            $comp = $row['chief_complaints'];
                             $gender = $row['gender'];
-                            $predate = $row['preferred_date'];
-                            $pretime = $row['preferred_time'];
-                            $comp = $row['complaints'];
-                            $when = $row['when_status'];
                             $consult_type = $row['consult_type'];
+                            $app_status = $row['app_status'];
 
                             // Zoom Video Calling
                             require_once 'config.php';
@@ -359,13 +359,13 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->IsSMTP(); 
 	$mail->SMTPAuth = true; 
 	$mail->SMTPSecure = 'ssl'; 
-	$mail->Host = "smtp.hostinger.com";
-	$mail->Port = "465"; 
+	$mail->Host = "smtp.zoho.com";
+	$mail->Port = 465; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "medfit04@coderscapital.tech";
-	$mail->Password = 'Sunny29@1971';
-	$mail->SetFrom("medfit04@coderscapital.tech");
+	$mail->Username = "tanjiro045@zohomail.in";
+	$mail->Password = "Tanjiro29@123";
+	$mail->SetFrom("tanjiro045@zohomail.in");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
@@ -375,9 +375,9 @@ function smtp_mailer($to,$subject, $msg){
 		'allow_self_signed'=>false
 	));
 	if(!$mail->Send()){
-		//echo $mail->ErrorInfo;
+		echo $mail->ErrorInfo;
 	}else{
-		//echo 'Sent';
+		echo 'Sent';
 	}
 }
 
