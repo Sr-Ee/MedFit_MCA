@@ -1,6 +1,7 @@
 <?php
 session_start();
 $patientid = $_SESSION['patient_id'];
+
 if(!isset($_SESSION['is_login'])){
   header("Location: login.php");
   die();
@@ -13,8 +14,10 @@ if(!isset($_SESSION['is_login'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Welcome</title>
+  <script src="https://cdn.jsdelivr.net/npm/@alan-ai/alan-sdk-web/dist/alan-sdk-web.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
 </head>
 <style>
   body {
@@ -71,7 +74,7 @@ if(!isset($_SESSION['is_login'])){
 </style>
 
 <body>
-
+<div class="alan-btn"></div>
   <?php require 'includes/nav.php' ?>
   <div class="container">
     <div class="card" style="width: 18rem;">
@@ -134,9 +137,9 @@ if(!isset($_SESSION['is_login'])){
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
-  <!--Start of Tawk.to Script-->
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+
+<!--Start of Tawk.to Script-->
+<!-- <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -146,9 +149,7 @@ if(!isset($_SESSION['is_login'])){
   s1.setAttribute('crossorigin','*');
   s0.parentNode.insertBefore(s1,s0);
   })();
-  </script>
+  </script> -->
   <!--End of Tawk.to Script-->
-  <script src="particles.js"></script>
-
 </body>
 </html>

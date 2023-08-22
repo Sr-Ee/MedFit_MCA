@@ -138,7 +138,7 @@ if(isset($_POST['submit']))
 
                 if (searchText != '') {
 
-                    $.ajax({
+                    $.ajax({    
                         url: 'doc_searchaction.php',
                         method: 'POST',
                         data: { query: searchText },

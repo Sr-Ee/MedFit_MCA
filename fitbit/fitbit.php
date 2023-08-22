@@ -36,6 +36,9 @@ $pat_result = mysqli_query($con,$query1);
           
       }
 }
+
+// Get the date from the input control
+
 ?>
 <!doctype html>
 <html lang="en">
