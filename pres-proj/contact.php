@@ -1,34 +1,26 @@
 <?php
 require "phpmailer/PHPMailerAutoload.php";
-$receiver_email="tawsifhasan@iut-dhaka.edu";
+$receiver_email = "tawsifhasan@iut-dhaka.edu";
 $ini = parse_ini_file('cred/cred.ini', true);
 $mail = new PHPMailer();
 
-$mail->IsSMTP();
+$mail->isSMTP(); // Corrected method name
 
 $mail->Host = "smtp.gmail.com";
-
 $mail->SMTPAuth = true;
-
-$mail->Username = $ini['email']['username']; // SMTP username
-$mail->Password = $ini['email']['password']; // SMTP password
+$mail->Username = $ini['email']['username'];
+$mail->Password = $ini['email']['password'];
 $mail->From = $_POST["email"];
 $mail->SMTPSecure = 'tls';
-$mail->Port = 587; //SMTP port
-$mail->Subject = "Prescription from"." ".$_POST["email"];
-$mail->Body=$_POST["name"].:."''".$_POST["message"]."''";
-$mail->AddAddress($receiver_email);
-$mail->Send();
+$mail->Port = 587;
+$mail->Subject = "Prescription from" . " " . $_POST["email"];
+$mail->Body = $_POST["name"] . ": " . "'" . $_POST["message"] . "'"; // Corrected concatenation
+$mail->addAddress($receiver_email); // Corrected method name
 
-if(!$mail->Send())
-{
-echo "Message could not be sent. <p>";
-echo "Mailer Error: " . $mail->ErrorInfo;
-exit;
+if (!$mail->send()) {
+    echo "Message could not be sent. <p>";
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+    header("Location: create.php");
 }
-if($mail->Send()){
-  header("Location: create.php");
-}
-
-}
- ?>
+?>
