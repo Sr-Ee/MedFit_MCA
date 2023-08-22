@@ -1,5 +1,5 @@
-Dr. Suresh Raina
-FCPS,MRCP
+Dr. Vivek
+DGO,MRCS
 Head Doctor
 Dadar
 
@@ -7,18 +7,18 @@ Ex Assistant Doctor
 khadakpada
 
 
-Name:Ramesh				Age:48					Date:20/08/2023
+Name:Mangya				Age:32					Date:18/08/2023
 
 
 
 
-Chief Complaints: 1. Headache  2. Stomach ache  3. Fever  4. Cold  5. Cough 
-Examination: High heart rate, high fever						Diagnosis:No junk food or cold food
-						1. Dolo(500mg)
+Chief Complaints: 1. Fever  2. Broken hand    
+Examination: Hand is broken, plaster applied. Plaster should be kept intact for 1 month.						Diagnosis:Light hand movement procedure
+						1. Dolo(10mg)
 						     1+1+1
 
-						
-						     
+						2. ItchProof(2mg)
+						     0+0+1
 
 						
 						     
@@ -44,5 +44,5 @@ Examination: High heart rate, high fever						Diagnosis:No junk food or cold foo
 Investigation(s):
 
 Advice: 
-						     Contact Number: 08850868339
-						     Email Address: suresh@gmail.com
+Water should not enter the Plaster. make sure you do not strain the hand						     Contact Number: 8850868333
+						     Email Address: vivek@gmail.com
