@@ -1,24 +1,24 @@
-Dr. Vivek
-DGO,MRCS
-Head Doctor
-Dadar
+Dr. Nepa Ganatra
+MBBS,MD
+Doctor
+Fortis Hospital, Mulund, Maharashtra
 
-Ex Assistant Doctor
-khadakpada
-
-
-Name:Mangya				Age:32					Date:18/08/2023
+Ex 
 
 
 
+Name:Sunny Satish Halkatti				Age:23					Date:04/06/2001
 
-Chief Complaints: 1. Fever  2. Broken hand    
-Examination: Hand is broken, plaster applied. Plaster should be kept intact for 1 month.						Diagnosis:Light hand movement procedure
-						1. Dolo(10mg)
-						     1+1+1
 
-						2. ItchProof(2mg)
-						     0+0+1
+
+
+Chief Complaints: 1. Fever  2. Headache    
+Examination: : The patient presents with a chief complaint of headache, fever, vomiting, and nausea. The symptoms began 1 hour ago and have been continuous. The patient describes the headache as and rates it on a scale of 6 out of 10. The fever has been associated with Nausea. The patient has experienced episodes of vomiting and reports feeling nauseous. There are no specific triggers identified for these symptoms. The patient has tried [any home remedies or medications taken] with no significant relief.						Diagnosis:Fever
+						1. Dolo(0.5mg)
+						     1+0+0
+
+						2. Crocin(1mg)
+						     1+0+0
 
 						
 						     
@@ -42,7 +42,7 @@ Examination: Hand is broken, plaster applied. Plaster should be kept intact for 
 						     
 
 Investigation(s):
-
+Based on the initial assessment, the following investigations are recommended:  Complete blood count (CBC) Basic metabolic panel (BMP) Liver function tests (LFTs) Urinalysis Head CT scan or MRI, if indicated
 Advice: 
-Water should not enter the Plaster. make sure you do not strain the hand						     Contact Number: 8850868333
-						     Email Address: vivek@gmail.com
+Rest and Hydration: It is important to get plenty of rest and stay hydrated. Make sure to drink an adequate amount of fluids, such as water, clear broths, or electrolyte-rich beverages, to prevent dehydration.  Medication Management: Take over-the-counter pain relievers, such as acetaminophen or ibuprofen, as directed to alleviate headache and fever. Antiemetic medications may be recommended to control vomiting and nausea. However, it is advisable to consult a healthcare professional before starting any new medications.  Dietary Considerations: Stick to light and easily digestible foods such as crackers, toast, or broth-based soups. Avoid spicy, fatty, or greasy foods that may further irritate the stomach. If solid foods are difficult to tolerate, opt for small, frequent meals or snacks.  Cool Compress: Applying a cool compress or ice pack to the forehead or back of the neck may help relieve headache symptoms. Ensure the compress is wrapped in a cloth to avoid direct contact with the skin.						     Contact Number: 8108431208
+						     Email Address: nepa@gmail.com
