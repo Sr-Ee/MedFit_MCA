@@ -35,6 +35,11 @@ $pat_result = mysqli_query($con,$query1);
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <?php  
+$receivedValue="";
+if (isset($_GET['value'])) {
+    $receivedValue = $_GET['value'];
+    echo "Received from JavaScript: " . $receivedValue;
+}
 if(isset($_GET['doctor_id'])){
 
     $con = mysqli_connect("localhost","root","","medfit");
@@ -79,6 +84,8 @@ function isSlotAvailable($con, $doctorId, $slotTime)
 
     return false;
 }
+
+
 
 function hasPatientBookedSlot($con, $doctorId, $patientId, $slotDate, $slotTime)
 {
@@ -145,6 +152,8 @@ function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slot
 }
 
 mysqli_close($con);
+
+
 ?>
 
 <style>
@@ -187,6 +196,7 @@ mysqli_close($con);
         margin: 0 auto;
     }
 </style>
+
 
 <body>
     <?php require 'includes/nav.php' ?>
@@ -326,7 +336,7 @@ mysqli_close($con);
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="slot_date">Preferred Date</label>
-                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" type="date"
+                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" onchange="dateChange()" type="date"
                         placeholder="Preferred
                         Date - DD/MM/YYYY" class="form-control input-md" required>
                     </div>
@@ -337,14 +347,17 @@ mysqli_close($con);
                         <label class="control-label" for="slot">Slot Time:</label>
                         <select name="pretime" id="pretime" class="form-control">
                             <?php 
+                                    $currentHour = date("H");
+                                    $day_of_month = date("d");
+                                    
                                     $query = "SELECT * FROM `slot_settings` WHERE `doctor_id` = {$_GET['doctor_id']}";
                                     $select_slot = mysqli_query($con,$query);
                                     while($row = mysqli_fetch_assoc($select_slot)) {
                                         $slot_id = $row['slot_id'];
                                         $slot_time = $row['slot_time'];
-                                            
+                                        
                                             echo "<option value='$slot_time'>{$slot_time}</option>";
-                                         
+                                            
                                         }
                             ?>
                         </select>
@@ -416,5 +429,4 @@ mysqli_close($con);
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
