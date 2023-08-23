@@ -263,7 +263,7 @@ while($row=mysqli_fetch_array($select_query)){
                             <th>Prefered Date</th>
                             <th>Prefered Time</th>
                             <th>Complaints</th>
-                            <!-- <th>Status</th> -->
+                            <th>Status</th>
                             <th>Consultation Type</th>
                             <th>EDIT</th>
                             <th>DELETE</th>
@@ -316,6 +316,7 @@ while($row=mysqli_fetch_array($select_query)){
                                 echo "<td>$predate</td>";
                                 echo "<td>$pretime</td>";
                                 echo "<td>$comp</td>";
+                                echo "<td>$app_status</td>";
                                 if($consult_type == "econsult"){
                                     echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
                                 }
