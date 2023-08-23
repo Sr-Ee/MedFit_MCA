@@ -48,7 +48,7 @@ while($row=mysqli_fetch_array($select_query)){
           <a class="nav-link" target="_blank" href="http://127.0.0.1:5000/">MedHeart</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" target="_blank" href="fitbit/fitbit.php">FitBit</a>
+          <a class="nav-link" target="_blank" href="fitbit/fitbit_data.php">FitBit</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/logout.php">Logout</a>

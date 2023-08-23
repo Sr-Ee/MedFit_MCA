@@ -100,13 +100,16 @@ $pat_result = mysqli_query($con,$query1);
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FitBit Data</a>
+            <a class="nav-link" href="activity.php">Activity</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="heart.php">Heart Rate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="vo2.php">Cardio Score</a>
           </li>
         </ul>
       </div>
@@ -147,35 +150,35 @@ $pat_result = mysqli_query($con,$query1);
         <div class="card-body">
             <h5 class="card-title">Calories Burnt</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">2771 calories</p>
+            <p class="card-text"><span id="caloriesOut"></span>  calories</p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Distance</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">1.8 km</p>
+            <p class="card-text"><span id="distance"> </span>  km</p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Floors</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">4 Floors</p>
+            <p class="card-text"><span id="floors"> </span>  floors</p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Max heart rate</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">177 bpm</p>
+            <p class="card-text"><span id="max"> bpm</span></p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Min heart rate</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-            <p class="card-text">144 bpm</p>
+            <p class="card-text"><span id="min"></span> bpm</p>
         </div>
     </div>
     <div class="card" style="width: 18rem;">
@@ -194,13 +197,6 @@ $pat_result = mysqli_query($con,$query1);
     </div>
   </div>
 
-
-
-
-
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
@@ -208,7 +204,7 @@ $pat_result = mysqli_query($con,$query1);
   <!-- <script src="./heartrate.js"></script> -->
 <script>
 // const accessToken = '<?php //echo $access_token_db;  ?>';
-const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhaU1ciLCJzdWIiOiI5UDRKM00iLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByb3h5IHJudXQgcnBybyByc2xlIHJjZiByYWN0IHJsb2MgcnJlcyByd2VpIHJociBydGVtIiwiZXhwIjoxNjkyNTQ3MzUxLCJpYXQiOjE2OTI1MTg1NTF9.y0W6AKqadG0IzzSSyVEv1_CMQTsOA6ORItLMdjXyV0w';
+const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMzhaU1ciLCJzdWIiOiI5UDRKM00iLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByb3h5IHJwcm8gcm51dCByc2xlIHJjZiByYWN0IHJyZXMgcmxvYyByd2VpIHJociBydGVtIiwiZXhwIjoxNjkyODAyMTkwLCJpYXQiOjE2OTI3NzMzOTB9.WFZ8tjOgcDADkq5puZukkP8VRmaKgKCFAJ3Hg5J23QQ';
 let options = {
     headers: {
         'Authorization': 'Bearer ' + accessToken
@@ -220,9 +216,9 @@ fetch('https://api.fitbit.com/1/user/-/activities/goals/daily.json', options)
         console.log(data);
         const { activeMinutes, caloriesOut, distance, floors, steps } = data.goals;
         // document.getElementById('activeMinutes').innerHTML = activeMinutes;
-        // document.getElementById('caloriesOut').innerHTML = caloriesOut;
-        // document.getElementById('distance').innerHTML = distance;
-        // document.getElementById('floors').innerHTML = floors;
+        document.getElementById('caloriesOut').innerHTML = caloriesOut;
+        document.getElementById('distance').innerHTML = distance;
+        document.getElementById('floors').innerHTML = floors;
         document.getElementById('steps').innerHTML = steps;
     })
     .catch(err => console.error(err));
@@ -250,7 +246,7 @@ fetch('https://api.fitbit.com/1/user/-/cardioscore/date/today.json', options)
     })
     .catch(err => console.error(err));
 
-fetch('https://api.fitbit.com/1/user/-/activities/heart/date/today/30d.json', options)
+fetch('https://api.fitbit.com/1/user/-/activities/heart/date/today/1d.json', options)
     .then(response => response.json())
     .then((data1) => {
         console.log(data1);
