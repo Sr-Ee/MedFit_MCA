@@ -363,7 +363,7 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = 465; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "tanjiro045@zohomail.in";
+	$mail->Username = "tanjiro045";
 	$mail->Password = "Tanjiro29@123";
 	$mail->SetFrom("tanjiro045@zohomail.in");
 	$mail->Subject = $subject;
