@@ -18,6 +18,14 @@ if(isset($_POST['submit']))
     $msg = "<p style='color:green;'>Slot Time Added Successfully!!</p>";
 }
 ?>
+<?php
+if(isset($_GET['delete'])){
+    $the_slot_id = $_GET['delete'];
+    $query = "DELETE FROM `slot_settings`  WHERE `slot_id` = {$the_slot_id} ";
+    $delete_query = mysqli_query($con,$query);
+    header("location: appointment_settings.php");
+    }
+?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
 
 <div id="wrapper">
@@ -238,7 +246,7 @@ if(isset($_POST['submit']))
                                 <div class="form-group">
                                     <label class="control-label" for="slot">Slot Time</label>
                                     <input id="slot" name="slot" type="text" placeholder="Enter Slot Time eg: 10:00 in 24 Hour format"
-                                    class="form-control input-md">
+                                    class="form-control input-md" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -264,8 +272,7 @@ if(isset($_POST['submit']))
                                         
                                     echo "<td>{$slot_id}</td>";
                                     echo "<td>{$slot_time}</td>";
-                                    echo "<td><a href='categories.php?delete={}'>Delete</a></td>";
-                                    echo "<td><a href='categories.php?edit={}'>Edit</a></td>";
+                                    echo "<td><a href='appointment_settings.php?delete={$slot_id}'>Delete</a></td>";
                                     echo "</tr>";
                                     
                                     }
@@ -279,7 +286,6 @@ if(isset($_POST['submit']))
                                     </tr>             -->
                                </tbody>
                             </div>
-                           
                         <!-- Button -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -298,6 +304,7 @@ if(isset($_POST['submit']))
 
 </div>
 <!-- /#wrapper -->
+
 <script>
     // JavaScript code
     function handleRadioClick() {

@@ -23,13 +23,10 @@
                     <a href="completed_appointments.php"><i class="fa fa-fw fa-edit"></i>Completed Appointments</a>
                 </li>
                 <li>
-                    <a href="/MedFit_MCA/prescriptor.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
+                    <a href="appointment_settings.php"><i class="fa fa-fw fa-desktop"></i>Appointment Settings</a>
                 </li>
                 <li>
-                    <a href="../pres-proj/index.html"><i class="fa fa-fw fa-desktop"></i>Prescription Generator New</a>
-                </li>
-                <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i>TeleConference</a>
+                    <a href="../pres-proj/index.html"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
                 </li>
                 <li>
                     <a href="add_posts.php"><i class="fa fa-fw fa-table"></i>Add Posts</a>

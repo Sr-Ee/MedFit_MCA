@@ -104,7 +104,6 @@ function hasPatientBookedSlot($con, $doctorId, $patientId, $slotDate, $slotTime)
 }
 
 
-
 // Function to book an appointment
 function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slotTime, $firstName, $lastName, $email, $mobile, $location, $age, $chiefComplaints, $gender, $consultType)
 {

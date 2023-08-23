@@ -1,5 +1,5 @@
 <?php
-require "phpmailer/PHPMailerAutoload.php";
+require "C:/xampp/htdocs/MedFit_MCA/doctor/EmailSendScript/smtp/PHPMailerAutoload.php";
 session_start();
 $name = $_SESSION["patient_name"];
 if(!isset($_SESSION["doctor_name"]) || strlen($_SESSION["doctor_name"])<1){
@@ -19,12 +19,12 @@ if(isset($_POST["sendMail"]) && strlen($_POST["receiver"])>1){
 
   $mail->SMTPAuth = true;
 
-  $mail->Username = $ini['email']['username']; // SMTP username
-  $mail->Password = $ini['email']['password']; // SMTP password
+  $mail->Username = "sunnyshmca04@gmail.com"; // SMTP username
+  $mail->Password = "nzpabphfvwrcgpfq"; // SMTP password
   $mail->addAttachment("prescription.pdf");
   $mail->addAttachment("<?php echo $name.'_'.'prescription.docx' ?>");
-  $mail->From = "tawsifhasan882@gmail.com";
-  $mail->SMTPSecure = 'tls';
+  $mail->From = "sunnyshmca04@gmail.com";
+  $mail->SMTPSecure = 'ssl';
   $mail->Port = 587; //SMTP port
   $mail->Subject = "Prescription from"." ".$_SESSION["doctor_name"];
   $mail->Body='Please find your prescription from'." ".$_SESSION["doctor_name"]." "."attached to this email. DO NOT USE THE PRESCRIBED MEDICINE IF YOU DO NOT KNOW THE DOCTOR OR IF YOU HAVE NOT ASKED FOR SUCH A PRESCRIPTION";
@@ -109,9 +109,9 @@ echo"</div>";*/
 <a class="view-links" href="<?php echo $name.'_'.'prescription.docx' ?>" download>Download MSWord File</a>
 <a class="view-links" href="prescription.txt" download>Download Text File</a><br>
 <small>*PDF Format is recommended</small>
-<div class="sendMail"><label for="email">Send to:</label><br>
+<!-- <div class="sendMail"><label for="email">Send to:</label><br>
 <input type="email" id="email" name="receiver" class="col-5" placeholder="Email Address">
-<input type="submit" name="sendMail" value="Send Prescription" class="col-4"></div>
+<input type="submit" name="sendMail" value="Send Prescription" class="col-4"></div> -->
 </form>
 </div>
 </main>

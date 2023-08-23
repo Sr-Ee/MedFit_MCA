@@ -23,7 +23,7 @@ $pat_result = mysqli_query($con,$query1);
           $pat_comp = $row['chief_complaints'];
           
       }
-}
+    }
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/includes/pat_header.php'); ?>
 <div id="wrapper">
@@ -183,20 +183,17 @@ $pat_result = mysqli_query($con,$query1);
 
                     ?>
 
-                        <?php
-
+                    <?php
                         if(isset($_GET['cancel'])) {
                                         
                             $the_app_id1 = $_GET['cancel'];
                         
                             //$query = "DELETE FROM `added_appointments_new` WHERE `id` =' $the_app_id'";
-                            $query = "UPDATE `added_appointments_new` SET `app_status` = 'cancelled' WHERE `id` ='$the_app_id1'";
+                            $query = "DELETE FROM `added_appointments_new` WHERE `id` ='$the_app_id1'";
                             $delete_query = mysqli_query($con,$query);
-                        
                             //confirm($delete_query);
-                            //header("Location: view_appointments.php");
+                            //header("location: patient_appointments.php");
                         }  
-
                     ?>
                     </tbody>
                 </table>

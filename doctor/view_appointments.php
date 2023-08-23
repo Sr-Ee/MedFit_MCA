@@ -287,6 +287,7 @@ while($row=mysqli_fetch_array($select_query)){
                             $mobile = $row['mobile'];
                             $location = $row['location'];
                             $age = $row['age'];
+                            $app_status = $row['app_status'];
                             $comp = $row['chief_complaints'];
                             $gender = $row['gender'];
                             $consult_type = $row['consult_type'];
@@ -360,13 +361,19 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->IsSMTP(); 
 	$mail->SMTPAuth = true; 
 	$mail->SMTPSecure = 'ssl'; 
-	$mail->Host = "smtp.zoho.com";
+	$mail->Host = "smtp.gmail.com";
 	$mail->Port = 465; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
+<<<<<<< Updated upstream
 	$mail->Username = "tanjiro045";
 	$mail->Password = "Tanjiro29@123";
 	$mail->SetFrom("tanjiro045@zohomail.in");
+=======
+	$mail->Username = "sunnyshmca04@gmail.com";
+	$mail->Password = "nzpabphfvwrcgpfq";
+	$mail->SetFrom("sunnyshmca04@gmail.com");
+>>>>>>> Stashed changes
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
