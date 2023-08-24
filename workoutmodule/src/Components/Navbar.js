@@ -18,14 +18,15 @@ export default function Navbar() {
     }
   return (
     <>
-    <div id="nav" ><div>Workout</div>
+    <div id="nav" >
+      <div>MedFit - Workout</div>
     
     <div style={{display:'flex',gap:"20px"}}>
     <div><select style={{padding:"5px",opacity:"0.9",border:"5px solid whitesmoke"}} name="group" id="group" value={selecttype} onChange={handleselecttype}>
                  <option value="cardio">cardio</option>
                  <option value="plyometrics">plyometrics</option>
                  <option value="strength">strength</option>
-                 <option value="none">none</option>
+                 <option value="none">select</option>
               </select></div>
     
 
@@ -33,13 +34,13 @@ export default function Navbar() {
                  <option value="abdominals">abdominals</option>
                  <option value="biceps">biceps</option>
                  <option value="triceps">triceps</option>
-                 <option value="none">none</option>
+                 <option value="none">select</option>
               </select></div>
               <div><select style={{padding:"5px",opacity:"0.9",border:"5px solid whitesmoke"}} name="group" id="group" value={selectdifficulty} onChange={handleselectdifficulty}>
                  <option value="beginner">beginner</option>
                  <option value="intermediate">intermediate</option>
                  <option value="expert">expert</option>
-                 <option value="none">none</option>
+                 <option value="none">select</option>
               </select></div>
 </div>
 </div>

@@ -100,7 +100,7 @@ $pat_result = mysqli_query($con,$query1);
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="">Home</a>
+            <a class="nav-link active" aria-current="page" href="fitbit_data.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="activity.php">Activity</a>
@@ -186,13 +186,6 @@ $pat_result = mysqli_query($con,$query1);
             <h5 class="card-title">VO2 Max</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">by date - <span id="date"></span></h6>
             <p class="card-text" id="vo2">Range: <span id="range"></span></p>
-        </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Breathing Rate</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">by date</h6>
-            <p class="card-text" id="vo2">17.8</p>
         </div>
     </div>
   </div>

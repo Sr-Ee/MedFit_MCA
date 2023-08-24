@@ -365,15 +365,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = 465; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-<<<<<<< Updated upstream
-	$mail->Username = "tanjiro045";
-	$mail->Password = "Tanjiro29@123";
-	$mail->SetFrom("tanjiro045@zohomail.in");
-=======
 	$mail->Username = "sunnyshmca04@gmail.com";
 	$mail->Password = "nzpabphfvwrcgpfq";
 	$mail->SetFrom("sunnyshmca04@gmail.com");
->>>>>>> Stashed changes
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
