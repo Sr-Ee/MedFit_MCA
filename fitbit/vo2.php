@@ -11,18 +11,11 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
-      table, th, td {
-  border: 1px solid black;
-}
 .container{
-    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    width: 31rem;
     margin-top: 5rem;
-}
-#dataTable{
-    margin-top: 10px;
-}
-button{
-    margin: 2px;
 }
 </style>
 </head>
@@ -55,16 +48,17 @@ button{
 
 <div class="container">
 <h1>Fitbit Cardio Score</h1>
-    <label for="startDate" class="form-label">Start Date:</label>
-    <input type="date" id="startDate" class="form-control">
-    <label for="endDate" class="form-label">End Date:</label>
-    <input type="date" id="endDate" class="form-control">
-    <button id="fetchButton" class="btn btn-primary">Fetch Data</button>
-    <table id="dataTable" class="table table-striped-columns">
-        <!-- Data will be populated here -->
-    </table>
+    <input  class="form-control" type="text" id="accessTokenInput" placeholder="Enter Access Token">
+    <button class="btn btn-success" id="saveTokenButton">Save Access Token</button>
+    <br>
+    <label for="startDateInput">Start Date:</label>
+    <input  class="form-control" type="date" id="startDateInput" value="">
+    <label for="endDateInput">End Date:</label>
+    <input  class="form-control" type="date" id="endDateInput" value="">
+    <button class="btn btn-success" id="fetchDataButton">Fetch Cardio Score Data</button>
+    <div id="cardioScoreData"></div>
 </div>
 
-    <script src="vo2.js"></script>
+    <script src="vo2_1.js"></script>
 </body>
 </html>

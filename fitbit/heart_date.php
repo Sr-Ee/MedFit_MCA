@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitbit - Heart</title>
+    <title>Fitbit - Activity</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -17,22 +15,24 @@
     width: 31rem;
     margin-top: 5rem;
 }
+li{
+    font-size: 20px;
+}
 </style>
 <body>
 <?php include "nav.php"; ?>
-<div class="container">
-    <input class="form-control" type="text" id="accessTokenInput" placeholder="Enter Access Token">
-    <button class="btn btn-success" id="saveTokenButton">Save Access Token</button>
+  <div class="container">
+  <h1>Heart Rate by Date</h1>
+  <input class="form-control" type="text" id="accessTokenInput" placeholder="Enter Access Token">
+    <button id="saveTokenButton" class="btn btn-success">Save Access Token</button>
     <br>
-    <label for="startDateInput">Start Date:</label>
-    <input class="form-control" type="date" id="startDateInput" value="">
-    <label for="endDateInput">End Date:</label>
-    <input class="form-control" type="date" id="endDateInput" value="">
-    <button class="btn btn-success" id="fetchDataButton">Fetch Heart Rate Data</button>
+    <label for="dateInput">Select Date:</label>
+    <input class="form-control" type="date" id="dateInput" value="">
+    <button id="fetchDataButton" class="btn btn-success">Fetch Heart Rate Data</button>
     <div id="heartRateData"></div>
-</table>
-</div>
     
-    <script src="heart1.js"></script>
+  </div>
+   
+    <script src="heart_date1.js"></script>
 </body>
 </html>

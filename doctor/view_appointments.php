@@ -6,10 +6,25 @@ $name_query = "SELECT * FROM `doctors` WHERE `doctor_id`='$doctorid'";
 $select_query = mysqli_query($con,$name_query);
 
 while($row=mysqli_fetch_array($select_query)){
-  $fname = $row['first_name'];
-  $lname = $row['last_name'];
+  $first_name = $row['first_name'];
+  $last_name = $row['last_name'];
+  $qualify = $row['qualification'];
 }
 
+$msg1="";
+if(isset($_POST['submit'])){
+
+$app_detail = $_POST['app_detail'];
+  $update_query = "UPDATE `added_appointments_new` SET `app_detail` = '$app_detail' WHERE `added_appointments_new`.`id` = {$doctorid};";
+  $update_profile1 = mysqli_query($con,$update_query);
+  
+  if(!$update_profile1){
+    die("Query Failed" . mysqli_error($con));
+  }
+  else{
+    $msg1 = "<p style='color:red;'>Appointment Status Updated Successfully!!</p>";
+  }
+}
 
 ?>
 <?php  include('C:/xampp/htdocs/MedFit_MCA/doctor/includes/doc_header.php'); ?>
@@ -60,7 +75,7 @@ while($row=mysqli_fetch_array($select_query)){
 
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
-                    <?php echo $fname.' '.$lname; ?> <b class="caret"></b>
+                    <?php echo $first_name.' '.$last_name; ?> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
@@ -100,10 +115,10 @@ while($row=mysqli_fetch_array($select_query)){
                                 <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid'";
                                             $select_all_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_all_app)){
-                                                $add_app_id = $row['add_app_id'];
+                                                $add_app_id = $row['id'];
                                             }
                                             $app_counts = mysqli_num_rows($select_all_app);
 
@@ -135,10 +150,10 @@ while($row=mysqli_fetch_array($select_query)){
                                 <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Scheduled Appointment'";
+                                        $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Scheduled Appointment'";
                                         $select_sche_app = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_assoc($select_sche_app)){
-                                            $add_app_id = $row['add_app_id'];
+                                            $add_app_id = $row['id'];
                                         }
                                         $sche_counts = mysqli_num_rows($select_sche_app);
 
@@ -169,10 +184,10 @@ while($row=mysqli_fetch_array($select_query)){
                                 <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Active Appointment'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Active Appointment'";
                                             $select_active_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_active_app)){
-                                                $add_app_id = $row['add_app_id'];
+                                                $add_app_id = $row['id'];
                                             }
                                             $active_counts = mysqli_num_rows($select_active_app);
 
@@ -203,10 +218,10 @@ while($row=mysqli_fetch_array($select_query)){
                                 <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Completed Appointment'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Completed Appointment'";
                                             $select_cancel_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_cancel_app)){
-                                                $add_app_id = $row['add_app_id'];
+                                                $add_app_id = $row['id'];
                                             }
                                             $cancelled_counts = mysqli_num_rows($select_cancel_app);
 
@@ -246,6 +261,7 @@ while($row=mysqli_fetch_array($select_query)){
                         </div>
                     </div>
                 </div>
+                <?php  echo $msg1; ?>
             </div>
             <!-- /.row -->
             <form action="" method="post">
@@ -317,7 +333,15 @@ while($row=mysqli_fetch_array($select_query)){
                                 echo "<td>$predate</td>";
                                 echo "<td>$pretime</td>";
                                 echo "<td>$comp</td>";
-                                echo "<td>$app_status</td>";
+                                echo "<td>$app_status
+                                <select name='app_detail' id='app_detail'>
+                                <option value=''>Select Status</option>
+                                <option value='Active Appointment'>Active Appointment</option>
+                                <option value='Completed Appointment'>Completed Appointment</option>
+                                <option value='Cancelled Appointment'>Cancelled Appointment</option>
+                                </select>
+                                <button id='submit' name='submit' class='btn btn-primary'>Confirm Appointment</button>
+                                </td>";
                                 if($consult_type == "econsult"){
                                     echo "<td><a href='".$result->join_url."' target='_blank'>".$result->join_url."</a></td>";
                                 }
@@ -386,8 +410,17 @@ function smtp_mailer($to,$subject, $msg){
 $msg="";
 if(isset($_POST['submitbtn'])){
     $msg="Link Sent Sucessfully";
-    $mailHtml = "Your Zoom Link: <a href='".$result->join_url."' target='_blank'>".$result->join_url."</a>";
-    smtp_mailer($email,'Zoom Link Sent',$mailHtml);
+    $mailHtml = "
+        Hello $fname, Your Virtual Appointment with Dr. $first_name $last_name is scheduled on $predate at $pretime,
+        Click on the link at specified time to join the session.\n
+        <a href='".$result->join_url."' target='_blank'>".$result->join_url."</a>
+        \n
+        Thanks & Regards,
+        $first_name $last_name
+        $qualify
+        
+        ";
+    smtp_mailer($email,'Appointment Details',$mailHtml);
 }else{
     $msg="Link Sending Failed";
 }

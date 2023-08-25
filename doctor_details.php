@@ -104,10 +104,24 @@ function hasPatientBookedSlot($con, $doctorId, $patientId, $slotDate, $slotTime)
 }
 
 
+function isDateTimeValid($date, $time) {
+    date_default_timezone_set('Asia/Kolkata'); // Set your desired timezone
+
+    $selected_datetime = strtotime("$date $time");
+    $current_datetime = time();
+
+    // Check if the selected date and time is in the future
+    if ($selected_datetime > $current_datetime) {
+        return true; // Valid
+    } else {
+        return false; // Invalid
+    }
+}
+
 // Function to book an appointment
 function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slotTime, $firstName, $lastName, $email, $mobile, $location, $age, $chiefComplaints, $gender, $consultType)
 {
-    if (isSlotAvailable($con, $doctorId, $slotTime)) 
+    if (isSlotAvailable($con, $doctorId, $slotTime) && isDateTimeValid($slotDate, $slotTime)) 
     {
         if (hasPatientBookedSlot($con, $doctorId, $patientId, $slotDate, $slotTime)) {
             echo "<p style='color:red;margin-top: 4rem;'>Sorry, you have already booked an appointment for the day</p>";
@@ -126,9 +140,12 @@ function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slot
     } 
     
     else {
-        echo "<p style='color:red;margin-top: 4rem;'>Sorry, the selected slot is not available. Please choose a different time.</p>";
+        echo "<p style='color:red;margin-top: 4rem;'>Sorry, the selected slot is not available or Time has Passed. Please choose a different time.</p>";
     }
 }
+
+
+
 
     $patientid = $_SESSION['patient_id'];
     $doctorId = $_GET['doctor_id'];
@@ -331,11 +348,12 @@ mysqli_close($con);
                             required>
                     </div>
                 </div>
+
                 <!-- Text input-->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="slot_date">Preferred Date</label>
-                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" onchange="dateChange()" type="date"
+                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" type="date"
                         placeholder="Preferred
                         Date - DD/MM/YYYY" class="form-control input-md" required>
                     </div>
@@ -345,21 +363,38 @@ mysqli_close($con);
                     <div class="form-group">
                         <label class="control-label" for="slot">Slot Time:</label>
                         <select name="pretime" id="pretime" class="form-control">
+                        <option value='Select Slot'>Select Slot</option>
+                           
+
+                            
                             <?php 
-                                    $currentHour = date("H");
-                                    $day_of_month = date("d");
+                                    function isToday($date) {
+                                        $today = date('Y-m-d'); // Get today's date in 'YYYY-MM-DD' format
+                                        return ($date === $today);
+                                    }
+                                    date_default_timezone_set('Asia/Kolkata');
+                                    $current_time = date('H:i');
+                                    $current_date = date('Y-m-d');
+                                    $next_date = date('Y-m-d', strtotime('+1 day'));
                                     
-                                    $query = "SELECT * FROM `slot_settings` WHERE `doctor_id` = {$_GET['doctor_id']}";
+                                    $query = "SELECT * FROM `slot_settings` WHERE `doctor_id` = {$_GET['doctor_id']} ORDER BY `slot_id` ASC";
                                     $select_slot = mysqli_query($con,$query);
+
+                                    
                                     while($row = mysqli_fetch_assoc($select_slot)) {
                                         $slot_id = $row['slot_id'];
+                                        $doc_id1 = $row['doctor_id'];
                                         $slot_time = $row['slot_time'];
-                                        
+
                                             echo "<option value='$slot_time'>{$slot_time}</option>";
                                             
+                                            //echo "<option style='color:red;' value='$slot_time' disabled>{$slot_time}</option>";  
+
+
                                         }
                             ?>
                         </select>
+                        
                     </div>
                 </div>
 
@@ -427,5 +462,12 @@ mysqli_close($con);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+        <script>
+            let datePicker = document.getElementById('date');
+            datePicker.addEventListener('change', () => {
+            let selectedDate = datePicker.value;
+            console.log(selectedDate);
+        });
+</script>
 </body>
 </html>

@@ -274,9 +274,10 @@ $section->addText("Diagnosis: ".$diagnosis,array('name'=>'Times New Roman','size
 
 $section->addText("                                                                        "."  "."Contact Number: ".$doctor_phone,array('name'=>'Arial','size'=>10,'color'=>'0000AA'));
 $section->addText("                                                                        "."  "."Email Address: ".$doctor_email,array('name'=>'Arial','size'=>10,'color'=>'0000AA'));
+
 // Saving the document as OOXML file...
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-$objWriter->save($name.'_'.'prescription.docx');
+$objWriter->save('prescription.docx');
 
 //Saving as pdf*****
 //fpdf

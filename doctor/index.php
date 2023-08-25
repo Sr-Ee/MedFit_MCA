@@ -96,10 +96,10 @@ while($row=mysqli_fetch_array($select_query)){
                                     <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid'";
                                             $select_all_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_all_app)){
-                                                $add_app_id = $row['add_app_id'];
+                                                $add_app_id = $row['id'];
                                             }
                                             $app_counts = mysqli_num_rows($select_all_app);
 
@@ -129,10 +129,10 @@ while($row=mysqli_fetch_array($select_query)){
                                     <div class="col-xs-9 text-right">
                                     <?php
                                    
-                                        $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Scheduled Appointment'";
+                                        $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Scheduled Appointment'";
                                         $select_sche_app = mysqli_query($con,$query);
                                         while($row = mysqli_fetch_assoc($select_sche_app)){
-                                            $add_app_id = $row['add_app_id'];
+                                            $add_app_id = $row['id'];
                                         }
                                         $sche_counts = mysqli_num_rows($select_sche_app);
 
@@ -161,7 +161,7 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Active Appointment'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Active Appointment'";
                                             $select_active_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_active_app)){
                                                 $add_app_id = $row['add_app_id'];
@@ -193,10 +193,10 @@ while($row=mysqli_fetch_array($select_query)){
                                         <div class="col-xs-9 text-right">
                                         <?php
                                    
-                                            $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `app_status`='Completed Appointment'";
+                                            $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `app_detail`='Completed Appointment'";
                                             $select_cancel_app = mysqli_query($con,$query);
                                             while($row = mysqli_fetch_assoc($select_cancel_app)){
-                                                $add_app_id = $row['add_app_id'];
+                                                $add_app_id = $row['id'];
                                             }
                                             $cancelled_counts = mysqli_num_rows($select_cancel_app);
 
@@ -219,17 +219,17 @@ while($row=mysqli_fetch_array($select_query)){
                     <!-- /.row -->
                     <?php  
                     
-                    $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `consult_type`='econsult'";
+                    $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `consult_type`='econsult'";
                     $select_econsult_app = mysqli_query($con,$query);
                     while($row = mysqli_fetch_assoc($select_econsult_app)){
-                        $add_app_id = $row['add_app_id'];
+                        $add_app_id = $row['id'];
                     }
                     $econsult_counts = mysqli_num_rows($select_econsult_app); 
 
-                    $query = "SELECT * FROM `added_appointments` WHERE `doctor_id` = '$doctorid' AND `consult_type`='inclinic'";
+                    $query = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = '$doctorid' AND `consult_type`='inclinic'";
                     $select_inclinic_app = mysqli_query($con,$query);
                     while($row = mysqli_fetch_assoc($select_inclinic_app)){
-                        $add_app_id = $row['add_app_id'];
+                        $add_app_id = $row['id'];
                     }
                     $inclinic_counts = mysqli_num_rows($select_inclinic_app);               
                     

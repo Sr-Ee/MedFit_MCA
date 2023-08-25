@@ -105,10 +105,8 @@ echo"</div>";*/
 <form method="post">
 <a class="view-links" href="<?php echo $name.'_'.'prescription.pdf' ?>" target="_blank">Click to view</a><br>
 <a class="view-links" href="javascript:history.go(-1)">Edit</a><br>
-<a class="view-links" href="<?php echo $name.'_'.'prescription.pdf' ?>" download>Download PDF</a>
 <a class="view-links" href="<?php echo $name.'_'.'prescription.docx' ?>" download>Download MSWord File</a>
 <a class="view-links" href="prescription.txt" download>Download Text File</a><br>
-<small>*PDF Format is recommended</small>
 <!-- <div class="sendMail"><label for="email">Send to:</label><br>
 <input type="email" id="email" name="receiver" class="col-5" placeholder="Email Address">
 <input type="submit" name="sendMail" value="Send Prescription" class="col-4"></div> -->
