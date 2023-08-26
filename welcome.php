@@ -115,12 +115,12 @@ if(!isset($_SESSION['is_login'])){
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="./img/medbot.avif" class="card-img-top" alt="...">
+      <img src="./img/heart.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">MedBot</h5>
-        <p class="card-text">Our chatbot is designed to provide personalized and accurate medical advice, 
-          based on your symptoms and medical history..</p>
-        <a href="medbot.php" class="btn btn-primary">Access MedBot</a>
+        <h5 class="card-title">Heart Rate Failure & Diabetes Prediction</h5>
+        <p class="card-text">Introducing our innovative heart failure prediction feature: 
+          harnessing advanced algorithms to analyze key biometrics and trends, enabling proactive monitoring and early detection for optimal cardiac care</p>
+        <a href="http://127.0.0.1:5000/" class="btn btn-primary">Access MedHeart</a>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
