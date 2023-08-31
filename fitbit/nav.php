@@ -16,7 +16,6 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="activity.php">Activity Data by Date</a></li>
-            <li><a class="dropdown-item" href="#">Activity Data by Interval</a></li>
           </ul>
         </li>
           <li class="nav-item dropdown">

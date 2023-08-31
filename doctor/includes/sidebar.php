@@ -10,6 +10,9 @@
                 <li>
                     <a href="appointments_status.php"><i class="fa fa-fw fa-edit"></i>Appointment Status</a>
                 </li>
+                <li>
+                    <a href="patient_vitals.php"><i class="fa fa-fw fa-dashboard"></i>Patient Vitals</a>
+                </li>
                 <!-- <li>
                     <a href="cancel_appointments.php"><i class="fa fa-fw fa-edit"></i>Cancelled Appointments</a>
                 </li> -->
@@ -29,7 +32,7 @@
                     <a href="appointment_settings.php"><i class="fa fa-fw fa-desktop"></i>Appointment Settings</a>
                 </li>
                 <li>
-                    <a href="../pres-proj/index.html"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
+                    <a href="pres_gen.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
                 </li>
                 <li>
                     <a href="../../cms"><i class="fa fa-fw fa-table"></i>MedBlog</a>
