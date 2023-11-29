@@ -410,10 +410,11 @@ mysqli_close($con);
 
                                     
                                     while($row = mysqli_fetch_assoc($select_slot)) {
-                                        while($row1 = mysqli_fetch_assoc($select_slot1)){
-                                            $slot_id = $row['slot_id'];
+                                             $slot_id = $row['slot_id'];
                                              $doc_id1 = $row['doctor_id'];
                                              $slot_time = $row['slot_time'];
+                                        while($row1 = mysqli_fetch_assoc($select_slot1)){
+                                            
                                              $slot_time_part = $row1['slot_time_part'];
 
                                            if($slot_time == $slot_time_part){
