@@ -414,7 +414,7 @@ mysqli_close($con);
                                             $slot_id = $row['slot_id'];
                                              $doc_id1 = $row['doctor_id'];
                                              $slot_time = $row['slot_time'];
-                                             $slot_time_part = $row['slot_time_part'];
+                                             $slot_time_part = $row1['slot_time_part'];
 
                                            if($slot_time == $slot_time_part){
                                               echo "<option style='color:red;' value='$slot_time'>{$slot_time}</option>";
