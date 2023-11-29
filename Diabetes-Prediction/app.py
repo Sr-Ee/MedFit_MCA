@@ -20,7 +20,6 @@ def home():
         bmi = float(request.form.get('bmi'))
         func = float(request.form.get('func'))
         age = int(request.form.get('age'))
-
         input_features = [[pregs, gluc, bp, skin, insulin, bmi, func, age]]
         # print(input_features)
         prediction = model.predict(scaler.transform(input_features))

@@ -87,9 +87,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
     $mail->AddAttachment('prescription.pdf');
-	$mail->Username = "sunnyshmca04@gmail.com";
-	$mail->Password = "nzpabphfvwrcgpfq";
-	$mail->SetFrom("sunnyshmca04@gmail.com");
+	$mail->Username = "";
+	$mail->Password = "";
+	$mail->SetFrom("");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
