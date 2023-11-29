@@ -404,7 +404,7 @@ mysqli_close($con);
                                     $next_date = date('Y-m-d', strtotime('+1 day'));
                                     
                                     $query = "SELECT * FROM `slot_settings` WHERE `doctor_id` = {$_GET['doctor_id']} ORDER BY `slot_id` ASC";
-                                    $query1 = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = {$_GET['doctor_id']} ORDER BY `slot_id` ASC";
+                                    $query1 = "SELECT * FROM `added_appointments_new` WHERE `doctor_id` = {$_GET['doctor_id']}";
                                     $select_slot = mysqli_query($con,$query);
                                     $select_slot1 = mysqli_query($con,$query1);
 
