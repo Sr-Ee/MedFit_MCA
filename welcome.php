@@ -161,4 +161,25 @@ if(!isset($_SESSION['is_login'])){
   </script> -->
   <!--End of Tawk.to Script-->
 </body>
+<script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+      "composerPlaceholder": "Chat with MedBot",
+      "botConversationDescription": "Medical bot",
+      "botId": "b69a61b9-3460-446a-8917-adaf4d05dced",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "b69a61b9-3460-446a-8917-adaf4d05dced",
+      "webhookId": "8f79930a-ece6-46b1-875f-9a7a58f9d102",
+      "lazySocket": true,
+      "themeName": "prism",
+      "botName": "MedBot",
+      "frontendVersion": "v1",
+      "useSessionStorage": true,
+      "enableConversationDeletion": true,
+      "showPoweredBy": true,
+      "theme": "prism",
+      "themeColor": "#2563eb"
+  });
+</script>
 </html>
