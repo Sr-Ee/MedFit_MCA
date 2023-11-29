@@ -35,10 +35,14 @@ if(!isset($_SESSION['is_login'])){
       background-position: 0% 50%;
     }
   }
+
+  .nutrition-card{
+    margin-top:70px;
+  }
   </style>
   <?php require '../includes/nav.php' ?>
   <div class="container my-3">
-    <div class="card">
+    <div class="card nutrition-card">
       <div class="card-header bg-primary text-white">
         <h3 class="card-title mb-0">Nutrition Facts</h3>
       </div>

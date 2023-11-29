@@ -35,11 +35,11 @@ while($row=mysqli_fetch_array($select_query)){
         <li class="nav-item">
           <a class="nav-link" href="/MedFit_MCA/view_all_hospitals.php">Hospitals</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="medbot.php">MedBot(Beta)</a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="">Book Appointments</a>
+          <a class="nav-link" href="/MedFit_MCA/doc_search.php">Book Appointments</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../../cms/index.php">MedBlogs</a>

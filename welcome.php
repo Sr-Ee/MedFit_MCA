@@ -45,7 +45,7 @@ if(!isset($_SESSION['is_login'])){
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 49px;
+    margin: 77px;
   }
 
   .card {

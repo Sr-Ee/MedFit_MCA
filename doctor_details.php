@@ -118,9 +118,26 @@ function isDateTimeValid($date, $time) {
     }
 }
 
+
+function isHolidayDate($con, $doctorId,$slotDate){
+    $sql = "SELECT * FROM `holiday_settings` WHERE `doc_id` = '$doctorId'";
+    $result = mysqli_query($con, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+        $holi_date = $row['holi_date'];
+       
+           if($holi_date == $slotDate){
+                return false;
+           }
+    }
+    return true; // Valid
+
+}
+
 // Function to book an appointment
 function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slotTime, $firstName, $lastName, $email, $mobile, $location, $age, $chiefComplaints, $gender, $consultType)
 {
+    if(isHolidayDate($con, $doctorId,$slotDate)){
+
     if (isSlotAvailable($con, $doctorId, $slotTime) && isDateTimeValid($slotDate, $slotTime)) 
     {
         if (hasPatientBookedSlot($con, $doctorId, $patientId, $slotDate, $slotTime)) {
@@ -142,6 +159,12 @@ function bookAppointment($con, $doctorId, $patientId, $forWhom, $slotDate, $slot
     else {
         echo "<p style='color:red;margin-top: 4rem;'>Sorry, the selected slot is not available or Time has Passed. Please choose a different time.</p>";
     }
+}
+else{
+    echo "<p style='color:red;margin-top: 4rem;'>Sorry, the doctor is on holiday, please try some another dates.</p>";
+}
+
+ 
 }
 
 
@@ -353,7 +376,10 @@ mysqli_close($con);
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="slot_date">Preferred Date</label>
-                        <input id="date" min="<?php echo date("Y-m-d"); ?>" name="slot_date" type="date"
+                        <?php
+                            $nextMonth = date('Y-m-d', strtotime('+2 month'));
+                        ?>
+                        <input id="date" min="<?php echo date("Y-m-d"); ?>"  max="<?php echo $nextMonth; ?>" name="slot_date" type="date"
                         placeholder="Preferred
                         Date - DD/MM/YYYY" class="form-control input-md" required>
                     </div>

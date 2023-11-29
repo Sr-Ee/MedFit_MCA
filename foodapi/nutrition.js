@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const resultDiv = document.querySelector('#result');
-const appId = '935ec428'; // replace with your actual app ID
-const appKey = 'db2d05c007699983737d0f805d1445d8'; // replace with your actual app key
+const appId = '78221b89'; // replace with your actual app ID
+const appKey = '89ec75c387f70b66be70eea93559aaae'; // replace with your actual app key
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();

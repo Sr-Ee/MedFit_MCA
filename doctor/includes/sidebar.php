@@ -26,13 +26,17 @@
                     <a href="add_patients.php"><i class="fa fa-fw fa-table"></i>Add Patients</a>
                 </li>
                
-                
-               
                 <li>
                     <a href="appointment_settings.php"><i class="fa fa-fw fa-desktop"></i>Appointment Settings</a>
                 </li>
                 <li>
+                    <a href="holiday_settings.php"><i class="fa fa-fw fa-desktop"></i>Holiday Settings</a>
+                </li>
+                <li>
                     <a href="pres_gen.php"><i class="fa fa-fw fa-desktop"></i>Prescription Generator</a>
+                </li>
+                <li>
+                    <a href="teleconsult_appointments.php"><i class="fa fa-fw fa-desktop"></i>Inclinic Appointments</a>
                 </li>
                 <li>
                     <a href="../../cms"><i class="fa fa-fw fa-table"></i>MedBlog</a>

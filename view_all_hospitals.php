@@ -44,6 +44,7 @@ if(!isset($_SESSION['is_login'])){
     .container{
         display: flex;
         justify-content: center;
+        margin-top: 100px;  
     }
 
     .card {
@@ -68,7 +69,7 @@ if(!isset($_SESSION['is_login'])){
 <body>
 <?php require 'includes/nav.php' ?>
 
-    <div class="container mx-auto mt-4">
+    <div class="container mx-auto">
         <?php
             $query1 = "SELECT * FROM `hospital`";
             $select_all_hosp_query = mysqli_query($con,$query1);

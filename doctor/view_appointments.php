@@ -14,8 +14,8 @@ while($row=mysqli_fetch_array($select_query)){
 $msg1="";
 if(isset($_POST['submit'])){
 
-$app_detail = $_POST['app_detail'];
-  $update_query = "UPDATE `added_appointments_new` SET `app_detail` = '$app_detail' WHERE `added_appointments_new`.`id` = {$doctorid};";
+  $app_detail = $_POST['app_detail'];
+  $update_query = "UPDATE `added_appointments_new` SET `app_detail` = '$app_detail' WHERE `id` = {$doctorid};";
   $update_profile1 = mysqli_query($con,$update_query);
   
   if(!$update_profile1){
@@ -305,6 +305,7 @@ $app_detail = $_POST['app_detail'];
                             $age = $row['age'];
                             $app_status = $row['app_status'];
                             $comp = $row['chief_complaints'];
+                            
                             $gender = $row['gender'];
                             $consult_type = $row['consult_type'];
                             $app_status = $row['app_status'];
@@ -389,9 +390,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = 465; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "sunnyshmca04@gmail.com";
+	$mail->Username = "sonuhalkatti23@gmail.com";
 	$mail->Password = "nzpabphfvwrcgpfq";
-	$mail->SetFrom("sunnyshmca04@gmail.com");
+	$mail->SetFrom("sonuhalkatti23@gmail.com");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);

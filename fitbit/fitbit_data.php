@@ -108,28 +108,28 @@ if(!isset($_SESSION['is_login'])){
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Calories Burnt</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Data</h6>
         <p class="card-text"><span id="caloriesOut"></span> calories</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Distance</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Data</h6>
         <p class="card-text"><span id="distance"> </span> km</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">Floors</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Data</h6>
         <p class="card-text"><span id="floors"> </span> floors</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">VO2 Max</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">by date - <span id="date"></span></h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Data - <span id="date"></span></h6>
         <p class="card-text" id="vo2">Range: <span id="range"></span></p>
       </div>
     </div>
