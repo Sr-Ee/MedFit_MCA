@@ -379,9 +379,8 @@ mysqli_close($con);
                         <?php
                             $nextMonth = date('Y-m-d', strtotime('+2 month'));
                         ?>
-                        <input id="date" min="<?php echo date("Y-m-d"); ?>"  max="<?php echo $nextMonth; ?>" name="slot_date" type="date"
-                        placeholder="Preferred
-                        Date - DD/MM/YYYY" class="form-control input-md" required>
+                        <input id="date" min="<?php echo date("Y-m-d"); ?>"  max="<?php echo $nextMonth; ?>" name="slot_date" type="date" 
+                        placeholder="Preferred Date - DD/MM/YYYY" class="form-control input-md" required>
                     </div>
                 </div>
                 <!-- Select Basic -->
@@ -413,9 +412,11 @@ mysqli_close($con);
                                              $slot_id = $row['slot_id'];
                                              $doc_id1 = $row['doctor_id'];
                                              $slot_time = $row['slot_time'];
+                                            
                                              $slot_exists = false;
                                              while ($row1 = mysqli_fetch_assoc($select_slot1)) {
                                                  $slot_time_part = $row1['slot_time_part'];
+                                                 $slot_date = $row1['slot_date'];
                                                  if ($slot_time == $slot_time_part) {
                                                      $slot_exists = true;
                                                      break;
@@ -503,7 +504,10 @@ mysqli_close($con);
             noCalendar: true,
             dateFormat: "H:i",
             minTime: "now",
-        });
+        }); 
+
+
+
 
 
 
