@@ -404,15 +404,31 @@ mysqli_close($con);
                                     $next_date = date('Y-m-d', strtotime('+1 day'));
                                     
                                     $query = "SELECT * FROM `slot_settings` WHERE `doctor_id` = {$_GET['doctor_id']} ORDER BY `slot_id` ASC";
+                                    $query1 = "SELECT `slot_time_part` FROM `added_appointments_new` WHERE `doctor_id` = {$_GET['doctor_id']} ORDER BY `slot_id` ASC";
                                     $select_slot = mysqli_query($con,$query);
+                                    $select_slot1 = mysqli_query($con,$query1);
 
                                     
                                     while($row = mysqli_fetch_assoc($select_slot)) {
-                                        $slot_id = $row['slot_id'];
-                                        $doc_id1 = $row['doctor_id'];
-                                        $slot_time = $row['slot_time'];
+                                        while($row1 = mysqli_fetch_assoc($select_slot1)){
+                                            $slot_id = $row['slot_id'];
+                                             $doc_id1 = $row['doctor_id'];
+                                             $slot_time = $row['slot_time'];
+                                             $slot_time_part = $row['slot_time_part'];
 
-                                            echo "<option value='$slot_time'>{$slot_time}</option>";
+                                           if($slot_time == $slot_time_part){
+                                              echo "<option style='color:red;' value='$slot_time'>{$slot_time}</option>";
+                                           }else{
+                                            echo "<option style='color:green;' value='$slot_time'>{$slot_time}</option>";
+                                           }
+
+                                            
+                                        }
+                                       // $slot_id = $row['slot_id'];
+                                      //  $doc_id1 = $row['doctor_id'];
+                                       // $slot_time = $row['slot_time'];
+                                         
+                                         //   echo "<option value='$slot_time'>{$slot_time}</option>"; 
                                             
                                             //echo "<option style='color:red;' value='$slot_time' disabled>{$slot_time}</option>";  
 
