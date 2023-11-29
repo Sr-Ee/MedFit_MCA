@@ -71,6 +71,9 @@ if(!isset($_SESSION['is_login'])){
     position: relative;
     right: 36px;
   }
+  
+  
+
 </style>
 
 <body>
@@ -161,6 +164,7 @@ if(!isset($_SESSION['is_login'])){
   </script> -->
   <!--End of Tawk.to Script-->
 </body>
+
 <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
 <script>
   window.botpressWebChat.init({
@@ -177,7 +181,7 @@ if(!isset($_SESSION['is_login'])){
       "frontendVersion": "v1",
       "useSessionStorage": true,
       "enableConversationDeletion": true,
-      "showPoweredBy": true,
+      "showPoweredBy": false,
       "theme": "prism",
       "themeColor": "#2563eb"
   });

@@ -26,6 +26,22 @@ if(isset($_POST['submit']))
     $medication = $_POST['medication'];
     $investigation = $_POST['investigation'];
     $advice = $_POST['advice'];
+    $systolicBP = $_POST['systolicBP'];
+    $diastolicBP = $_POST['diastolicBP'];
+    $heartRate = $_POST['heartRate'];
+    $temperature = $_POST['temperature'];
+    $respiratoryRate = $_POST['respiratoryRate'];
+    $weight = $_POST['weight'];
+    $height = $_POST['height'];
+    $bmi = $_POST['bmi'];
+    $bloodSugar = $_POST['bloodSugar'];
+    $oxygenSaturation = $_POST['oxygenSaturation'];
+    $allergies = $_POST['allergies'];
+    $medications = $_POST['medications'];
+    $medicalHistory = $_POST['medicalHistory'];
+    $symptoms = $_POST['symptoms'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
     // $email = $_POST['mail'];
 
     $pdf = new FPDF();
@@ -33,15 +49,21 @@ if(isset($_POST['submit']))
     $pdf->SetFont('Arial','', 14);
     $cellWidth = 60;
 
+    $logoPath = 'C:/xampp/htdocs/MedFit_MCA/img/medical.png'; // Replace with the actual path to your logo file
+    $pdf->Image($logoPath, 10, 4, 30); // Adjust the coordinates and dimensions as needed
+
     // Add table headers
     $pdf->SetTextColor(0, 153, 51); // Set text color to blue (RGB: 0, 0, 255)
-    $pdf->Cell(0, 10,'Dr. ' . $fname.' '.$lname, 1);    
-    $pdf->Ln();
-    $pdf->Cell(0, 10,'Qualification: ' . $qualification, 1);    
-    $pdf->Ln();
-    $pdf->Cell(0, 10,'Clinic Address: ' . $clinic_address, 1);    
-    $pdf->Ln();
+    // Add a multicell for headers
+    //$pdf->SetDrawBorder(0); // Turn off cell borders
+    $pdf->MultiCell(0, 10, 'Dr. ' . $fname . ' ' . $lname, 0, 'C');
+    $pdf->MultiCell(0, 10, 'Qualification: ' . $qualification, 0, 'C');
+    $pdf->MultiCell(0, 10, 'Clinic Address: ' . $clinic_address, 0, 'C');
+    //$pdf->SetDrawBorder(1); // Turn on cell borders for data rows
+    
     $pdf->SetTextColor(0); // Reset text color to default (black)
+
+
     
      // Add data rows to the table
     $data = array(
@@ -54,13 +76,29 @@ if(isset($_POST['submit']))
         'Medication' => $medication,
         'investigation' => $investigation,
         'Advice' => $advice,
+        'Systolic Blood Pressure (mmHg)' => $systolicBP,
+        'Diastolic Blood Pressure (mmHg)' => $diastolicBP,
+        'Heart Rate (bpm)' => $heartRate,
+        'Body Temperature (°C)' => $temperature,
+        'Respiratory Rate (breaths per minute)' => $respiratoryRate,
+        'Weight (kg)' => $weight,
+        'Height (cm)' => $height,
+        'Body Mass Index (BMI)' => $bmi,
+        'Fasting Blood Sugar (mg/dL)' => $bloodSugar,
+        'Oxygen Saturation (%)' => $oxygenSaturation,
+        'Allergies' => $allergies,
+        'Current Medications' => $medications,
+        'Medical History' => $medicalHistory,
+        'Presenting Symptoms' => $symptoms,
+        'Date' => $date,
+        'Time' => $time,
     );
 
     foreach ($data as $field => $value) {
-        $pdf->MultiCell(80, 10, $field, 1);
-        $pdf->SetXY($pdf->GetX() + 80, $pdf->GetY() - 10); // Move to the next column
-        $pdf->MultiCell(100, 10, $value, 1);
-        $pdf->Ln();
+        $pdf->MultiCell(100, 10, $field, 1);
+        $pdf->SetXY($pdf->GetX() + 100, $pdf->GetY() - 10); // Move to the next column
+        $pdf->MultiCell(90, 10, $value, 1);
+       // $pdf->Ln();
     }
    
     // $mpdf->output();
@@ -70,6 +108,8 @@ if(isset($_POST['submit']))
     $query = "INSERT INTO `prescription` (`doc_id`, `pat_id`, `complaints`, `examination`, `diagnosis`, `medication`, `investigation`, `advice`) VALUES ('$doctorid', '$patient_id', '$comp', '$exam', '$diagnosis', '$medication', '$investigation', '$advice');";
     mysqli_query($con,$query);
 
+    $query1 = "INSERT INTO `patient_vitals` (`doc_id`, `pat_id`, `sys_bp`, `dys_bp`, `heart_rate`, `temp`, `resp_rate`, `weight`, `height`, `bmi`, `sugar`, `ox_sat`, `allergies`, `curr_med`, `med_hist`, `symptoms`, `vit_date`, `vit_time`) VALUES ('$doctorid', '1', '$systolicBP', '$diastolicBP', '$heartRate', '$temperature', '$respiratoryRate', '$weight', '$height', '$bmi', '$bloodSugar', '$oxygenSaturation', '$allergies', '$medications', '$medicalHistory', '$symptoms', '$date', '$time');";
+    mysqli_query($con,$query1);
 
    
 }

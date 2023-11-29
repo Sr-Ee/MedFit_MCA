@@ -303,6 +303,97 @@ if(isset($_POST['submit']))
                                 <textarea class="form-control input-md" id="advice" name="advice" rows="2" cols="40" ></textarea>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bloodPressure" class="control-label">Blood Pressure:</label>
+                                <input type="number" id="systolicBP" name="systolicBP" placeholder="Systolic (mmHg)" class="form-control input-md" required><br>
+                                <input type="number" id="diastolicBP" name="diastolicBP" placeholder="Diastolic (mmHg)" class="form-control input-md" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="heartRate" class="control-label">Heart Rate:</label>
+                                <input type="number" id="heartRate" name="heartRate" placeholder="Heart Rate (bpm)" class="form-control input-md" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="heartRate" class="control-label">Temperature:</label>
+                                <input type="number" id="temperature" name="temperature" placeholder="Temperature (Celsius)" class="form-control input-md" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="respiratoryRate" class="control-label">Respiratory Rate:</label>
+                                <input type="number" id="respiratoryRate" name="respiratoryRate" placeholder="Respiratory Rate (breaths per minute)" class="form-control input-md" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="weight" class="control-label">Weight (kg):</label>
+                                <input class="form-control input-md" type="number" id="weight" name="weight" step="0.1" placeholder="Weight (kg)" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="height">Height (cm):</label>
+                                <input class="form-control input-md" type="number" id="height" name="height" step="0.1" placeholder="Height (cm)" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bmi">Body Mass Index (BMI):</label>
+                                <input class="form-control input-md" type="number" id="bmi" name="bmi" step="0.01" placeholder="BMI" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bloodSugar">Fasting Blood Sugar (mg/dL):</label>
+                                <input class="form-control input-md" type="number" id="bloodSugar" name="bloodSugar" placeholder="Blood Sugar (mg/dL)" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="oxygenSaturation">Oxygen Saturation (%):</label>
+                                <input class="form-control input-md" type="number" id="oxygenSaturation" name="oxygenSaturation" placeholder="OS in %" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="allergies">Allergies:</label>
+                                <input class="form-control input-md" type="text" id="allergies" name="allergies">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="medications">Current Medications:</label>
+                                <textarea class="form-control input-md" id="medications" name="medications" rows="4" cols="50"></textarea>
+                                <br>
+                                <label for="medicalHistory">Medical History:</label>
+                                <textarea class="form-control input-md" id="medicalHistory" name="medicalHistory" rows="4" cols="50"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="symptoms">Presenting Symptoms:</label>
+                                <textarea class="form-control input-md" id="symptoms" name="symptoms" rows="4" cols="50"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="date">Date:</label>
+                                <input class="form-control input-md" type="date" id="date" name="date" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control input-md" type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+
+
                         <!-- Button -->
                         <div class="col-md-12">
                             <div class="form-group">
