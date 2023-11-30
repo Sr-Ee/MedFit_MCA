@@ -136,11 +136,27 @@ if(!isset($_SESSION['is_login'])){
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="./img/fitprofile.png" class="card-img-top" alt="...">
+      <img src="./img/medbot.avif" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Medbot</h5>
-        <p class="card-text">Your Bot For Your Queries</p>
+        <p class="card-text">"Your Health, Our Conversation: Empowering Wellness through Interactive Care 🤖💬</p>
         <a href="https://mediafiles.botpress.cloud/b69a61b9-3460-446a-8917-adaf4d05dced/webchat/bot.html" class="btn btn-primary">Access Medbot</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="./img/diet_plan.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Diet Planner</h5>
+        <p class="card-text">Your one stop interactive diet planner</p>
+        <a href="diet_planner.php" class="btn btn-primary">Access Diet Planner</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="./img/workout1.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Workout Generator</h5>
+        <p class="card-text">Unleash Your Potential: Tailored Workouts at Your Fingertips! 💪🔀</p>
+        <a href="workout_gen.php" class="btn btn-primary">Access</a>
       </div>
     </div>
   </div>

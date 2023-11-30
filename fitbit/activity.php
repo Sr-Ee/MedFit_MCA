@@ -27,9 +27,12 @@
     <input class="form-control" type="date" id="dateInput" value="">
     <button  class="btn btn-success" id="fetchDataButton">Fetch Activity Data</button>
     <div id="activityData"></div>
+    <div id="chart"></div>
 
   </div>
    
     <script src="activity1.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </body>
 </html>

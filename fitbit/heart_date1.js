@@ -3,51 +3,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const fetchDataButton = document.getElementById("fetchDataButton");
     const dateInput = document.getElementById("dateInput");
     const heartRateDataDiv = document.getElementById("heartRateData");
+    const heartRateChartCanvas = document.getElementById("heartRateChart");
 
-    saveTokenButton.addEventListener("click", function() {
-        const accessToken = document.getElementById("accessTokenInput").value;
-        if (accessToken.trim() !== "") {
-            localStorage.setItem("fitbitAccessToken", accessToken);
-            alert("Access token saved!");
-        } else {
-            alert("Please enter a valid access token.");
-        }
-    });
+    // ...
 
     fetchDataButton.addEventListener("click", function() {
-        const accessToken = localStorage.getItem("fitbitAccessToken"); // Retrieve access token from local storage
-
-        if (!accessToken) {
-            alert("Please enter and save your access token first.");
-            return;
-        }
-
-        const selectedDate = dateInput.value;
-        const apiUrl = `https://api.fitbit.com/1/user/-/activities/heart/date/${selectedDate}/1d.json`;
-
-        const options = {
-            headers: {
-                'Authorization': 'Bearer ' + accessToken
-            }
-        };
+        // ...
 
         fetch(apiUrl, options)
             .then(response => response.json())
             .then(data => {
-                const heartRateActivities = data['activities-heart'];
+                // ...
 
                 if (heartRateActivities.length > 0) {
-                    const dateTime = heartRateActivities[0].dateTime;
-                    const heartRateZones = heartRateActivities[0].value.heartRateZones;
+                    // ...
 
-                    let heartRateDataHtml = `<h2>Heart Rate Data for ${dateTime}</h2>`;
-                    heartRateDataHtml += '<ul>';
-                    heartRateZones.forEach(zone => {
-                        heartRateDataHtml += `<li>${zone.name}: ${zone.min}-${zone.max} bpm</li>`;
-                    });
-                    heartRateDataHtml += '</ul>';
+                    // Create an array of labels and data for Chart.js
+                    const labels = heartRateZones.map(zone => zone.name);
+                    const data = heartRateZones.map(zone => ({
+                        min: zone.min,
+                        max: zone.max
+                    }));
 
-                    heartRateDataDiv.innerHTML = heartRateDataHtml;
+                    // Render the Chart.js chart
+                    renderChart(labels, data);
                 } else {
                     heartRateDataDiv.innerHTML = "<p>No heart rate data available for the selected date.</p>";
                 }
@@ -57,4 +36,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 heartRateDataDiv.innerHTML = "<p>Error fetching heart rate data.</p>";
             });
     });
+
+    function renderChart(labels, data) {
+        const ctx = heartRateChartCanvas.getContext("2d");
+
+        const chartData = {
+            labels: labels,
+            datasets: [{
+                label: 'Heart Rate Zones (bpm)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: data,
+            }]
+        };
+
+        const chartOptions = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+    }
 });

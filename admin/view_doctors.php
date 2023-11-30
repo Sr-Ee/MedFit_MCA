@@ -248,7 +248,6 @@ while($row=mysqli_fetch_array($select_query)){
                             echo "</tr>";
                         }
                     ?>
-
                     <?php  
                         $msg="";
                         if(isset($_GET['verify'])) {

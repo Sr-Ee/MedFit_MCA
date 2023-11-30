@@ -1,0 +1,91 @@
+/* ... Existing CSS ... */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .customize-section {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .workout-result {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .workout-history {
+    margin-top: 40px;
+  }
+  
+  #historyList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #historyList li {
+    margin-bottom: 10px;
+  }
+  
+
+.diet-planner {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .diet-planner h2 {
+    color: #333;
+  }
+  
+  .diet-planner label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .diet-planner select,
+  .diet-planner input {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .diet-planner button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .diet-planner button:hover {
+    background-color: #45a049;
+  }
+  
+  .diet-planner p {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  #userAge{
+    width: 91%;
+  }
